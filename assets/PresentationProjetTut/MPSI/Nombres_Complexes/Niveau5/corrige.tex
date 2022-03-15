@@ -1,0 +1,21 @@
+\begin{enumerate}
+\item Les racines $n$-ièmes de l'unité sont les complexes $\omega^k$, avec $k=0,...,n-1$. Leur produit vaut donc : 
+\[ \prod_{k=0}^{n-1} \omega^k = \omega^{\sum_{k=0}^{n-1}k } = \omega^{\frac{n(n-1)}{2}} = e^{i \pi (n-1)} = (-1)^{n-1}.\]
+\item On a ici une somme géométrique de raison $\omega^p$. Si $p$ est un multiple de $n$, la raison est donc égale à $1$, et la somme fait $n$. Sinon, on a 
+\[ \sum_{k=0}^{n-1} \omega^{kp} = \frac{1-\omega^{np}}{1-\omega^p} = 0\]
+ puisque $\omega^n=1$.
+ \item On développe la puissance à l'intérieur de la somme en utilisant la formule du binôme de Newton, et on trouve :
+ \[ \sum_{k=0}^{n-1} (1 + \omega^k)^n = \sum_{k=0}^{n-1} \sum_{p=0}^n \begin{pmatrix}
+  n \\ p
+\end{pmatrix} \omega^{kp} = \sum_{p=0}^{n} \begin{pmatrix}
+  n \\ p
+\end{pmatrix} \sum_{k=0}^{n-1}  \omega^{kp}.\]
+ On utilise le résultat de la question précédente : la somme 
+ \[ \sum_{k=0}^{n-1} \omega^{kp} = 0\]
+sauf si $p=0$ ou si $p=n$. Dans ce cas, cette somme vaut $n$. On en déduit que 
+\[  \sum_{k=0}^{n-1} (1 + \omega^k)^n = \begin{pmatrix}
+  n \\ 0
+\end{pmatrix} n + \begin{pmatrix}
+  n \\ n
+\end{pmatrix} n = n + n = 2n.\]
+\end{enumerate}

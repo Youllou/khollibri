@@ -1,0 +1,477 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages de base   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Classe du document (book : chapitre inclus, pratique pour les gros cours (PASS, Tremplin), article (8pt) ou amsart (12pt) : pratique pour les cours sur une seule thématique)
+\documentclass[a4paper, 11pt,openany]{article}% openany évite de commencer les chapitres sur une page forcément impaire (évite les pages blanches)
+
+% Encodage, langue et font
+\usepackage[utf8]{inputenc} % Pour les accents (conversion entre ces caractères accentués et les commandes d’accentuation)
+\usepackage[french]{babel} % Français
+\usepackage[T1]{fontenc} % Permet d'afficher et de prendre correctement en charge ces caractères accentués du point de vue du fichier de sortie
+
+% Si on veut faire apparaître le texte avec des caractères plus larges
+%\usepackage[lf]{Baskervaldx} % Texte en plus "gras"
+%\usepackage[bigdelims,vvarbb]{newtxmath} % Lettre mathématiques en plus "gras"
+%\usepackage[cal=boondoxo]{mathalfa} % Style pour les \mathscal
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+% Mise en page
+% Version automatique mais problème d'écart entre l'en-tête et le texte.
+%\usepackage{fullpage} % Numérotation bas de page (et mise en page pleine).
+\usepackage{setspace} % Interligne
+\onehalfspacing % Interligne
+\usepackage[a4paper]{geometry}% Package pour mise en page
+\geometry{hscale=0.8,vscale=0.8,centering,headsep=0.5cm} % Marges, Headsep permet de ne pas coller le texte à l'en-tête
+
+\setlength{\parindent}{0pt} % Supprimer les identations par défaut
+
+\usepackage{fancyhdr} %Package permettant de mettre des en-têtes et des pieds de pages
+\pagestyle{fancy}
+\fancyhead{} % Enleve ce qui est présent par défaut
+\fancyfoot{}% Enleve ce qui est présent par défaut
+\usepackage{extramarks} % Pour écrire proprement le chapitre dans l'en-tête
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} % Redéfinition du chapitre pour écriture dans l'en-tête sous la forme "Chapitre n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}} % Forme "n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Forme "Nom du chapitre"
+\renewcommand{\headrulewidth}{0.6pt} % Epaisseur trait en haut
+\renewcommand{\footrulewidth}{0.6pt} % Epaisseur trait en bas
+\setlength{\headheight}{15pt}
+% Placer les informations où on veut (à noter : E: Even page ; O: Odd page ; L: Left field ; C: Center field ; R: Right field ; H: Header ; F: Footer) :
+\fancyhead[LO,LE]{\slshape  \textbf{BCPST1B}}
+\fancyhead[RO,RE]{\slshape \textbf{Corrigé - Colle 7 (Sujet 3)}}
+%\fancyhead[CO,CE]{---Draft---}
+\fancyfoot[C]{\thepage}
+%\fancyfoot[LO, LE] {\slshape Damien GOBIN}
+%\fancyfoot[RO, RE] {\slshape Année 2021-2022}
+
+% Couleurs
+\usepackage{xcolor}
+\definecolor{BleuTresFonce}{rgb}{0.0,0.0,0.250}
+%\definecolor{bleu}{rgb}{0.36, 0.54, 0.66}
+\definecolor{bleu}{rgb}{0.47, 0.62, 0.8}
+%\definecolor{vert}{rgb}{0.33, 0.42, 0.18}
+%\definecolor{vert}{rgb}{0.52, 0.73, 0.4}
+\definecolor{vert}{rgb}{0.56, 0.74, 0.56}
+% Liens hypertextes
+\usepackage[colorlinks,final,hyperindex]{hyperref}
+\hypersetup{
+	pdftex,
+	linkcolor=BleuTresFonce,
+	citecolor=BleuTresFonce,
+	filecolor=BleuTresFonce,
+	urlcolor=BleuTresFonce,
+	pdftitle=TemplateCours,
+	pdfauthor=Damien Gobin,
+	pdfsubject=,
+	pdfkeywords=
+}
+
+
+% Inclure des figures
+\usepackage{graphicx} % Permet d'utiliser includegraphics
+\usepackage{pdfpages} % Permet d'insérer des fichiers pdf
+
+% Utiliser des commentaires
+\usepackage{comment}
+%\excludecomment{sol} %commenter cette ligne si on veut faire apparaitre les solutions d'exercices
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages mathématiques  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Packages mathématiques de base
+%\usepackage{amsfonts} % Permet de taper des ensembles 
+\usepackage{amsmath} % Permet de taper des maths (contient cleveref)
+\usepackage{amsthm} % Permet de définir une environnement pour les théorèmes
+\usepackage{amssymb} % Donne accès a plus de symboles mathématiques (charge de façon automatique amsfonts)
+% \usepackage{mathrsfs} % Ecriture ronde type mathcal
+%\usepackage{bbold} % Permet d'avoir l'indicatrice mais change les textbb
+\usepackage{stmaryrd} % Pour les intervalles entiers [[ ]]
+\usepackage{pifont} % Pour avoir accès à plus de caractères
+
+%Utiliser les symboles jeu de cartes
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+
+
+% Référence dans le document
+\usepackage[noabbrev,capitalize]{cleveref}
+
+% Tableau
+\usepackage{tabularx} % Tableau
+\usepackage{multirow} % Pour créer des tableaux en subdivisant les lignes
+\usepackage{diagbox} %Pour créer des crois dans les tableaux à double entrées
+\usepackage{enumitem} %Permet de scinder une énumération et de reprendre au numéro suivant
+\usepackage{multicol} % Création de document en colonne avec plusieurs colonnes
+\multicolsep=5pt % supprime l'espace vertical
+
+% Modification des itemizes
+\setitemize{label=$\bullet$} % Utilise le package enumitem et met des points au lieu des tirets
+
+% Ecrire des algorithmes en "français" (exemple issu du cours d'optimisation 2020/2021)
+\usepackage[linesnumbered, french, frenchkw,ruled]{algorithm2e}
+% Exemple :
+%\begin{center}
+%\begin{algorithm}
+%\Entree{Un graphe $G = (V,E)$, $|V| = n$, $|E| = m$ et pour chaque arête $e$ de $E$ son poids $c(e)$;}
+%\Sortie{Un arbre (ou une forêt) maximal $A = (V,F)$ et de poids minimum ;} 
+%Trier et renuméroter les arêtes de $G$ dans l'ordre croissant de leur poids : $c(e_1) \leqslant c(e_2) \leqslant ... \leqslant c(e_m)$ \;
+%Poser $F := \emptyset$ et $k = 0$\;
+%\Tq{$k<m$ et $|F| < n-1$}{Si $e_{k+1}$ ne forme pas de cycle avec $F$ alors $F := F \cup \{ e_k \}$\;
+%$k := k +1 $\;}
+%\caption{Algorithme de Kruskal théorique (1956)}
+%\end{algorithm}
+%\end{center}
+
+% Inclure du code Python avec coloration syntaxique et bloc gris (exemple issu du TP2 d'optimisation 2020/2021)
+%\usepackage{xcolor} % Déjà importé plus haut
+\usepackage{listings}
+\lstset{backgroundcolor=\color{darkWhite},literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1{€}{{\EUR}}1 {£}{{\pounds}}1}
+\lstdefinestyle{stylepython}{        language=Python,        basicstyle=\ttfamily,    commentstyle=\color{green},    keywordstyle=\color{blue},    stringstyle=\color{olive},    numberstyle=\tiny,        numbers=left,        stepnumber=1,         numbersep=5pt}
+% Exemple :
+%\begin{lstlisting}[style=stylepython]
+%import networkx as nx #Cette bibliothèque permettra de manipuler des graphes
+%import matplotlib.pyplot as plt #Cette bibliothèque permettra de les représenter
+%import numpy as np
+%\end{lstlisting}
+
+%Package permettant de tracer des graphes, des courbes, etc.. (exemple issu du cours d'optimisation 2020/2021)
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{tkz-tab} % Pour les tableaux de signes
+%\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{
+	decorations.pathmorphing,
+	arrows,
+	arrows.meta,
+	calc,
+	shapes,
+	shapes.geometric,
+	decorations.pathreplacing,}
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+\tikzset{>=stealth'}
+\tikzstyle{rond}=[draw,circle,thick,fill=white]
+% Exemple courbe :
+%\begin{center}
+%\begin{tikzpicture}
+%	\def\shift{.5}
+%	\def\xmax{6}
+%	\def\ymax{7}
+%	\draw[->] (-\shift,0) -- (\xmax+\shift,0) node[below] {$x$}; 
+%	\foreach \x in {1,...,\xmax}{ \pgfmathtruncatemacro\xbis{100*\x}
+%		\draw (\x,0) -- (\x,-.3*\shift) node[below] {$\scriptstyle{\xbis}$};
+%	}
+%	% axe ordonnees
+%	\draw[->] (0,-\shift) -- (0,\ymax+\shift) node[left] {$y$};  
+%	\foreach \y in {1,...,\ymax}{ \pgfmathtruncatemacro\ybis{100*\y}
+%		\draw (0,\y) -- (-.3*\shift,\y) node[left] {$\scriptstyle{\ybis}$};
+%	}
+%	\draw[fill=yellow] (0,0) -- (3,0) -- (0,6) -- cycle;
+%	
+%	\draw[thick, purple] plot [domain=-.15:6.15, variable=\t] (\t,6-\t);
+%	\node[above, text=purple] (A) at (6.9,.1) {$x+y = 600$};
+%	%%
+%	\draw[thick, purple] plot [domain=-.1:3.1, variable=\t] (\t,6-2*\t);
+%	\node[right, text=purple] (B) at (1.1,5) {$2x+y = 600$};
+%	%%
+%	\draw[thick, blue] plot [domain=-.1:3.85, variable=\t] (\t,6-1.6*\t);
+%	%%
+%	\draw[fill=blue] (0,6) circle (3pt);
+%	\node[right, text=blue] (B) at (0.1,6.3) {Solution optimale};
+%\end{tikzpicture}
+%\end{center}
+% Exemple graphe :
+%\begin{center}
+%\begin{tikzpicture}[scale=0.9]
+%    \draw[thick] (-1.5,0) node[rond] {$1$} coordinate (A) --
+%        ++(3,0) node[rond] {$2$} coordinate (B) --
+%        ++(-1,-1) node[rond] {$4$}  coordinate (D) --
+%        ++(-1,0) node[rond] {$3$}  coordinate (C) --
+%        ++(0,-1) node[rond] {$5$}  coordinate (E) --
+%        ++(1,0) node[rond] {$6$}  coordinate (F) --
+%        ++(1,-1) node[rond] {$8$}  coordinate (H) --
+%        ++(-3,0) node[rond] {$7$}  coordinate (G) -- (A)
+%        (A) -- (C)
+%        (G) -- (E)
+%        (D) -- (F)
+%        (B) -- (H);
+%\end{tikzpicture}
+%\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Environnements  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Différents types à donner aux environnements théorèmes, définitions, etc...
+%[theorem] permet de numéroter par rapport à la section en cours
+%\renewcommand{\theexem}{\empty{}} permet de ne pas numéroterNe numérote pas les exemples
+
+%\usepackage{thmtools} % Permet de créer un environnement de théorème avec des cadres
+%\declaretheorem[thmbox=L]{boxtheorem L}
+%\declaretheorem[thmbox=M]{boxtheorem M}
+%\declaretheorem[thmbox=S]{boxtheorem S}
+%
+%%\usepackage[dvipsnames]{xcolor}
+%%\declaretheorem[shaded={bgcolor=Lavender,textwidth=12em}]{BoxI}
+%\declaretheorem[shaded={rulecolor=black,rulewidth=1pt}]{BoxII}
+%
+%
+%\usepackage[leftmargin=0.1865cm,rightmargin=0.6cm]{thmbox}
+% Voici ici pour les options https://ctan.mines-albi.fr/macros/latex/contrib/thmbox/thmbox.pdf
+
+%% Ecrit de cette façon tout le monde a le même style : Titre en droit et texte en italique très léger.
+%\newtheorem[L,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{thm}{Théorème}[subsection]
+%%\renewcommand{\thetheorem}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{propo}[thm]{Proposition}
+%%\renewcommand{\thepropo}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{prop}[thm]{Propriété}
+%%\renewcommand{\theprop}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{coro}[thm]{Corollaire}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{lem}[thm]{Lemme}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{defi}[theorem]{Définition}
+%%\renewcommand{\thedefinition}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exem}{Exemple}
+%\renewcommand{\theexem}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{sol}{Solution}
+%\renewcommand{\thesol}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{hypo}{Hypothesis}[section]
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{remark}[thm]{Remarque}%[section]
+%\newtheorem{dem}{Démonstration}
+%\renewcommand{\thedem}{\empty{}} 
+%\newtheorem[S]{nota}{Notation}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[subsection]
+%\renewcommand{\thetheorem}{\empty{}} 
+\newtheorem{propo}[theorem]{Proposition}
+%\renewcommand{\thepropo}{\empty{}} 
+\newtheorem{prop}[theorem]{Propriété}
+%\renewcommand{\theprop}{\empty{}} 
+\newtheorem{coro}[theorem]{Corollaire}
+\newtheorem{lemma}[theorem]{Lemme}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Définition}
+%\renewcommand{\thedefinition}{\empty{}}
+\newtheorem{exem}{Exemple}
+\renewcommand{\theexem}{\empty{}} 
+\newtheorem{cours}{Question de cours}
+\renewcommand{\thecours}{\empty{}} 
+\newtheorem{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}} 
+\newtheorem{sol}{Solution de l'exercice}
+%\renewcommand{\thesol}{\empty{}} 
+\newtheorem{hypo}{Hypothesis}[section]
+\newtheorem{remark}[theorem]{Remarque}%[section]
+
+
+\theoremstyle{remark}
+\newtheorem{dem}{Démonstration}
+\renewcommand{\thedem}{\empty{}} 
+\newtheorem{nota}{Notation}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Raccourcis   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% Ensembles
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+
+
+% Lettres calligraphiques
+\newcommand{\calP}{\mathcal{P}} 
+\newcommand{\calF}{\mathcal{F}} 
+\newcommand{\calD}{\mathcal{D}} 
+\newcommand{\calQ}{\mathcal{Q}} 
+\newcommand{\calT}{\mathcal{T}} 
+
+% Noyau et image
+\newcommand{\im}{\text{Im}} 
+\newcommand{\noy}{\text{Ker}} 
+\newcommand{\card}{\text{Card}} 
+
+%Epsilon
+\newcommand{\vare}{\varepsilon} 
+
+
+% Fonctions usuelles
+%\newcommand{\un}{\mathbb{1}} % Indicatrice en utilisant le package \usepackage{bbold} mais celui modifie les mathbb donc on définit l'indicatrice à la main
+\def\un{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}} % Indicatrice
+
+
+\title{Corrigé - Colle 7 (Sujet 3)}
+\author{BCPST1B\\
+Année 2021-2022}
+%\author{Mathématiques P.A.S.S. 1}
+\date{16 novembre 2021}
+
+
+\begin{document}
+
+
+   \maketitle
+%      \rule{\linewidth}{0.5mm}
+      \rule{\linewidth}{0.5mm}
+%  \begin{center}
+%  %    \rule{\linewidth}{0.5mm}\\[0.4cm]
+%       { \huge \bfseries Mathématiques pour le P.A.S.S 1\\[0.4cm] }
+%    \rule{\linewidth}{0.5mm}\\[4cm]
+%     \end{center}
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Applications
+Soit $f\colon x \mapsto \dfrac{x}{x+1}$. Exprimer $f^n(x) = \underbrace{f\circ f \circ \ldots \circ f}_{n\text{ fois}}(x)$ pour tout entier naturel $n \geqslant 1$.
+\end{exo}
+
+\begin{sol}
+Montrons par récurrence que la propriété $f^n(x) = \frac{x}{nx+1}$ est vraie pour tout $n \geqslant 1$.
+\begin{itemize}
+\item \textbf{Initialisation.} Pour $n=1$ le résultat provient immédiatement de la définition de $f$.
+\item \textbf{Hérédité.} Soit $n \geqslant 1$ fixé. Supposons que le résultat est vrai au rang $n$, i.e. que $f^n(x) = \frac{x}{nx+1}$. Alors,
+\[ f^{n+1}(x) = f(f^n(x)) = f \left( \frac{x}{nx+1} \right) = \frac{\frac{x}{nx+1}}{\frac{x}{nx+1} +1 } = \frac{x}{x+(nx+1)} = \frac{x}{(n+1)x+1}.\]
+Le résultat est donc vrai au rang $n+1$.
+\item \textbf{Conclusion.} On a donc démontré par récurrence que pour tout $n \geqslant 1$, $f^n(x) = \frac{x}{nx+1}$.
+\end{itemize}
+\end{sol}
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Fonctions usuelles
+Étudier la fonction $f$ définie par
+\[ f(x) = x^{-\ln(x)}.\]
+\end{exo}
+
+\begin{sol}
+On commence par écrire que $f(x)=e^{-(\ln(x))^2}$. Ainsi, on en déduit que la fonction $f$ est définie et dérivable sur l'intervalle $]0,+\infty[$. Sa dérivée est \[ f'(x)= -2x(\ln(x))e^{-(\ln(x))^2}.\]
+$f'$ est donc positive sur $]0,1[$ et négative sur $]1,+\infty[$. De plus, quand $x \to 0$, on a successivement $\ln(x) \to - \infty$, $- (\ln(x))^2 \to + \infty$ et par composition $f(x) \to 0$. De la même façon, on a $f(x) \to 0$. Ainsi, on obtient le tableau de variations suivant :
+\[
+	\begin{tikzpicture}
+		\tkzTabInit{$x$ /.8 , $f'(x)$ /.8, $f(x)$ /2}{$0$,$e$,$+\infty$}
+		 \tkzTabLine{d,+,0,-,}
+		\tkzTabVar{D-/ -/$-\infty$, +/ $\frac{1}{e}$ / $+\infty$,-/ $0$ /}
+	\end{tikzpicture}
+\]
+La courbe obtenue est :
+\begin{center}
+\begin{tikzpicture}[scale=1]
+     \draw [very thick, ->] (-1,0)--(5,0)node[below right]{$x$};
+     \draw [very thick, ->] (0,-1)--(0,3)node[above left]{$y$};
+     \draw (0,0) node[below right]{$0$};
+     \draw (1,0) node[below right]{$1$};
+     \draw (0,1) node[above left]{$1$};
+     \draw [help lines] (-1,-1) grid (5,3); 
+\draw [smooth,very thick, samples=100,domain=0.01:5,color=bleu!150]plot({\x},{e^(-ln(\x)*ln(\x))});   
+    \end{tikzpicture}
+    \end{center}
+\end{sol}
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Applications
+On considère la fonction 
+$ h : x \mapsto \frac{x^2 +1}{2x - 1}$.
+\begin{enumerate}
+\item Déterminer l'ensemble de définition $\calD_h$ de $h$.
+\item Déterminer l'image de $h$, i.e. $f(\calD_h)$.
+\item L'application $h$ est-elle injective de $\calD_h$ dans $\R$ ? Surjective ? Bijective ?
+\end{enumerate}
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item L'ensemble de définition de $h$ est $\calD_h = \R \setminus \left\{ \frac{1}{2} \right\}$.
+\item L'image de $h$ n'est pas si évidente à trouver. Soit $y \in \R$. Supposons qu'il existe $x$ tel que $h(x) =y$. Alors,
+\[ \frac{x^2 +1}{2x - 1} = y \quad \Leftrightarrow \quad x^2 +1 = y(2x - 1) \quad \Leftrightarrow \quad x^2 - 2yx +1 + y =0.\]
+On obtient donc un trinôme en $x$. Pour déterminer si ce trinôme possède des racines (et donc si $y$ possède un antécédent), on calcule son discriminant. On a
+\[ \Delta = 4y^2 - 4(1+y) = 4y^2 - 4y - 4.\]
+Ce discriminant est à nouveau un trinôme. Pour déterminer son signe, nous devons à présent calculer le discriminant de ce dernier trinôme. On obtient
+\[ \Delta' = 16 + 64 = 80 > 0.\]
+Le trinôme $4y^2 - 4y - 4$ possède donc deux racines réelles distinctes
+\[ y_1 = \frac{4 - \sqrt{80}}{8} = \frac{1 - \sqrt{5}}{2} \quad \text{et} \quad y_2 = \frac{4 + 4\sqrt{80}}{8} = \frac{1 +\sqrt{5}}{2}.\]
+Ainsi, on a deux situations possibles :
+\begin{itemize}
+\item Si $y \in \left]  \frac{1 - \sqrt{5}}{2} ,  \frac{1 + \sqrt{5}}{2} \right[$ alors $\Delta$ est strictement négatif (car il est du signe de $a = 4$ sauf entre les racines). Dans ce cas, l'équation $x^2 - 2yx +1 + y =0$ ne possède pas de solution et $y$ n'a donc pas d'antécédent.
+\item Si $y \notin \left]  \frac{1 - \sqrt{5}}{2} ,  \frac{1 + \sqrt{5}}{2} \right[$ alors $\Delta \geqslant 0$ et dans ce cas, l'équation $x^2 - 2yx +1 + y =0$ possède une (si $y = y_1$ ou $y = y_2$ et donc $\Delta = 0$) ou deux solutions et $y$ a donc bien d'antécédent.
+\end{itemize}
+En conclusion, on a
+\[ \im(h)= \left] - \infty ,  \frac{1 - \sqrt{5}}{2} \right] \cup \left[  \frac{1 + \sqrt{5}}{2} , + \infty \right[.\]
+\item $h$ n'est pas injective de $\calD_h$ dans $\R$ car $h(1) = 2 = h(3)$. On pourrait utiliser le fait que l'image de $h$ n'est pas $\R$ pour conclure immédiatement que $h$ n'est pas surjective de $\mathcal{D}_h$ dans $\R$. Néanmoins, pour montrer que l'application $h$ n'est pas surjective de $\calD_h$ dans $\R$ il n'est pas utile de connaître son image. En effet, $0$ n'a pas d'antécédent par $h$ car $h(x) = 0$ équivaut à $x^2 +1 =0$ qui n'a pas de solution réelle. $h$ n'est pas bijective car non surjective.
+\end{enumerate}
+\end{sol}
+
+
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Algorithmique
+Écrire une fonction prenant en arguments trois réels $a$, $b$ et $c$ et renvoyant les solutions réelles de l'équation $ax^2 + bx + c = 0$.
+\end{exo}
+
+\begin{sol}
+On a
+\begin{center}
+\begin{algorithm}
+\Entree{les coefficients $a$, $b$ et $c$}
+\Sortie{Les solutions de l'équation $ax^2 + bx +c = 0$.}
+$ delta=b**2-4*a*c$ \;
+$solutions=[]$ \;
+\Si{$delta==0$}{$solutions=[-b/(2*a)]$\\
+\Sinon{ \Si{$delta<0$}{$solutions=[]$\\
+\Sinon{ \Si{$delta<0$}{$solutions=[(-b-m.sqrt(delta))/(2*a),(-b+m.sqrt(delta))/(2*a)]$}}}}}
+\Retour{$solutions$}
+\caption{Résolution d'une équation du second degré}
+\end{algorithm}
+\end{center}
+\end{sol}
+
+
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Fonctions usuelles
+Discuter, selon les valeurs de $a\in \R$, le nombre de solutions de l'équation 
+\[ \frac{1}{x-1} + \frac{1}{2} \ln \left| \frac{1+x}{1-x} \right| =a.\]
+\end{exo}
+%
+\begin{sol}
+Posons, pour $x \neq \pm 1$, 
+\[ f(x) = \frac{1}{x-1} + \frac{1}{2} \ln \left| \frac{1+x}{1-x} \right| -a.\]
+ La fonction $f$ est dérivable sur $\R \setminus \{ \pm 1 \}$. De plus, sa dérivée (qui ne dépend pas du signe de la quantité à l'intérieur de la valeur absolue dans le logarithme) est égale, après mise au même dénominateur, à 
+ \[ f'(x)= \frac{-2x}{(1-x)^2(1+x)}.\]
+On en déduit le tableau de variations suivant pour la fonction (le calcul des limites ne pose pas de difficultés particulières; en particulier, il n'y a pas de formes indéterminées) :
+\[
+	\begin{tikzpicture}
+		\tkzTabInit{$x$ /.8 , $f'(x)$ /.8 , $f(x)$ /2}{$-\infty$,$-1$,$0$,$1$,$+\infty$}
+		   \tkzTabLine{,-,d,+,0,-,d,-,}
+		\tkzTabVar{ +/$-a$,  -D-/ $-\infty$, +/$-a-1$, -D+/ $-\infty$ /$+\infty$, -/$-a$ /}
+	\end{tikzpicture}
+\]
+Par continuité de $f$, en utilisant de plus sa stricte monotonie sur les intervalles $]- \infty,-1[$, $]-1,0[$, $]0,1[$ et $]1,+\infty[$, on discute le nombre de solutions suivant la valeur de $a$ :
+\begin{itemize}
+\item Si $a=0$, l'équation n'admet pas de solutions.
+\item Si $a>0$, l'équation admet une unique solution qui est située dans l'intervalle $]1,+\infty[$.
+\item Si $a\in ]-1,0[$, l'équation admet une unique solution qui est située dans l'intervalle $]-\infty ,-1[$.
+\item Si $a=-1$, l'équation admet deux solutions. L'une de ces solutions est $0$, l'autre est située dans l'intervalle $]-\infty,-1[$.
+\item Si $a<-1$, l'équation admet exactement trois solutions. L'une est située dans l'intervalle $]-\infty,-1[$, la seconde dans l'intervalle $]-1,0[$ et la troisième dans l'intervalle $]0,1[$.
+\end{itemize}
+\end{sol}
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,11 @@
+Montrons par récurrence que la propriété $(P_n)$ : $(1+a)^n \geqslant 1 +an$ est vraie pour tout $n \in \N$.
+ \begin{itemize}
+ \item \textbf{Initialisation.} Pour $n = 0$, on a bien $(1+a)^0 = 1 \geqslant 1+0$ donc la propriété est vraie au rang $0$.
+ \item \textbf{Hérédité.} Soit $n \geqslant 0$ un entier fixé. Supposons que la propriété $(P_n)$ est vraie au rang $n$, i.e. que \[ (1+a)^n \geqslant 1 +an.\]
+ Montrons que la propriété est vraie au rang $n+1$. On a, grâce à l'hypothèse de récurrence,
+ \[(1+a)^{n+1} = (1+a)(1+a)^n \geqslant (1+a)(1 +an) = 1 + a + an + a^2n = 1 + a(n+1) + a^2 n.\]
+ Or, $a^2 n \geqslant 0$ et on a donc montré que 
+ \[(1+a)^{n+1} \geqslant 1 + a(n+1).\]
+ Ceci achève de démontrer que la propriété est vraie au rang $n+1$.
+ \item \textbf{Conclusion.} On a donc bien démontré que pour tout $n \in \N$, $(1+a)^n \geqslant 1 +an$.
+ \end{itemize}

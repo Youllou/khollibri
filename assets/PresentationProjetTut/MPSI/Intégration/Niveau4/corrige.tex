@@ -1,0 +1,17 @@
+\begin{enumerate}
+\item Sur $\left[ 0 ,\frac{\pi}{2} \right]$, on a $0 \leqslant \sin(t)  \leqslant 1$. Ceci entraine que, pour tout $t \in \left[ 0 ,\frac{\pi}{2} \right]$, on a $\sin(t)^{n+1} \leqslant \sin(t)^n$. Il suffit d'intégrer cette inégalité entre $0$ et $\frac{\pi}{2}$ pour obtenir le résultat.
+\item Supposons qu'il existe un entier $n$
+avec $I_n=I_{n+1}$. Alors on a 
+\[ \int_0^{\frac{\pi}{2}} (\sin(t)^n  - sin(t)^{n+1}) \,dt=0.\]
+Posons $f(t)=\sin(t)^n  - sin(t)^{n+1}$. Alors $f$ est continue sur $\left[ 0 ,\frac{\pi}{2} \right]$, elle est positive ou nulle sur cet intervalle, et d'intégrale nulle. On en déduit qu'elle est identiquement nulle sur $\left[ 0 ,\frac{\pi}{2} \right]$ et donc que, pour tout $t \in \left[ 0 ,\frac{\pi}{2} \right]$, on a $\sin(t)^n =\sin(t)^{n+1}$, soit, pour $t \in \left] 0 ,\frac{\pi}{2} \right]$, on a $1=sin(t)$. C'est bien sûr absurde. On a donc, pour tout $n \in \N$, $I_n > I_{n+1}$.
+\item \begin{enumerate}
+\item On découpe l'intégrale par la relation de Chasles en $\frac{\pi}{2} - \varepsilon$. 
+\[ 0 \leqslant I_n \leqslant \int_0^{\frac{\pi}{2} - \varepsilon}\sin(t)^n \, dt + \int_{\frac{\pi}{2} - \varepsilon}^{\frac{\pi}{2}}\sin(t)^n \, dt.\]
+Mais la fonction $t \mapsto sin(t)^n$ est croissante sur $\left[ 0 ,\frac{\pi}{2} - \varepsilon \right]$, elle y est donc majorée par $\sin \left(\frac{\pi}{2} - \varepsilon \right)$, et elle est majorée par $1$ sur $\left[ \frac{\pi}{2} - \varepsilon , \frac{\pi}{2} \right]$. On a donc :
+\[ 0 \leqslant I_n \leqslant \left( \frac{\pi}{2} - \varepsilon \right) \sin \left( \frac{\pi}{2} - \varepsilon \right)^n + \left( \frac{\pi}{2} - \frac{\pi}{2} + \varepsilon \right)\]
+ce qui donne immédiatement le résultat souhaité.
+\item Reprenons l'inégalité précédente. Puisque $|\sin \left( \frac{\pi}{2} - \varepsilon \right)|<1$, il existe $n_0 \in\N$ tel que, pour $n \geqslant n_0$, on a : 
+\[ \frac{\pi}{2} \sin \left( \frac{\pi}{2} - \varepsilon \right)^n < \varepsilon.\]
+On en déduit que, pour $n \geqslant n_0$, on a $ 0 \leqslant I_n \leqslant 2 \varepsilon$. Ceci prouve bien que $(I_n)$ converge vers zéro.
+\end{enumerate}
+\end{enumerate}

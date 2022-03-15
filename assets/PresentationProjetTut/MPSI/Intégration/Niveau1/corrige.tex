@@ -1,0 +1,37 @@
+\begin{enumerate}
+\item On remarque qu'en posant $u(x)= \ln (x)$, on a $u'(x)=\frac{1}{x}$, de sorte que
+$f(x)=u'(x)\,u(x)$. On a donc 
+\[
+ f(x)\,dx= u'(x)\,u(x)=
+ \frac{d}{dx} \left(\frac{1}{2}\, u^{2}(x)\right)=
+\frac{d}{dx} \left( \frac{1}{2}\, \ln^{2}(x)\right).
+\]
+\item Si on développe le
+dénominateur $x^2(x+1)^2$ en $(x^2+x)^2$, on remarque qu'en posant $u(x)=x^2+x$, on a $u'(x)=2\,x+1$, de sorte
+que $g(x)=\frac{u'(x)}{u^{2}(x)}$. On a alors 
+\[
+g(x)= \frac{u'(x)}{u^{2}(x)}= 
+u'(x)\, u^{-2}(x)=\frac{d}{dx} \left(-\frac{1}{u(x)}\right)=\frac{d}{dx} \left(-\frac{1}{x^2+x}\right).
+\] 
+\item Il faut penser dans ce cas à faire une petite
+transformation assez simple dans les trois cas. Pour $h$, on a $
+x+2=(x+1)+1$, d'où $h(x)=\frac{(x+1)+1}{x+1}=1+\frac{1}{x+1}$,
+donc
+\begin{align*}
+h(x)\, &=  1+\frac{1}{x+1}=1+ \frac{v'(x)}{v(x)}\,dx\,,\quad \text{(en posant $v(x)=x+1$)}\\
+&= \frac{d}{dx} \left(x+\ln |v(x)|\right)= \frac{d}{dx}\left(x+\ln |x+1|\right).
+\end{align*}
+\item On peut remarquer d'après les formules de trigonométrie que $2\,\sin(\frac{x}{2})\cos(\frac{x}{2})=\sin x$, donc
+$ f_{24}(x) =  \frac{d}{dx}\left(-\cos x \right)$. On peut également remarquer qu'en posant
+ $u(x)=\sin(\frac{x}{2})$, on a $u'(x)=\frac{1}{2}\, \cos(\frac{x}{2})$,
+d'où $i(x)=4\,u'(x)\, u(x)$. On a donc
+\[
+i (x)= 4\,  u'(x)\, u(x)= \frac{d}{dx}\left( 2\,u^2(x)\right)= \frac{d}{dx}\left(2\,\sin^{2}\left(\frac{x}{2}\right)\right).
+\]
+Il n'y a pas de contradiction entre les deux résultats puisque
+\[
+-\cos x = -2\, \cos^{2}\left(\frac{x}{2}\right)+1
+= -2+2\,\sin^2\left(\frac{x}{2}\right)+1
+=2\,\sin^{2}\left(\frac{x}{2}\right)-1.
+\]
+\end{enumerate}

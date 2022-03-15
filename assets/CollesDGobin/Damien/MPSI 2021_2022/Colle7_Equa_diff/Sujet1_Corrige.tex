@@ -1,0 +1,449 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages de base   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Classe du document (book : chapitre inclus, pratique pour les gros cours (PASS, Tremplin), article (8pt) ou amsart (12pt) : pratique pour les cours sur une seule thématique)
+\documentclass[a4paper, 11pt,openany]{article}% openany évite de commencer les chapitres sur une page forcément impaire (évite les pages blanches)
+
+% Encodage, langue et font
+\usepackage[utf8]{inputenc} % Pour les accents (conversion entre ces caractères accentués et les commandes d’accentuation)
+\usepackage[french]{babel} % Français
+\usepackage[T1]{fontenc} % Permet d'afficher et de prendre correctement en charge ces caractères accentués du point de vue du fichier de sortie
+
+% Si on veut faire apparaître le texte avec des caractères plus larges
+%\usepackage[lf]{Baskervaldx} % Texte en plus "gras"
+%\usepackage[bigdelims,vvarbb]{newtxmath} % Lettre mathématiques en plus "gras"
+%\usepackage[cal=boondoxo]{mathalfa} % Style pour les \mathscal
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+% Mise en page
+% Version automatique mais problème d'écart entre l'en-tête et le texte.
+%\usepackage{fullpage} % Numérotation bas de page (et mise en page pleine).
+\usepackage{setspace} % Interligne
+\onehalfspacing % Interligne
+\usepackage[a4paper]{geometry}% Package pour mise en page
+\geometry{hscale=0.8,vscale=0.8,centering,headsep=0.5cm} % Marges, Headsep permet de ne pas coller le texte à l'en-tête
+
+\setlength{\parindent}{0pt} % Supprimer les identations par défaut
+
+\usepackage{fancyhdr} %Package permettant de mettre des en-têtes et des pieds de pages
+\pagestyle{fancy}
+\fancyhead{} % Enleve ce qui est présent par défaut
+\fancyfoot{}% Enleve ce qui est présent par défaut
+\usepackage{extramarks} % Pour écrire proprement le chapitre dans l'en-tête
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} % Redéfinition du chapitre pour écriture dans l'en-tête sous la forme "Chapitre n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}} % Forme "n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Forme "Nom du chapitre"
+\renewcommand{\headrulewidth}{0.6pt} % Epaisseur trait en haut
+\renewcommand{\footrulewidth}{0.6pt} % Epaisseur trait en bas
+\setlength{\headheight}{15pt}
+% Placer les informations où on veut (à noter : E: Even page ; O: Odd page ; L: Left field ; C: Center field ; R: Right field ; H: Header ; F: Footer) :
+\fancyhead[LO,LE]{\slshape  \textbf{MPSI2}}
+\fancyhead[RO,RE]{\slshape \textbf{Corrigé - Colle 7 (Sujet 1)}}
+%\fancyhead[CO,CE]{---Draft---}
+\fancyfoot[C]{\thepage}
+%\fancyfoot[LO, LE] {\slshape Damien GOBIN}
+%\fancyfoot[RO, RE] {\slshape Année 2021-2022}
+
+% Couleurs
+\usepackage{xcolor}
+\definecolor{BleuTresFonce}{rgb}{0.0,0.0,0.250}
+%\definecolor{bleu}{rgb}{0.36, 0.54, 0.66}
+\definecolor{bleu}{rgb}{0.47, 0.62, 0.8}
+%\definecolor{vert}{rgb}{0.33, 0.42, 0.18}
+%\definecolor{vert}{rgb}{0.52, 0.73, 0.4}
+\definecolor{vert}{rgb}{0.56, 0.74, 0.56}
+% Liens hypertextes
+\usepackage[colorlinks,final,hyperindex]{hyperref}
+\hypersetup{
+	pdftex,
+	linkcolor=BleuTresFonce,
+	citecolor=BleuTresFonce,
+	filecolor=BleuTresFonce,
+	urlcolor=BleuTresFonce,
+	pdftitle=TemplateCours,
+	pdfauthor=Damien Gobin,
+	pdfsubject=,
+	pdfkeywords=
+}
+
+
+% Inclure des figures
+\usepackage{graphicx} % Permet d'utiliser includegraphics
+\usepackage{pdfpages} % Permet d'insérer des fichiers pdf
+
+% Utiliser des commentaires
+\usepackage{comment}
+%\excludecomment{sol} %commenter cette ligne si on veut faire apparaitre les solutions d'exercices
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages mathématiques  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Packages mathématiques de base
+%\usepackage{amsfonts} % Permet de taper des ensembles 
+\usepackage{amsmath} % Permet de taper des maths (contient cleveref)
+\usepackage{amsthm} % Permet de définir une environnement pour les théorèmes
+\usepackage{amssymb} % Donne accès a plus de symboles mathématiques (charge de façon automatique amsfonts)
+% \usepackage{mathrsfs} % Ecriture ronde type mathcal
+%\usepackage{bbold} % Permet d'avoir l'indicatrice mais change les textbb
+\usepackage{stmaryrd} % Pour les intervalles entiers [[ ]]
+\usepackage{pifont} % Pour avoir accès à plus de caractères
+
+%Utiliser les symboles jeu de cartes
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+
+
+% Référence dans le document
+\usepackage[noabbrev,capitalize]{cleveref}
+
+% Tableau
+\usepackage{tabularx} % Tableau
+\usepackage{multirow} % Pour créer des tableaux en subdivisant les lignes
+\usepackage{diagbox} %Pour créer des crois dans les tableaux à double entrées
+\usepackage{enumitem} %Permet de scinder une énumération et de reprendre au numéro suivant
+\usepackage{multicol} % Création de document en colonne avec plusieurs colonnes
+\multicolsep=5pt % supprime l'espace vertical
+
+% Modification des itemizes
+\setitemize{label=$\bullet$} % Utilise le package enumitem et met des points au lieu des tirets
+
+% Ecrire des algorithmes en "français" (exemple issu du cours d'optimisation 2020/2021)
+\usepackage[linesnumbered, french, frenchkw,ruled]{algorithm2e}
+% Exemple :
+%\begin{center}
+%\begin{algorithm}
+%\Entree{Un graphe $G = (V,E)$, $|V| = n$, $|E| = m$ et pour chaque arête $e$ de $E$ son poids $c(e)$;}
+%\Sortie{Un arbre (ou une forêt) maximal $A = (V,F)$ et de poids minimum ;} 
+%Trier et renuméroter les arêtes de $G$ dans l'ordre croissant de leur poids : $c(e_1) \leqslant c(e_2) \leqslant ... \leqslant c(e_m)$ \;
+%Poser $F := \emptyset$ et $k = 0$\;
+%\Tq{$k<m$ et $|F| < n-1$}{Si $e_{k+1}$ ne forme pas de cycle avec $F$ alors $F := F \cup \{ e_k \}$\;
+%$k := k +1 $\;}
+%\caption{Algorithme de Kruskal théorique (1956)}
+%\end{algorithm}
+%\end{center}
+
+% Inclure du code Python avec coloration syntaxique et bloc gris (exemple issu du TP2 d'optimisation 2020/2021)
+%\usepackage{xcolor} % Déjà importé plus haut
+\usepackage{listings}
+\lstset{backgroundcolor=\color{darkWhite},literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1{€}{{\EUR}}1 {£}{{\pounds}}1}
+\lstdefinestyle{stylepython}{        language=Python,        basicstyle=\ttfamily,    commentstyle=\color{green},    keywordstyle=\color{blue},    stringstyle=\color{olive},    numberstyle=\tiny,        numbers=left,        stepnumber=1,         numbersep=5pt}
+% Exemple :
+%\begin{lstlisting}[style=stylepython]
+%import networkx as nx #Cette bibliothèque permettra de manipuler des graphes
+%import matplotlib.pyplot as plt #Cette bibliothèque permettra de les représenter
+%import numpy as np
+%\end{lstlisting}
+
+%Package permettant de tracer des graphes, des courbes, etc.. (exemple issu du cours d'optimisation 2020/2021)
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{tkz-tab} % Pour les tableaux de signes
+%\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{
+	decorations.pathmorphing,
+	arrows,
+	arrows.meta,
+	calc,
+	shapes,
+	shapes.geometric,
+	decorations.pathreplacing,}
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+\tikzset{>=stealth'}
+\tikzstyle{rond}=[draw,circle,thick,fill=white]
+% Exemple courbe :
+%\begin{center}
+%\begin{tikzpicture}
+%	\def\shift{.5}
+%	\def\xmax{6}
+%	\def\ymax{7}
+%	\draw[->] (-\shift,0) -- (\xmax+\shift,0) node[below] {$x$}; 
+%	\foreach \x in {1,...,\xmax}{ \pgfmathtruncatemacro\xbis{100*\x}
+%		\draw (\x,0) -- (\x,-.3*\shift) node[below] {$\scriptstyle{\xbis}$};
+%	}
+%	% axe ordonnees
+%	\draw[->] (0,-\shift) -- (0,\ymax+\shift) node[left] {$y$};  
+%	\foreach \y in {1,...,\ymax}{ \pgfmathtruncatemacro\ybis{100*\y}
+%		\draw (0,\y) -- (-.3*\shift,\y) node[left] {$\scriptstyle{\ybis}$};
+%	}
+%	\draw[fill=yellow] (0,0) -- (3,0) -- (0,6) -- cycle;
+%	
+%	\draw[thick, purple] plot [domain=-.15:6.15, variable=\t] (\t,6-\t);
+%	\node[above, text=purple] (A) at (6.9,.1) {$x+y = 600$};
+%	%%
+%	\draw[thick, purple] plot [domain=-.1:3.1, variable=\t] (\t,6-2*\t);
+%	\node[right, text=purple] (B) at (1.1,5) {$2x+y = 600$};
+%	%%
+%	\draw[thick, blue] plot [domain=-.1:3.85, variable=\t] (\t,6-1.6*\t);
+%	%%
+%	\draw[fill=blue] (0,6) circle (3pt);
+%	\node[right, text=blue] (B) at (0.1,6.3) {Solution optimale};
+%\end{tikzpicture}
+%\end{center}
+% Exemple graphe :
+%\begin{center}
+%\begin{tikzpicture}[scale=0.9]
+%    \draw[thick] (-1.5,0) node[rond] {$1$} coordinate (A) --
+%        ++(3,0) node[rond] {$2$} coordinate (B) --
+%        ++(-1,-1) node[rond] {$4$}  coordinate (D) --
+%        ++(-1,0) node[rond] {$3$}  coordinate (C) --
+%        ++(0,-1) node[rond] {$5$}  coordinate (E) --
+%        ++(1,0) node[rond] {$6$}  coordinate (F) --
+%        ++(1,-1) node[rond] {$8$}  coordinate (H) --
+%        ++(-3,0) node[rond] {$7$}  coordinate (G) -- (A)
+%        (A) -- (C)
+%        (G) -- (E)
+%        (D) -- (F)
+%        (B) -- (H);
+%\end{tikzpicture}
+%\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Environnements  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Différents types à donner aux environnements théorèmes, définitions, etc...
+%[theorem] permet de numéroter par rapport à la section en cours
+%\renewcommand{\theexem}{\empty{}} permet de ne pas numéroterNe numérote pas les exemples
+
+%\usepackage{thmtools} % Permet de créer un environnement de théorème avec des cadres
+%\declaretheorem[thmbox=L]{boxtheorem L}
+%\declaretheorem[thmbox=M]{boxtheorem M}
+%\declaretheorem[thmbox=S]{boxtheorem S}
+%
+%%\usepackage[dvipsnames]{xcolor}
+%%\declaretheorem[shaded={bgcolor=Lavender,textwidth=12em}]{BoxI}
+%\declaretheorem[shaded={rulecolor=black,rulewidth=1pt}]{BoxII}
+%
+%
+%\usepackage[leftmargin=0.1865cm,rightmargin=0.6cm]{thmbox}
+% Voici ici pour les options https://ctan.mines-albi.fr/macros/latex/contrib/thmbox/thmbox.pdf
+
+%% Ecrit de cette façon tout le monde a le même style : Titre en droit et texte en italique très léger.
+%\newtheorem[L,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{thm}{Théorème}[subsection]
+%%\renewcommand{\thetheorem}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{propo}[thm]{Proposition}
+%%\renewcommand{\thepropo}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{prop}[thm]{Propriété}
+%%\renewcommand{\theprop}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{coro}[thm]{Corollaire}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{lem}[thm]{Lemme}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{defi}[theorem]{Définition}
+%%\renewcommand{\thedefinition}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exem}{Exemple}
+%\renewcommand{\theexem}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{sol}{Solution}
+%\renewcommand{\thesol}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{hypo}{Hypothesis}[section]
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{remark}[thm]{Remarque}%[section]
+%\newtheorem{dem}{Démonstration}
+%\renewcommand{\thedem}{\empty{}} 
+%\newtheorem[S]{nota}{Notation}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[subsection]
+%\renewcommand{\thetheorem}{\empty{}} 
+\newtheorem{propo}[theorem]{Proposition}
+%\renewcommand{\thepropo}{\empty{}} 
+\newtheorem{prop}[theorem]{Propriété}
+%\renewcommand{\theprop}{\empty{}} 
+\newtheorem{coro}[theorem]{Corollaire}
+\newtheorem{lemma}[theorem]{Lemme}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Définition}
+%\renewcommand{\thedefinition}{\empty{}}
+\newtheorem{exem}{Exemple}
+\renewcommand{\theexem}{\empty{}}
+\newtheorem{cours}{Question de cours}
+\renewcommand{\thecours}{\empty{}} 
+\newtheorem{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}} 
+\newtheorem{sol}{Solution de l'exercice}
+%\renewcommand{\thesol}{\empty{}} 
+\newtheorem{hypo}{Hypothesis}[section]
+\newtheorem{remark}[theorem]{Remarque}%[section]
+
+
+\theoremstyle{remark}
+\newtheorem{dem}{Démonstration}
+\renewcommand{\thedem}{\empty{}} 
+\newtheorem{nota}{Notation}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Raccourcis   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% Ensembles
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+
+
+% Lettres calligraphiques
+\newcommand{\calP}{\mathcal{P}} 
+\newcommand{\calF}{\mathcal{F}} 
+\newcommand{\calD}{\mathcal{D}} 
+\newcommand{\calQ}{\mathcal{Q}} 
+\newcommand{\calT}{\mathcal{T}} 
+
+% Noyau et image
+\newcommand{\im}{\text{Im}} 
+\newcommand{\noy}{\text{Ker}} 
+\newcommand{\card}{\text{Card}} 
+
+%Epsilon
+\newcommand{\vare}{\varepsilon} 
+
+
+% Fonctions usuelles
+%\newcommand{\un}{\mathbb{1}} % Indicatrice en utilisant le package \usepackage{bbold} mais celui modifie les mathbb donc on définit l'indicatrice à la main
+\def\un{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}} % Indicatrice
+
+
+
+
+
+
+\title{Corrigé - Colle 7 (Sujet 1)}
+\author{MPSI2\\
+Année 2021-2022}
+%\author{Mathématiques P.A.S.S. 1}
+\date{16 novembre 2021}
+
+\begin{document}
+
+
+   \maketitle
+%      \rule{\linewidth}{0.5mm}
+      \rule{\linewidth}{0.5mm}
+%  \begin{center}
+%  %    \rule{\linewidth}{0.5mm}\\[0.4cm]
+%       { \huge \bfseries Mathématiques pour le P.A.S.S 1\\[0.4cm] }
+%    \rule{\linewidth}{0.5mm}\\[4cm]
+%     \end{center}
+
+
+\begin{cours}
+Énoncer et démontrer le théorème donnant la description des solutions d'une équations différentielle linéaire homogène du premier ordre.
+\end{cours}
+
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Equations différentielles
+Résoudre l'équation différentielle
+\[ 7y'+2y = 2x^3 - 5x^2 + 4x - 1.\]
+\end{exo}
+
+
+\begin{sol}
+On résout d'abord l'équation sans second membre $7y'+2y=0$. La solution générale est de la forme $y(x)=Ke^{-\frac{2x}{7}}$ avec $K \in \R$. On cherche ensuite une solution particulière sous la forme d'un polynôme de degré 3. Si $P(X)=aX^3+bX^2+cX+d$, alors $P$ est une solution de l'équation si et seulement si 
+\[ 7(3ax^2+2bx+c)+ 2(ax^3+bx^2+cx+d)=2x^3-5x^2+4x-1\]
+pour tout $x \in \R$ soit
+\[ 2ax^3+(21a+2b)x^2+ (14b+2c)x + (7c+2d) = 2x^3-5x^2+4x-1\]
+pour tout $x \in \R$. Par identification, on trouve que $a$,$b$,$c$ et $d$ sont solutions du système
+$$\begin{cases}2a&=2\\21a + 2b&=-5\\ 14b + 2c &= 4 \\  7c +2d&= - 1
+\end{cases}.$$
+On résout ce système et on trouve qu'une solution particulière est donné par $x^3-13x^2+93x-326$. Les solutions de l'équation sont donc les fonctions de la forme
+\[ x \mapsto x^3-13x^2+93x-326+Ke^{-\frac{2x}{7}} \quad \text{avec} \quad K\in \R.\]
+\end{sol}
+
+
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Equations différentielles
+Résoudre l'équation différentielle
+\[ y''-2y'+5y=-4e^{-x}\cos(x)+7e^{-x} \sin(x)-4e^x\sin(2x).\]
+\end{exo}
+
+\begin{sol}
+L'équation caractéristique est $r^2-2r+5=0$, dont les racines sont $1+2i$ et $1-2i$. La solution générale de l'équation homogène est donc donnée par \[ x \mapsto \lambda e^x \cos(2x)+ \mu e^x \sin(2x) \quad \text{avec} \quad  \lambda, \mu \in \R.\]
+On cherche ensuite une solution particulière de l'équation 
+\[y''-2y'+5y=-4e^{-x} \cos(x)+7e^{- x} \sin(x).\]
+On va plutôt résoudre $y''-2y'+5y=e^{(-1+i)x}$ puis considérer les parties réelles et imaginaires. Comme $-1+i$ n'est pas racine de l'équation caractéristique, on cherche une fonction de la forme $y_0(x)=ae^{(-1+i)x}$. On trouve, en dérivant et en utilisant l'équation 
+\[ ((-1+i)^2-2(-1+i)+5)a=1.\]
+Il vient $a=\frac{1}{7-4i}=\frac{7+4i}{65}$. Une solution particulière de $y''-2y'+5y=-4e^{-x} \cos(x)+7e^{-x} \sin(x)$ est alors donnée par \[ -4 \text{Re}(ae^{(-1+i)x})+7 \text{Im}(ae^{(-1+i)x})=-4 \text{Im}(iae^{(-1+i)x})+7\text{Im}(ae^{(-1+i)x})\]
+et donc
+\[  \text{Im}((-4i+7)ae^{(-1+i)x}) = \text{Im}(e^{(-1+i)x})=e^{-x} \sin(x).\] On cherche ensuite une solution particulière de l'équation $y''-2y' +5y= -4e^x \sin(2x)$. On cherche de la même façon à résoudre $y''-2y'+5y=-4e^{(1+2i)x}$. Comme $1+2i$ est solution de l'équation caractéristique, on va chercher une solution sous la forme $axe^{(1+2i)x}$, dont on prendra ensuite $-4$ fois la partie imaginaire. On trouve finalement que $xe^x \cos(2x)$ est solution de $y''-2y' +5y= -4e^x \sin(2x)$. Finalement, les solutions de l'équation de départ sont les fonctions de la fonction
+\[ x \mapsto xe^x \cos(2x) + e^{-x} \sin(x) + \lambda e^x \cos(2x) + \mu e^{x} \sin(2x) \quad \text{avec} \quad \lambda, \mu \in \R.\]
+\end{sol}
+
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Equations différentielles
+Résoudre l'équation différentielle
+\[ y'-2xy = -(2x-1)e^x \quad \text{sur} \quad \R.\]
+\end{exo}
+
+\begin{sol}
+On commence par résoudre l'équation homogène $y'-2xy=0$. On a 
+\[ y'- 2xy=0 \quad \Leftrightarrow \quad \frac{y'}{y} =2x \quad \Leftrightarrow \quad \ln(|y|)=x^2+C,\]
+et donc la solution générale de l'équation homogène est $t \mapsto \lambda e^{x^2}$. On cherche ensuite une solution particulière de l'équation en utilisant la méthode de variation de la constante. On pose donc $y(x)= \lambda(x)e^{x^2}$ et introduisant $y$ dans l'équation avec second membre, on trouve 
+\[ \lambda'(x)e^{x^2} = (-2x+1)e^x \quad \Leftrightarrow \quad \lambda'(x) = (-2x+1)e^{-x^2+x}.\]
+Une primitive est donnée par $\lambda(x)=e^{-x^2+x}$ et donc une solution particulière de l'équation avec second membre est donnée par \[ x \mapsto  e^{-x^2+x}e^{x^2}=e^x.\]
+Finalement, les solutions de l'équation sont les fonctions de la forme $x \mapsto \lambda e^{x^2}+e^x$. 
+\end{sol}
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Equations différentielles
+Déterminer les fonctions $f:\R \to \R$ dérivables et telles que pour tout $x \in \R$, 
+\[ f'(x)+f(x)=f(0)+f(1).\]
+\end{exo}
+
+\begin{sol}
+Soit $f$ une solution de l'équation. On sait qu'il existe $C \in \R$ telle que $f$ est solution de $f'+f=C$. Les solutions de cette équation sont les fonctions $f:x \mapsto C+De^{-x}$. Mais on doit aussi avoir $f(0)+f(1)=C$, et donc \[ 2C+D(1+e^{-1})=C \quad \Leftrightarrow \quad C=-D(1+e^{-1}).\]
+Ainsi, si $f$ est solution de l'équation, il existe $D \in \R$ tel que, pour tout $x \in \R$, 
+\[ f(x)=-D(1+e^{-1})+De^{-x}.\] Réciproquement, on vérifie facilement que ces fonctions sont bien solutions de l'équation de départ. 
+\end{sol}
+   
+
+
+
+
+\begin{exo}
+%Difficulté : 4/5
+%Chapitre : Equations différentielles
+Soit $f \in C^1(\R)$ telle que \[ \lim_{x \to + \infty} (f(x)+f'(x))=0.\]
+Montrer que $f(x) \to 0$ lorsque $x \to + \infty$.
+\end{exo}
+
+\begin{sol}
+On pose $g=f+f'$. Alors $f$ est solution de l'équation différentielle $f+f'=g$. On résout cette équation. L'équation homogène est $f'+f=0$ dont la solution générale est donnée par $\lambda e^{-x}$. On résout l'équation avec second membre par la méthode de variation de la constante : en posant $f(x)=\lambda (x)e^{-x}$, on trouve \[ \lambda '(x)e^{-x}=g(x),\]
+et une solution particulière est donnée par 
+\[ f_0(x)=e^{-x}\int_0^x g(t)e^t \, dt.\] Finalement, toute fonction $f$ vérifiant $f+f'=g$ s'écrit 
+\[ f(x)=\lambda e^{-x}+e^{-x} \int_0^x g(t)e^t \,dt.\]
+Pour montrer que $f$ tend vers 0 en $+ \infty$, il suffit de prouver que $e^{-x} \int_0^x g(t) e^t \, dt$ tend vers 0 lorsque $x$ tend vers $+\infty$. Pour cela, on va utiliser que $g$ tend vers 0 en $+\infty$, et on va couper l'intégrale en 2. Voici l'idée. Soit $A>0$ arbitraire pour le moment. Alors, pour $x \geqslant A$, on a 
+\[ \left| e^{-x} \int_0^x g(t) e^t \, dt \right|  \leqslant  e^{-x} \int_0^A |g(t) e^t| \, dt +  e^{-x} \int_A^x |g(t) e^t| \, dt.\]
+\begin{itemize}
+\item Si $A$ est fixé, alors on peut rendre le premier terme petit en choisissant $x$ suffisamment grand.
+\item Sur $[A;x]$, on peut rendre $|g(t)|$ petit à condition d'avoir choisi $A$    assez grand, ce qui nous permettra de rendre le deuxième terme petit. 
+\end{itemize}
+Reste à effectuer cette démarche dans le bon ordre. Soit $ \varepsilon > 0$. Il existe $A>0$ tel que, pour $t>A$, on a $|g(t)| \leqslant \varepsilon$. Soit $M=\int_0^A |g(t) e^t| \, dt$ et soit $B \geqslant A$ tel que, pour $x \geqslant B$, on a $e^{-x}M \leqslant \varepsilon$. Alors, pour tout $x \geqslant B$, il vient
+\[ \left| e^{-x} \int_0^x g(t) e^t \, dt \right|  \leqslant   e^{-x} \int_0^A |g(t) e^t| \, dt +  e^{-x} \int_A^x |g(t) e^t| \, dt \leqslant  e^{-x}M +  e^{-x} \int_A^x \varepsilon e^t \, dt \leqslant 2 \varepsilon.\] On a bien prouvé que $f(x) \to 0$ lorsque $x \to + \infty$.
+\end{sol}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

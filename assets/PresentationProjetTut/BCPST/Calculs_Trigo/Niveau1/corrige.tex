@@ -1,0 +1,21 @@
+On procède par disjonction de cas pour se débarasser des valeurs absolues. Ainsi,
+\begin{itemize}
+\item \textbf{Si $x < -1$ :} Alors $|x-2| = -(x-2)$ et $|x+1| = -(x+1)$ et donc 
+\[|x-2| - 2 |x+1| = 0  \quad \Leftrightarrow \quad
+-x+2 + 2 (x+1) = 0 \quad \Leftrightarrow \quad
+x = -4\]
+et $-4$ vérifie bien la condition $x < -1$.
+\item \textbf{Si $-1 \leqslant x \leqslant 2$ :} Alors $|x-2| = -(x-2)$ et $|x+1| = x+1$ et donc 
+\[|x-2| - 2 |x+1| = 0  \quad \Leftrightarrow \quad
+-x+2 - 2 (x+1) = 0 \quad \Leftrightarrow \quad
+-3x = 0 \quad \Leftrightarrow \quad
+x = 0 \]
+et $0$ vérifie bien la condition $-1 \leqslant x \leqslant 2$.
+\item \textbf{Si $x > 2$ :} Alors $|x-2| = x-2$ et $|x+1| = x+1$ et donc 
+\[|x-2| - 2 |x+1| = 0  \quad \Leftrightarrow \quad
+x-2 - 2 (x+1) = 0 \quad \Leftrightarrow \quad
+-x -4 = 0 \quad \Leftrightarrow \quad
+x = -4 \]
+mais $-4$ ne satisfait pas la condition $x > 2$. Nous ne tenons donc pas compte de cette solution.
+\end{itemize}
+Finalement, nous avons montré que les solutions de l'équation $|x-2| - 2 |x+1| = 0$ sont $-4$ et $0$.

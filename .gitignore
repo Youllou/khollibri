@@ -1,0 +1,9 @@
+*.pyc
+*.pyo
+*.db
+temp/*
+.idea/*
+.vscode/*
+*/__pycache__/*
+SGBD/utilisateurs/*
+*.json

@@ -1,0 +1,26 @@
+\begin{enumerate}
+\item On a
+\begin{center}
+\begin{algorithm}
+\Entree{Un entier $n$}
+\Sortie{$u_n$.}
+$u =u_0$ \;
+\Pour{$k$ de $0$ à $n$}{$u = u^2$}
+\Retour{$u$}
+\caption{Calcul de $u_n$}
+\end{algorithm}
+\end{center}
+\item On a
+\begin{center}
+\begin{algorithm}
+\Entree{Un nombre $M$}
+\Sortie{$n$ le premier rang tel que $u_n > M$.}
+$u =u_0$ \;
+$n =0$ \;
+\Tq{$u \leqslant M$}{$u = u^2$ \;
+$n = n+1$\;}
+\Retour{$n$}
+\caption{Premier rang pour lequel $u_n$ dépasse $M$}
+\end{algorithm}
+\end{center}
+\end{enumerate}

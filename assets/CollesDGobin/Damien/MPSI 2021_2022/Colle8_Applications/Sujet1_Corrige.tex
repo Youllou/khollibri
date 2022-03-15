@@ -1,0 +1,509 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages de base   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Classe du document (book : chapitre inclus, pratique pour les gros cours (PASS, Tremplin), article (8pt) ou amsart (12pt) : pratique pour les cours sur une seule thématique)
+\documentclass[a4paper, 11pt,openany]{article}% openany évite de commencer les chapitres sur une page forcément impaire (évite les pages blanches)
+
+% Encodage, langue et font
+\usepackage[utf8]{inputenc} % Pour les accents (conversion entre ces caractères accentués et les commandes d’accentuation)
+\usepackage[french]{babel} % Français
+\usepackage[T1]{fontenc} % Permet d'afficher et de prendre correctement en charge ces caractères accentués du point de vue du fichier de sortie
+
+% Si on veut faire apparaître le texte avec des caractères plus larges
+%\usepackage[lf]{Baskervaldx} % Texte en plus "gras"
+%\usepackage[bigdelims,vvarbb]{newtxmath} % Lettre mathématiques en plus "gras"
+%\usepackage[cal=boondoxo]{mathalfa} % Style pour les \mathscal
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+% Mise en page
+% Version automatique mais problème d'écart entre l'en-tête et le texte.
+%\usepackage{fullpage} % Numérotation bas de page (et mise en page pleine).
+\usepackage{setspace} % Interligne
+\onehalfspacing % Interligne
+\usepackage[a4paper]{geometry}% Package pour mise en page
+\geometry{hscale=0.8,vscale=0.8,centering,headsep=0.5cm} % Marges, Headsep permet de ne pas coller le texte à l'en-tête
+
+\setlength{\parindent}{0pt} % Supprimer les identations par défaut
+
+\usepackage{fancyhdr} %Package permettant de mettre des en-têtes et des pieds de pages
+\pagestyle{fancy}
+\fancyhead{} % Enleve ce qui est présent par défaut
+\fancyfoot{}% Enleve ce qui est présent par défaut
+\usepackage{extramarks} % Pour écrire proprement le chapitre dans l'en-tête
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} % Redéfinition du chapitre pour écriture dans l'en-tête sous la forme "Chapitre n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}} % Forme "n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Forme "Nom du chapitre"
+\renewcommand{\headrulewidth}{0.6pt} % Epaisseur trait en haut
+\renewcommand{\footrulewidth}{0.6pt} % Epaisseur trait en bas
+\setlength{\headheight}{15pt}
+% Placer les informations où on veut (à noter : E: Even page ; O: Odd page ; L: Left field ; C: Center field ; R: Right field ; H: Header ; F: Footer) :
+\fancyhead[LO,LE]{\slshape  \textbf{MPSI2}}
+\fancyhead[RO,RE]{\slshape \textbf{Corrigé - Colle 8 (Sujet 1)}}
+%\fancyhead[CO,CE]{---Draft---}
+\fancyfoot[C]{\thepage}
+%\fancyfoot[LO, LE] {\slshape Damien GOBIN}
+%\fancyfoot[RO, RE] {\slshape Année 2021-2022}
+
+% Couleurs
+\usepackage{xcolor}
+\definecolor{BleuTresFonce}{rgb}{0.0,0.0,0.250}
+%\definecolor{bleu}{rgb}{0.36, 0.54, 0.66}
+\definecolor{bleu}{rgb}{0.47, 0.62, 0.8}
+%\definecolor{vert}{rgb}{0.33, 0.42, 0.18}
+%\definecolor{vert}{rgb}{0.52, 0.73, 0.4}
+\definecolor{vert}{rgb}{0.56, 0.74, 0.56}
+% Liens hypertextes
+\usepackage[colorlinks,final,hyperindex]{hyperref}
+\hypersetup{
+	pdftex,
+	linkcolor=BleuTresFonce,
+	citecolor=BleuTresFonce,
+	filecolor=BleuTresFonce,
+	urlcolor=BleuTresFonce,
+	pdftitle=TemplateCours,
+	pdfauthor=Damien Gobin,
+	pdfsubject=,
+	pdfkeywords=
+}
+
+
+% Inclure des figures
+\usepackage{graphicx} % Permet d'utiliser includegraphics
+\usepackage{pdfpages} % Permet d'insérer des fichiers pdf
+
+% Utiliser des commentaires
+\usepackage{comment}
+%\excludecomment{sol} %commenter cette ligne si on veut faire apparaitre les solutions d'exercices
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages mathématiques  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Packages mathématiques de base
+%\usepackage{amsfonts} % Permet de taper des ensembles 
+\usepackage{amsmath} % Permet de taper des maths (contient cleveref)
+\usepackage{amsthm} % Permet de définir une environnement pour les théorèmes
+\usepackage{amssymb} % Donne accès a plus de symboles mathématiques (charge de façon automatique amsfonts)
+% \usepackage{mathrsfs} % Ecriture ronde type mathcal
+%\usepackage{bbold} % Permet d'avoir l'indicatrice mais change les textbb
+\usepackage{stmaryrd} % Pour les intervalles entiers [[ ]]
+\usepackage{pifont} % Pour avoir accès à plus de caractères
+
+%Utiliser les symboles jeu de cartes
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+
+
+% Référence dans le document
+\usepackage[noabbrev,capitalize]{cleveref}
+
+% Tableau
+\usepackage{tabularx} % Tableau
+\usepackage{multirow} % Pour créer des tableaux en subdivisant les lignes
+\usepackage{diagbox} %Pour créer des crois dans les tableaux à double entrées
+\usepackage{enumitem} %Permet de scinder une énumération et de reprendre au numéro suivant
+\usepackage{multicol} % Création de document en colonne avec plusieurs colonnes
+\multicolsep=5pt % supprime l'espace vertical
+
+% Modification des itemizes
+\setitemize{label=$\bullet$} % Utilise le package enumitem et met des points au lieu des tirets
+
+% Ecrire des algorithmes en "français" (exemple issu du cours d'optimisation 2020/2021)
+\usepackage[linesnumbered, french, frenchkw,ruled]{algorithm2e}
+% Exemple :
+%\begin{center}
+%\begin{algorithm}
+%\Entree{Un graphe $G = (V,E)$, $|V| = n$, $|E| = m$ et pour chaque arête $e$ de $E$ son poids $c(e)$;}
+%\Sortie{Un arbre (ou une forêt) maximal $A = (V,F)$ et de poids minimum ;} 
+%Trier et renuméroter les arêtes de $G$ dans l'ordre croissant de leur poids : $c(e_1) \leqslant c(e_2) \leqslant ... \leqslant c(e_m)$ \;
+%Poser $F := \emptyset$ et $k = 0$\;
+%\Tq{$k<m$ et $|F| < n-1$}{Si $e_{k+1}$ ne forme pas de cycle avec $F$ alors $F := F \cup \{ e_k \}$\;
+%$k := k +1 $\;}
+%\caption{Algorithme de Kruskal théorique (1956)}
+%\end{algorithm}
+%\end{center}
+
+% Inclure du code Python avec coloration syntaxique et bloc gris (exemple issu du TP2 d'optimisation 2020/2021)
+%\usepackage{xcolor} % Déjà importé plus haut
+\usepackage{listings}
+\lstset{backgroundcolor=\color{darkWhite},literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1{€}{{\EUR}}1 {£}{{\pounds}}1}
+\lstdefinestyle{stylepython}{        language=Python,        basicstyle=\ttfamily,    commentstyle=\color{green},    keywordstyle=\color{blue},    stringstyle=\color{olive},    numberstyle=\tiny,        numbers=left,        stepnumber=1,         numbersep=5pt}
+% Exemple :
+%\begin{lstlisting}[style=stylepython]
+%import networkx as nx #Cette bibliothèque permettra de manipuler des graphes
+%import matplotlib.pyplot as plt #Cette bibliothèque permettra de les représenter
+%import numpy as np
+%\end{lstlisting}
+
+%Package permettant de tracer des graphes, des courbes, etc.. (exemple issu du cours d'optimisation 2020/2021)
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{tkz-tab} % Pour les tableaux de signes
+%\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{
+	decorations.pathmorphing,
+	arrows,
+	arrows.meta,
+	calc,
+	shapes,
+	shapes.geometric,
+	decorations.pathreplacing,}
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+\tikzset{>=stealth'}
+\tikzstyle{rond}=[draw,circle,thick,fill=white]
+% Exemple courbe :
+%\begin{center}
+%\begin{tikzpicture}
+%	\def\shift{.5}
+%	\def\xmax{6}
+%	\def\ymax{7}
+%	\draw[->] (-\shift,0) -- (\xmax+\shift,0) node[below] {$x$}; 
+%	\foreach \x in {1,...,\xmax}{ \pgfmathtruncatemacro\xbis{100*\x}
+%		\draw (\x,0) -- (\x,-.3*\shift) node[below] {$\scriptstyle{\xbis}$};
+%	}
+%	% axe ordonnees
+%	\draw[->] (0,-\shift) -- (0,\ymax+\shift) node[left] {$y$};  
+%	\foreach \y in {1,...,\ymax}{ \pgfmathtruncatemacro\ybis{100*\y}
+%		\draw (0,\y) -- (-.3*\shift,\y) node[left] {$\scriptstyle{\ybis}$};
+%	}
+%	\draw[fill=yellow] (0,0) -- (3,0) -- (0,6) -- cycle;
+%	
+%	\draw[thick, purple] plot [domain=-.15:6.15, variable=\t] (\t,6-\t);
+%	\node[above, text=purple] (A) at (6.9,.1) {$x+y = 600$};
+%	%%
+%	\draw[thick, purple] plot [domain=-.1:3.1, variable=\t] (\t,6-2*\t);
+%	\node[right, text=purple] (B) at (1.1,5) {$2x+y = 600$};
+%	%%
+%	\draw[thick, blue] plot [domain=-.1:3.85, variable=\t] (\t,6-1.6*\t);
+%	%%
+%	\draw[fill=blue] (0,6) circle (3pt);
+%	\node[right, text=blue] (B) at (0.1,6.3) {Solution optimale};
+%\end{tikzpicture}
+%\end{center}
+% Exemple graphe :
+%\begin{center}
+%\begin{tikzpicture}[scale=0.9]
+%    \draw[thick] (-1.5,0) node[rond] {$1$} coordinate (A) --
+%        ++(3,0) node[rond] {$2$} coordinate (B) --
+%        ++(-1,-1) node[rond] {$4$}  coordinate (D) --
+%        ++(-1,0) node[rond] {$3$}  coordinate (C) --
+%        ++(0,-1) node[rond] {$5$}  coordinate (E) --
+%        ++(1,0) node[rond] {$6$}  coordinate (F) --
+%        ++(1,-1) node[rond] {$8$}  coordinate (H) --
+%        ++(-3,0) node[rond] {$7$}  coordinate (G) -- (A)
+%        (A) -- (C)
+%        (G) -- (E)
+%        (D) -- (F)
+%        (B) -- (H);
+%\end{tikzpicture}
+%\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Environnements  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Différents types à donner aux environnements théorèmes, définitions, etc...
+%[theorem] permet de numéroter par rapport à la section en cours
+%\renewcommand{\theexem}{\empty{}} permet de ne pas numéroterNe numérote pas les exemples
+
+%\usepackage{thmtools} % Permet de créer un environnement de théorème avec des cadres
+%\declaretheorem[thmbox=L]{boxtheorem L}
+%\declaretheorem[thmbox=M]{boxtheorem M}
+%\declaretheorem[thmbox=S]{boxtheorem S}
+%
+%%\usepackage[dvipsnames]{xcolor}
+%%\declaretheorem[shaded={bgcolor=Lavender,textwidth=12em}]{BoxI}
+%\declaretheorem[shaded={rulecolor=black,rulewidth=1pt}]{BoxII}
+%
+%
+%\usepackage[leftmargin=0.1865cm,rightmargin=0.6cm]{thmbox}
+% Voici ici pour les options https://ctan.mines-albi.fr/macros/latex/contrib/thmbox/thmbox.pdf
+
+%% Ecrit de cette façon tout le monde a le même style : Titre en droit et texte en italique très léger.
+%\newtheorem[L,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{thm}{Théorème}[subsection]
+%%\renewcommand{\thetheorem}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{propo}[thm]{Proposition}
+%%\renewcommand{\thepropo}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{prop}[thm]{Propriété}
+%%\renewcommand{\theprop}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{coro}[thm]{Corollaire}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{lem}[thm]{Lemme}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{defi}[theorem]{Définition}
+%%\renewcommand{\thedefinition}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exem}{Exemple}
+%\renewcommand{\theexem}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{sol}{Solution}
+%\renewcommand{\thesol}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{hypo}{Hypothesis}[section]
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{remark}[thm]{Remarque}%[section]
+%\newtheorem{dem}{Démonstration}
+%\renewcommand{\thedem}{\empty{}} 
+%\newtheorem[S]{nota}{Notation}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[subsection]
+%\renewcommand{\thetheorem}{\empty{}} 
+\newtheorem{propo}[theorem]{Proposition}
+%\renewcommand{\thepropo}{\empty{}} 
+\newtheorem{prop}[theorem]{Propriété}
+%\renewcommand{\theprop}{\empty{}} 
+\newtheorem{coro}[theorem]{Corollaire}
+\newtheorem{lemma}[theorem]{Lemme}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Définition}
+%\renewcommand{\thedefinition}{\empty{}}
+\newtheorem{exem}{Exemple}
+\renewcommand{\theexem}{\empty{}}
+\newtheorem{cours}{Question de cours}
+\renewcommand{\thecours}{\empty{}} 
+\newtheorem{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}} 
+\newtheorem{sol}{Solution de l'exercice}
+%\renewcommand{\thesol}{\empty{}} 
+\newtheorem{hypo}{Hypothesis}[section]
+\newtheorem{remark}[theorem]{Remarque}%[section]
+
+
+\theoremstyle{remark}
+\newtheorem{dem}{Démonstration}
+\renewcommand{\thedem}{\empty{}} 
+\newtheorem{nota}{Notation}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Raccourcis   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% Ensembles
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+
+
+% Lettres calligraphiques
+\newcommand{\calP}{\mathcal{P}} 
+\newcommand{\calF}{\mathcal{F}} 
+\newcommand{\calD}{\mathcal{D}} 
+\newcommand{\calQ}{\mathcal{Q}} 
+\newcommand{\calT}{\mathcal{T}} 
+
+% Noyau et image
+\newcommand{\im}{\text{Im}} 
+\newcommand{\noy}{\text{Ker}} 
+\newcommand{\card}{\text{Card}} 
+
+%Epsilon
+\newcommand{\vare}{\varepsilon} 
+
+
+% Fonctions usuelles
+%\newcommand{\un}{\mathbb{1}} % Indicatrice en utilisant le package \usepackage{bbold} mais celui modifie les mathbb donc on définit l'indicatrice à la main
+\def\un{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}} % Indicatrice
+
+
+
+
+
+
+\title{Corrigé - Colle 8 (Sujet 1)}
+\author{MPSI2\\
+Année 2021-2022}
+%\author{Mathématiques P.A.S.S. 1}
+\date{23 novembre 2021}
+
+\begin{document}
+
+
+   \maketitle
+%      \rule{\linewidth}{0.5mm}
+      \rule{\linewidth}{0.5mm}
+%  \begin{center}
+%  %    \rule{\linewidth}{0.5mm}\\[0.4cm]
+%       { \huge \bfseries Mathématiques pour le P.A.S.S 1\\[0.4cm] }
+%    \rule{\linewidth}{0.5mm}\\[4cm]
+%     \end{center}
+
+
+\begin{cours}
+Démontrer que pour trois parties $A$, $B$ et $C$ d'un ensemble $E$,
+\[ A \cap(B \cup C) = (A \cap B) \cup (A \cap C).\]
+\end{cours}
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Applications
+On considère la fonction 
+$ f : x \mapsto \sqrt{x^2 + x - 2}$.
+\begin{enumerate}
+\item Déterminer l'ensemble de définition $\calD_f$ de $f$.
+\item Déterminer l'image de $f$, i.e. $f(\calD_f)$.
+\item L'application $f$ est-elle injective de $\calD_f$ dans $\R$ ?
+\end{enumerate}
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item L'ensemble de définition de $f$ est l'ensemble des points $x$ tels que $x^2 + x -2 \geqslant 0$. Or, $x^2 + x -2$ est un trinôme dont le discriminant est $\Delta = 9$ et dont les racines sont donc $x_1 = -2$ et $x_2 =1$. De plus, $x^2 +x -2$ est positif sauf entre les racines $x_1 = -2$ et $x_2= 1$. L'ensemble de définition de $f$ est donc $\calD_f = ]-\infty,-2] \cup [1, +\infty[$.
+\item L'image de $f$ est donnée par $f(\calD_f) = [0,+\infty[$ (car le trinôme s'annule en $-2$ et en $1$, $x^2+x-2 \to + \infty$ lorsque $x \to + \infty$ et la fonction racine est continue sur $\R^+$).
+\item Non, l'application $f$ n'est pas injective de $\calD_f$ dans $\R$. En effet, $f(-2) =  f(1)= 0$.
+\end{enumerate}
+\end{sol}
+
+
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Applications
+Soient
+\[  \begin{array}{ccccc}
+f & : & \R & \to & \R \\
+ & & x & \mapsto & \sqrt{x^2+1} - x
+\end{array} \quad \text{et} \quad \begin{array}{ccccc}
+g & : & \R^{\star} & \to & \R \\
+ & & x& \mapsto & \frac{1-x^2}{2x}
+\end{array}.\]
+\begin{enumerate}
+\item Montrer que tout réel $x$, $f(x) > 0$.
+\item Montrer que la composée $f \circ g$ est bien définie sur $\R_+^{\star}$ et calculer $(f \circ g)(x)$ pour tout $x > 0$.
+\item De même, montrer que la composée $g \circ f$ est bien définie sur $\R$ et calculer $(f \circ g)(x)$ pour tout $x \in \R$.
+\item Que peut-on en conclure ?
+\end{enumerate}
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item On a
+\[ f(x) > 0 \quad \Leftrightarrow \quad \sqrt{x^2+1} > x \quad \Leftrightarrow \quad  x^2 + 1 > x^2 \quad \Leftrightarrow \quad 1 > 0\]
+ce qui est bien sûr vraie pour tout $x \in \R$. Ainsi, $f(x) > 0$ pour tout $x \in \R$.
+\item $f\circ g$ est bien définie lorsque pour tout $x \in \R_+^{\star}$ puisque $f$ est définie sur $\R$ et $g$ est bien définie sur $\R^{\star}$ et donc sur $\R_+^{\star}$. De plus,
+\[ (f \circ g)(x) = f(g(x)) = \sqrt{\left(\frac{1-x^2}{2x} \right)^2+1} - \frac{1-x^2}{2x} = \sqrt{\frac{1-2x^2+x^4}{4x^2} +1} - \frac{1-x^2}{2x}  .\]
+Après calcul, on arrive à
+\[ (f \circ g)(x)  = \sqrt{\frac{1+2x^2+x^4}{4x^2}} - \frac{1-x^2}{2x} =\sqrt{\frac{(1+x^2)^2}{4x^2}} - \frac{1-x^2}{2x}.\]
+Or, $\sqrt{(1+x^2)^2} = |(1 +x^2)^2| = (1+x^2)^2$ car $(1+x^2)^2 \geqslant 0$ et de plus, puisque $x \in \R_+^{\star}$, $\sqrt{4x^2} = |2x| = 2x$. Ainsi, on a finalement,
+\[ (f \circ g)(x)  =\frac{1+x^2}{2x} - \frac{1-x^2}{2x} = x.\]
+\item La composée $ g \circ f$ est définie sur $\R$ car $f$ est définie sur $\R$, $f(x) > 0$ pour tout $x \in \R$ et $g$ est bien définie sur $\R^{\star}$ et donc sur $\R_+^{\star}$. De plus,
+\[ (g \circ f)(x) = g(f(x)) = \frac{1-(\sqrt{x^2+1} - x)^2}{2(\sqrt{x^2+1} - x)} =  \frac{1-(x^2+1 -2 x\sqrt{x^2 +1} +x^2)}{2(\sqrt{x^2+1} - x)} .\]
+Après calcul, on arrive à
+\[ (g \circ f)(x) =  \frac{1-x^2-1 +2 x\sqrt{x^2 +1} -x^2}{2(\sqrt{x^2+1} - x)} = \frac{2x (\sqrt{x^2 +1}-x) }{2(\sqrt{x^2+1} - x)} =x.\]
+\item On a montré que
+\[  \begin{array}{ccccc}
+f\circ g & : & \R_+^{\star} & \to & \R_+^{\star}  \\
+ & & x & \mapsto & x
+\end{array} \quad \quad \text{et} \quad \quad \begin{array}{ccccc}
+g\circ f & : & \R & \to & \R \\
+ & & x & \mapsto & x
+\end{array} .\]
+Autrement dit,
+\[ 
+f\circ g = Id_{\R_+^{\star}} \quad \quad \text{et} \quad \quad g \circ f = Id_{\R} .\]
+On peut en déduire que l'on a en réalité montré que $f$ et $g$ sont des applications réciproques l'une de l'autre.
+\end{enumerate}
+
+\end{sol}
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Applications
+On considère la fonction
+$\displaystyle{h : x \mapsto \frac{2x+1}{x+2}}$.
+\begin{enumerate}
+\item Déterminer l'ensemble de définition $\calD_h$ de $h$.
+\item Déterminer $\im(h) = h(\calD_h)$ et montrer que $h$ est bijective de $\calD_h$ dans $\im(h)$.
+\item Donner son application réciproque.
+\end{enumerate}
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item $\calD_h = \R \setminus \{-2\}$ car c'est le seul endroit où le dénominateur s'annule (et le numérateur ne s'y annule pas).
+\item Si $y \in \im(h)$, alors il existe $x \in \R \setminus \{-2\}$ tel que $h(x) = y$. Or,
+\[h(x) = y \quad \Leftrightarrow \quad \frac{2x+1}{x+2} = y \quad \Leftrightarrow \quad 2x+1 = y(x+2) \quad \Leftrightarrow \quad (2-y)x = 2y-1.\]
+Ainsi, si $y \neq 2$, $x = \frac{2y-1}{2-y}$ est un antécédent de $y$. Ceci montre que $\R \setminus \{2\} \subset \im(h)$. Afin de montrer que c'est une égalité, montrons à présent que $2$ n'a pas d'antécédent par $f$. Supposons par l'absurde qu'il existe $x$ tel que $h(x) = 2$. Alors,
+\[ h(x) = 2 \quad \Leftrightarrow \quad \frac{2x+1}{x+2} =2 \quad \Leftrightarrow \quad 2x+1 = 2(x+2) \quad \Leftrightarrow \quad 1 = 4\]
+ce qui est absurde. On a ainsi montré que $\im(h) = \R \setminus \{2\}$.\\
+Montrons à présent que $h$ est bijective de $\calD_h$ dans $\im(h)$. Cela revient à montré que $h$ est injective. Soit $(x,y) \in (\R \setminus \{-2\})^2$ tel que $h(x) = h(y)$. Alors,
+\[h(x) = h(y) \Leftrightarrow \quad \frac{2x+1}{x+2} = \frac{2y+1}{y+2} \quad \Leftrightarrow \quad (2x+1)(y+2) = (2y+1)(x+2).\]
+Ainsi,
+\[ h(x) = h(y) \quad \Leftrightarrow \quad 2xy + 4x + y + 2 = 2xy + 4y + x + 2 \quad \Leftrightarrow \quad   3(x-y)  = 0 .\]
+On en déduit que $h(x) = h(y)$ si et seulement si $x =y$. $h$ est donc bijective de $\calD_h$ dans $\im(h)$.
+\item Nous avons déjà montré que pour tout $y \neq 2$,
+\[h(x) = y \quad \Leftrightarrow \quad x = \frac{2y-1}{2-y}.\]
+L'application réciproque de $h$ est donc donnée par
+\[  \begin{array}{ccccc}
+h^{-1} & : & \R \setminus \{2\} & \to & \R \setminus \{-2\} \\
+ & & x & \mapsto & \frac{2x-1}{2-x}
+\end{array}.\]
+\end{enumerate}
+\end{sol}
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Applications
+Soit $f :E \to F$ et $A \subset F$. Montrer que $ f^{-1}(f(A)) \subset A$. Trouver un contre-exemple pour l'autre inclusion. Que peut-on dire si $f$ est de plus surjective ?
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+ \item Si $y\in f(f^{-1}(A))$ alors il existe $x\in f^{-1}(A)$ tel que $y=f(x)$. $x\in f^{-1}(A)$ donc $f(x)\in A$ d'où $y\in A$ donc on a bien $f(f^{-1}(A)) \subset A$. 
+ \item Donnons un contre-exemple lorsque $f$ n'est pas surjective. On peut choisir $f\colon \mathbb R \to \mathbb R$ définie par $f(x)=\cos(x)$. Pour $A=[1,+\infty[$ on a $f^{-1}(A)=\{2k\pi, \ k\in \mathbb Z\}$ et $f(f^{-1}(A))=\{1\}$. Donc $A$ n'est pas inclu dans $f(f^{-1}(A))$.
+ \item Supposons que $f$ est surjective. Soit $y\in A$. Alors, comme $y\in F$, il existe $x\in E$ tel que $y=f(x)$ par surjectivité de $f$. Pour montrer que $y\in f(f^{-1}(A))$ il reste à prouver que $x\in f^{-1}(A)$ c'est-à-dire que $f(x)\in A$. Or $f(x)=y \in A$ donc on a bien $A\subset f(f^{-1}(A))$. Ainsi, lorsque $f$ est surjective on a donc $f(f^{-1}(A))=A$.
+\end{enumerate}
+\end{sol}
+   
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Ensembles
+Pour tout $m \in \R$, on définit la droite $\calD_m$ par l'équation
+\[ \calD_m \,: \, 12mx - 9y = 3m + 6.\]
+Montrer que toutes les droites  $\calD_m$ sont concourantes en un unique point.
+\end{exo}
+
+\begin{sol}
+On procède par analyse-synthèse.
+\begin{itemize}
+\item \textbf{Analyse :} Soient $m \neq m'$ deux valeurs du paramètre. Un point appartient aux deux droites $\mathcal{D}_m$ et $\mathcal{D}_{m'}$ si et seulement il vérifie les deux conditions simultanément. Autrement, dit
+\[(x,y) \in \mathcal{D}_m \cap \mathcal{D}_{m'} \quad \Leftrightarrow \quad  \left\{
+    \begin{array}{ccl}
+        12mx-9y & = & 3m +6 \\
+       12m'x-9y & = & 3m' +6 
+    \end{array}
+\right. \quad \Leftrightarrow \quad  \left\{
+    \begin{array}{ccl}
+        12mx-9y & = & 3m +6 \\
+       12(m-m')x & = & 3 (m-m')
+    \end{array}
+\right..\]
+Avec la deuxième ligne on obtient
+\[12(m-m')x = 3 (m-m') \quad \Leftrightarrow \quad x = \frac{3}{12} = \frac{1}{4}\]
+et en injectant dans la première ligne on arrive à
+\[ 12m \frac{1}{4} - 9y = 3m + 6 \quad \Leftrightarrow \quad y = -\frac{6}{9} = -\frac{2}{3}.\]
+Ainsi, si $(x,y)$ appartient à toutes les droites $\mathcal{D}_m$ alors $(x,y) = \left( \frac{1}{4} , -\frac{2}{3} \right)$.
+\item \textbf{Synthèse.} Vérifions que si $(x,y) = \left( \frac{1}{4} , -\frac{2}{3} \right)$ alors ce point appartient à toutes les droites $\mathcal{D}_m$ :
+\[ 12mx-9y  = 12 m \frac{1}{4} + 9 \frac{2}{3} = 3m +6.\]
+Donc $(x,y) \in \mathcal{D}_m$.
+\end{itemize}
+On a donc bien montré que toutes les droites $\mathcal{D}_m$ sont concourantes au point $ \left( \frac{1}{4} , -\frac{2}{3} \right)$.
+\end{sol}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,474 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages de base   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Classe du document (book : chapitre inclus, pratique pour les gros cours (PASS, Tremplin), article (8pt) ou amsart (12pt) : pratique pour les cours sur une seule thématique)
+\documentclass[a4paper, 11pt,openany]{article}% openany évite de commencer les chapitres sur une page forcément impaire (évite les pages blanches)
+
+% Encodage, langue et font
+\usepackage[utf8]{inputenc} % Pour les accents (conversion entre ces caractères accentués et les commandes d’accentuation)
+\usepackage[french]{babel} % Français
+\usepackage[T1]{fontenc} % Permet d'afficher et de prendre correctement en charge ces caractères accentués du point de vue du fichier de sortie
+
+% Si on veut faire apparaître le texte avec des caractères plus larges
+%\usepackage[lf]{Baskervaldx} % Texte en plus "gras"
+%\usepackage[bigdelims,vvarbb]{newtxmath} % Lettre mathématiques en plus "gras"
+%\usepackage[cal=boondoxo]{mathalfa} % Style pour les \mathscal
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+% Mise en page
+% Version automatique mais problème d'écart entre l'en-tête et le texte.
+%\usepackage{fullpage} % Numérotation bas de page (et mise en page pleine).
+\usepackage{setspace} % Interligne
+\onehalfspacing % Interligne
+\usepackage[a4paper]{geometry}% Package pour mise en page
+\geometry{hscale=0.8,vscale=0.8,centering,headsep=0.5cm} % Marges, Headsep permet de ne pas coller le texte à l'en-tête
+
+\setlength{\parindent}{0pt} % Supprimer les identations par défaut
+
+\usepackage{fancyhdr} %Package permettant de mettre des en-têtes et des pieds de pages
+\pagestyle{fancy}
+\fancyhead{} % Enleve ce qui est présent par défaut
+\fancyfoot{}% Enleve ce qui est présent par défaut
+\usepackage{extramarks} % Pour écrire proprement le chapitre dans l'en-tête
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} % Redéfinition du chapitre pour écriture dans l'en-tête sous la forme "Chapitre n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}} % Forme "n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Forme "Nom du chapitre"
+\renewcommand{\headrulewidth}{0.6pt} % Epaisseur trait en haut
+\renewcommand{\footrulewidth}{0.6pt} % Epaisseur trait en bas
+\setlength{\headheight}{15pt}
+% Placer les informations où on veut (à noter : E: Even page ; O: Odd page ; L: Left field ; C: Center field ; R: Right field ; H: Header ; F: Footer) :
+\fancyhead[LO,LE]{\slshape  \textbf{BCPST1B}}
+\fancyhead[RO,RE]{\slshape \textbf{Corrigé - Colle 9 (Sujet 2)}}
+%\fancyhead[CO,CE]{---Draft---}
+\fancyfoot[C]{\thepage}
+%\fancyfoot[LO, LE] {\slshape Damien GOBIN}
+%\fancyfoot[RO, RE] {\slshape Année 2021-2022}
+
+% Couleurs
+\usepackage{xcolor}
+\definecolor{BleuTresFonce}{rgb}{0.0,0.0,0.250}
+%\definecolor{bleu}{rgb}{0.36, 0.54, 0.66}
+\definecolor{bleu}{rgb}{0.47, 0.62, 0.8}
+%\definecolor{vert}{rgb}{0.33, 0.42, 0.18}
+%\definecolor{vert}{rgb}{0.52, 0.73, 0.4}
+\definecolor{vert}{rgb}{0.56, 0.74, 0.56}
+% Liens hypertextes
+\usepackage[colorlinks,final,hyperindex]{hyperref}
+\hypersetup{
+	pdftex,
+	linkcolor=BleuTresFonce,
+	citecolor=BleuTresFonce,
+	filecolor=BleuTresFonce,
+	urlcolor=BleuTresFonce,
+	pdftitle=TemplateCours,
+	pdfauthor=Damien Gobin,
+	pdfsubject=,
+	pdfkeywords=
+}
+
+
+% Inclure des figures
+\usepackage{graphicx} % Permet d'utiliser includegraphics
+\usepackage{pdfpages} % Permet d'insérer des fichiers pdf
+
+% Utiliser des commentaires
+\usepackage{comment}
+%\excludecomment{sol} %commenter cette ligne si on veut faire apparaitre les solutions d'exercices
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages mathématiques  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Packages mathématiques de base
+%\usepackage{amsfonts} % Permet de taper des ensembles 
+\usepackage{amsmath} % Permet de taper des maths (contient cleveref)
+\usepackage{amsthm} % Permet de définir une environnement pour les théorèmes
+\usepackage{amssymb} % Donne accès a plus de symboles mathématiques (charge de façon automatique amsfonts)
+% \usepackage{mathrsfs} % Ecriture ronde type mathcal
+%\usepackage{bbold} % Permet d'avoir l'indicatrice mais change les textbb
+\usepackage{stmaryrd} % Pour les intervalles entiers [[ ]]
+\usepackage{pifont} % Pour avoir accès à plus de caractères
+
+%Utiliser les symboles jeu de cartes
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+
+
+% Référence dans le document
+\usepackage[noabbrev,capitalize]{cleveref}
+
+% Tableau
+\usepackage{tabularx} % Tableau
+\usepackage{multirow} % Pour créer des tableaux en subdivisant les lignes
+\usepackage{diagbox} %Pour créer des crois dans les tableaux à double entrées
+\usepackage{enumitem} %Permet de scinder une énumération et de reprendre au numéro suivant
+\usepackage{multicol} % Création de document en colonne avec plusieurs colonnes
+\multicolsep=5pt % supprime l'espace vertical
+
+% Modification des itemizes
+\setitemize{label=$\bullet$} % Utilise le package enumitem et met des points au lieu des tirets
+
+% Ecrire des algorithmes en "français" (exemple issu du cours d'optimisation 2020/2021)
+\usepackage[linesnumbered, french, frenchkw,ruled]{algorithm2e}
+% Exemple :
+%\begin{center}
+%\begin{algorithm}
+%\Entree{Un graphe $G = (V,E)$, $|V| = n$, $|E| = m$ et pour chaque arête $e$ de $E$ son poids $c(e)$;}
+%\Sortie{Un arbre (ou une forêt) maximal $A = (V,F)$ et de poids minimum ;} 
+%Trier et renuméroter les arêtes de $G$ dans l'ordre croissant de leur poids : $c(e_1) \leqslant c(e_2) \leqslant ... \leqslant c(e_m)$ \;
+%Poser $F := \emptyset$ et $k = 0$\;
+%\Tq{$k<m$ et $|F| < n-1$}{Si $e_{k+1}$ ne forme pas de cycle avec $F$ alors $F := F \cup \{ e_k \}$\;
+%$k := k +1 $\;}
+%\caption{Algorithme de Kruskal théorique (1956)}
+%\end{algorithm}
+%\end{center}
+
+% Inclure du code Python avec coloration syntaxique et bloc gris (exemple issu du TP2 d'optimisation 2020/2021)
+%\usepackage{xcolor} % Déjà importé plus haut
+\usepackage{listings}
+\lstset{backgroundcolor=\color{darkWhite},literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1{€}{{\EUR}}1 {£}{{\pounds}}1}
+\lstdefinestyle{stylepython}{        language=Python,        basicstyle=\ttfamily,    commentstyle=\color{green},    keywordstyle=\color{blue},    stringstyle=\color{olive},    numberstyle=\tiny,        numbers=left,        stepnumber=1,         numbersep=5pt}
+% Exemple :
+%\begin{lstlisting}[style=stylepython]
+%import networkx as nx #Cette bibliothèque permettra de manipuler des graphes
+%import matplotlib.pyplot as plt #Cette bibliothèque permettra de les représenter
+%import numpy as np
+%\end{lstlisting}
+
+%Package permettant de tracer des graphes, des courbes, etc.. (exemple issu du cours d'optimisation 2020/2021)
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{tkz-tab} % Pour les tableaux de signes
+%\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{
+	decorations.pathmorphing,
+	arrows,
+	arrows.meta,
+	calc,
+	shapes,
+	shapes.geometric,
+	decorations.pathreplacing,}
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+\tikzset{>=stealth'}
+\tikzstyle{rond}=[draw,circle,thick,fill=white]
+% Exemple courbe :
+%\begin{center}
+%\begin{tikzpicture}
+%	\def\shift{.5}
+%	\def\xmax{6}
+%	\def\ymax{7}
+%	\draw[->] (-\shift,0) -- (\xmax+\shift,0) node[below] {$x$}; 
+%	\foreach \x in {1,...,\xmax}{ \pgfmathtruncatemacro\xbis{100*\x}
+%		\draw (\x,0) -- (\x,-.3*\shift) node[below] {$\scriptstyle{\xbis}$};
+%	}
+%	% axe ordonnees
+%	\draw[->] (0,-\shift) -- (0,\ymax+\shift) node[left] {$y$};  
+%	\foreach \y in {1,...,\ymax}{ \pgfmathtruncatemacro\ybis{100*\y}
+%		\draw (0,\y) -- (-.3*\shift,\y) node[left] {$\scriptstyle{\ybis}$};
+%	}
+%	\draw[fill=yellow] (0,0) -- (3,0) -- (0,6) -- cycle;
+%	
+%	\draw[thick, purple] plot [domain=-.15:6.15, variable=\t] (\t,6-\t);
+%	\node[above, text=purple] (A) at (6.9,.1) {$x+y = 600$};
+%	%%
+%	\draw[thick, purple] plot [domain=-.1:3.1, variable=\t] (\t,6-2*\t);
+%	\node[right, text=purple] (B) at (1.1,5) {$2x+y = 600$};
+%	%%
+%	\draw[thick, blue] plot [domain=-.1:3.85, variable=\t] (\t,6-1.6*\t);
+%	%%
+%	\draw[fill=blue] (0,6) circle (3pt);
+%	\node[right, text=blue] (B) at (0.1,6.3) {Solution optimale};
+%\end{tikzpicture}
+%\end{center}
+% Exemple graphe :
+%\begin{center}
+%\begin{tikzpicture}[scale=0.9]
+%    \draw[thick] (-1.5,0) node[rond] {$1$} coordinate (A) --
+%        ++(3,0) node[rond] {$2$} coordinate (B) --
+%        ++(-1,-1) node[rond] {$4$}  coordinate (D) --
+%        ++(-1,0) node[rond] {$3$}  coordinate (C) --
+%        ++(0,-1) node[rond] {$5$}  coordinate (E) --
+%        ++(1,0) node[rond] {$6$}  coordinate (F) --
+%        ++(1,-1) node[rond] {$8$}  coordinate (H) --
+%        ++(-3,0) node[rond] {$7$}  coordinate (G) -- (A)
+%        (A) -- (C)
+%        (G) -- (E)
+%        (D) -- (F)
+%        (B) -- (H);
+%\end{tikzpicture}
+%\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Environnements  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Différents types à donner aux environnements théorèmes, définitions, etc...
+%[theorem] permet de numéroter par rapport à la section en cours
+%\renewcommand{\theexem}{\empty{}} permet de ne pas numéroterNe numérote pas les exemples
+
+%\usepackage{thmtools} % Permet de créer un environnement de théorème avec des cadres
+%\declaretheorem[thmbox=L]{boxtheorem L}
+%\declaretheorem[thmbox=M]{boxtheorem M}
+%\declaretheorem[thmbox=S]{boxtheorem S}
+%
+%%\usepackage[dvipsnames]{xcolor}
+%%\declaretheorem[shaded={bgcolor=Lavender,textwidth=12em}]{BoxI}
+%\declaretheorem[shaded={rulecolor=black,rulewidth=1pt}]{BoxII}
+%
+%
+%\usepackage[leftmargin=0.1865cm,rightmargin=0.6cm]{thmbox}
+% Voici ici pour les options https://ctan.mines-albi.fr/macros/latex/contrib/thmbox/thmbox.pdf
+
+%% Ecrit de cette façon tout le monde a le même style : Titre en droit et texte en italique très léger.
+%\newtheorem[L,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{thm}{Théorème}[subsection]
+%%\renewcommand{\thetheorem}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{propo}[thm]{Proposition}
+%%\renewcommand{\thepropo}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{prop}[thm]{Propriété}
+%%\renewcommand{\theprop}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{coro}[thm]{Corollaire}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{lem}[thm]{Lemme}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{defi}[theorem]{Définition}
+%%\renewcommand{\thedefinition}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exem}{Exemple}
+%\renewcommand{\theexem}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{sol}{Solution}
+%\renewcommand{\thesol}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{hypo}{Hypothesis}[section]
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{remark}[thm]{Remarque}%[section]
+%\newtheorem{dem}{Démonstration}
+%\renewcommand{\thedem}{\empty{}} 
+%\newtheorem[S]{nota}{Notation}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[subsection]
+%\renewcommand{\thetheorem}{\empty{}} 
+\newtheorem{propo}[theorem]{Proposition}
+%\renewcommand{\thepropo}{\empty{}} 
+\newtheorem{prop}[theorem]{Propriété}
+%\renewcommand{\theprop}{\empty{}} 
+\newtheorem{coro}[theorem]{Corollaire}
+\newtheorem{lemma}[theorem]{Lemme}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Définition}
+%\renewcommand{\thedefinition}{\empty{}}
+\newtheorem{exem}{Exemple}
+\renewcommand{\theexem}{\empty{}} 
+\newtheorem{cours}{Question de cours}
+\renewcommand{\thecours}{\empty{}} 
+\newtheorem{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}} 
+\newtheorem{sol}{Solution de l'exercice}
+%\renewcommand{\thesol}{\empty{}} 
+\newtheorem{hypo}{Hypothesis}[section]
+\newtheorem{remark}[theorem]{Remarque}%[section]
+
+
+\theoremstyle{remark}
+\newtheorem{dem}{Démonstration}
+\renewcommand{\thedem}{\empty{}} 
+\newtheorem{nota}{Notation}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Raccourcis   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% Ensembles
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+
+
+% Lettres calligraphiques
+\newcommand{\calP}{\mathcal{P}} 
+\newcommand{\calF}{\mathcal{F}} 
+\newcommand{\calD}{\mathcal{D}} 
+\newcommand{\calQ}{\mathcal{Q}} 
+\newcommand{\calT}{\mathcal{T}} 
+
+% Noyau et image
+\newcommand{\im}{\text{Im}} 
+\newcommand{\noy}{\text{Ker}} 
+\newcommand{\card}{\text{Card}} 
+
+%Epsilon
+\newcommand{\vare}{\varepsilon} 
+
+
+% Fonctions usuelles
+%\newcommand{\un}{\mathbb{1}} % Indicatrice en utilisant le package \usepackage{bbold} mais celui modifie les mathbb donc on définit l'indicatrice à la main
+\def\un{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}} % Indicatrice
+
+
+\title{Corrigé - Colle 9 (Sujet 2)}
+\author{BCPST1B\\
+Année 2021-2022}
+%\author{Mathématiques P.A.S.S. 1}
+\date{30 novembre 2021}
+
+
+\begin{document}
+
+
+   \maketitle
+%      \rule{\linewidth}{0.5mm}
+      \rule{\linewidth}{0.5mm}
+%  \begin{center}
+%  %    \rule{\linewidth}{0.5mm}\\[0.4cm]
+%       { \huge \bfseries Mathématiques pour le P.A.S.S 1\\[0.4cm] }
+%    \rule{\linewidth}{0.5mm}\\[4cm]
+%     \end{center}
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Algorithmique
+Écrire un programme Python renvoyant une liste contenant les valeurs de
+\[ S_n = \sum_{k=0}^{n} k^5\]
+pour $n \in \{0,...,N\}$.
+\end{exo}
+
+\begin{sol}
+On a
+\begin{center}
+\begin{algorithm}
+\Entree{Un entier $n$}
+\Sortie{$S_n$.}
+$S =0$ \;
+$L = []$ \;
+\Pour{$k$ de $0$ à $n$}{$S = S + k ^5$\; $L = L +S$}
+\Retour{$S$}
+\caption{Calcul de $S_n$}
+\end{algorithm}
+\end{center}
+\end{sol}
+
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Nombres complexes
+Les questions de cet exercices sont indépendantes.
+\begin{enumerate}
+\item Déterminer les racines carrées du nombres complexes $1+i$.
+\item Résoudre l'équation $2z^2+2z+1=0$.
+\end{enumerate}
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item  On cherche $z=x+iy$ tel que $(x+iy)^2=1+i$.
+Grâce au module : $x^2+y^2=\sqrt2$ et en développant on a $x^2-y^2+2xyi=1+i$ d'où $$\begin{cases}x^2+y^2=\sqrt2 \\ x^2-y^2=1 \\ 2xy=1\end{cases}.$$
+On en déduit : $$2x^2=\sqrt2+1 \Leftrightarrow x=\pm \sqrt{\frac{\sqrt2 +1}{2}}$$ et $$2y^2=\sqrt2-1 \Leftrightarrow y = \pm \sqrt{\frac{\sqrt2-1}{2}}.$$
+Or $2xy=1$ donc $x$ et $y$ sont de même signe. Donc les racines carrées de $1+i$ sont : 
+$$\sqrt{\frac{\sqrt2 +1}{2}} + i \sqrt{\frac{\sqrt2 -1}{2}} \quad \text{ et } \quad -\sqrt{\frac{\sqrt2 +1}{2}} - i \sqrt{\frac{\sqrt2 -1}{2}}.$$
+  \item $\Delta= 2^2-4\times2\times1=-4<0$ donc il y a deux solutions complexes conjuguées : $$\frac{-2-2i}{4}=-\frac12-\frac12i \quad \text{ et } -\frac12+\frac12i.$$
+\end{enumerate}
+\end{sol}
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Intégration
+Calculer les intégrales suivantes :
+\begin{multicols}{2}
+\begin{enumerate}
+\item $\displaystyle{\int_0^1 \frac{8x^2}{(x^3+2)^3} \, dx}$.
+\item $\displaystyle{\int_0^1 \frac{e^x}{1+e^x} \, dx}$.
+\item $\displaystyle{\int_0^1  x^2 e^{-3x} \, dx}$.
+\item $\displaystyle{\int_1^e x^n \ln(x) \, dx}$, $n \in \N$.
+\end{enumerate}
+\end{multicols}
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item  On remarque qu'en posant $u(x)=x^3+2$, on a $u'(x)= 3\,x^2$, de sorte que $f(x)=\frac{8}{3}\,\frac{u'(x)}{u^{3}(x)}$. On a donc 
+\[
+ f(x)=
+\frac{8}{3}\,
+u'(x)\,u^{-3}(x)=\frac{d}{dx} \left(\frac{8}{3}\,\left(-\frac{1}{2}\right)\,u^{-2}(x)\right)
+=\frac{d}{dx} \left(-\frac{4}{3}\,(x^3+2)^{-2}\right)=\frac{d}{dx} \left(
+-\frac{4}{3\,(x^3+2)^2}\right)
+\] 
+et donc
+\[ \int_0^1 \frac{8x^2}{(x^3+2)^3} \, dx = \left[ -\frac{4}{3\,(x^3+2)^2} \right]_0^1 = -\frac{4}{27} + \frac{4}{12} = -\frac{4}{27} + \frac{9}{27} = \frac{5}{27}.\]
+\item On remarque qu'en posant $u(x)=e^{x}+1$, on a $u'(x)=e^{x}$, de sorte que $i(x)=\frac{u'(x)}{u(x)}$. On a donc
+\begin{align*}
+ i(x)\, &=\frac{u'(x)}{u(x)}= \frac{d}{dx}\left( \ln |u(x)|\right)=\frac{d}{dx}\left(\ln(e^{x}+1)\right)=\frac{d}{dx}\left(\ln (e^{x}+1)\right)
+\end{align*}
+et donc
+\[ \int_0^1 \frac{e^x}{1+e^x}  \, dx = \left[ \ln (e^{x}+1) \right]_0^1 = \ln(e+1) - \ln(2).\]
+\item On procède à deux i.p.p. successives où on dérive la partie polynomiale à chaque étape.
+\begin{align*}
+\int_0^1 x^2\,e^{-3x}\, dx &= \int_0^1 u(x)\, v'(x)\, dx \quad \text{où}\quad \begin{cases}
+ u(x)=x^2\,,\;\text{donc}\; u'(x)=2\,x\\
+ v(x)=-\frac{1}{3}\,e^{-3x}\,,\;\text{donc}\;v'(x)=e^{-3x}\end{cases}\\
+&= \left[-\frac{1}{3}\,x^2\,e^{-3x} \right]_0^1+\frac{2}{3}\,\int_0^1 x\,e^{-3x}\,dx\,,
+\end{align*}
+\begin{align*}\int_0^1 x\,e^{-3x}\, dx &= \int_0^1 u(x)\, v'(x)\, dx \quad \text{où}\quad \begin{cases}
+ u(x)=x\,,\;\text{donc}\; u'(x)=1\\
+ v(x)=-\frac{1}{3}\,e^{-3x}\,,\;\text{donc}\;v'(x)=e^{-3x}\end{cases}\\
+&= \left[-\frac{1}{3}\,x\,e^{-3x} \right]_0^1+\frac{1}{3}\,\int_0^1 e^{-3x}\,dx
+=-\frac{1}{3}e^{-3} -\frac{1}{9}(e^{-3} - 1) = -\frac{4}{9}e^{-3} +\frac{1}{9}
+\end{align*}
+Finalement, 
+\[
+\int x^2\,e^{-3x}\, dx = - \frac{1}{3}e^{-3} -\frac{4}{9}e^{-3} +\frac{1}{9} = - \frac{7}{9}e^{-3} + \frac{1}{9}.\]
+\item  A priori, on ne connaît pas de primitive de la fonction $\ln$.
+\begin{align*}\int_1^e x^n\,\ln(x) dx &= \int_1^e u(x)\, v'(x)\, dx \quad \text{où}\quad \begin{cases}
+ u(x)=\ln(x)\,,\;\text{donc}\; u'(x)=\frac{1}{x}\\
+ v(x)=\frac{x^{n+1}}{n+1}\,,\;\text{donc}\;v'(x)=x^n\end{cases}\\
+&= \left[\frac{x^{n+1}}{n+1}\,\ln(x)\right]_1^e-\int_1^e \left(\frac{x^{n}}{n+1}\right)\,dx\\
+&= \frac{e^{n+1}}{n+1} - \left[\frac{x^{n+1}}{(n+1)^2}\right]_1^e
+=\frac{e^{n+1}}{n+1} - \frac{e^{n+1}}{(n+1)^2}+ \frac{1}{(n+1)^2}.
+\end{align*}
+\end{enumerate}
+\end{sol}
+
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Intégration
+Calculer , en utilisant un ou des changement(s) de variable(s), l'intégrale
+\[ I = \int_1^{\frac{5}{2}} \sqrt{-x^2 + 2x + 8} \, dx.\]
+\end{exo}
+
+\begin{sol}
+On a
+\[ - x^2 + 2x + 8 = -(x^2 - 2x - 8) = -((x-1)^2 - 9) = 9 - (x-1)^2.\]
+ On a 
+ \[ I= \int_1^{\frac{5}{2}} \sqrt{9- (x-1)^2} \, dx = 3 \int_{1}^{\frac{5}{2}} \sqrt{1 - \left( \frac{x-1}{3} \right)^2} \, dx.\]
+ On pose alors $u=\frac{x-1}{3}$ pour se ramener à une intégrale du type $\int \sqrt{1 - u^2}\, du$, que l'on sait calculer. On a $dx=3du$, et le changement de variables est affine, donc bijectif. On en déduit que 
+ \[ I=9 \frac{0}{\frac{1}{2}} \sqrt{1-u^2} \, du.\]
+ On pose ensuite $u=\sin(t)$. La fonction $\sin$ réalisant une bijection de l'intervalle $\left[0,\frac{\pi}{6} \right]$ sur l'intervalle $\left[0, \frac{1}{2} \right]$, on en déduit que 
+ \[ I=9 \int_0^{\frac{\pi}{6}} \sqrt{1-\sin(t)^2} \cos(t) \, dt = 9\int_0^{\frac{\pi}{6}} \cos(t)^2 \, dt = \frac{9}{2} \int_0^{\frac{\pi}{6}} 1+\cos(2t) \, dt.\]
+ et donc
+ \[ I = \frac{9}{2} \left[ t + \frac{1}{2} \sin(2t) \right]_0^{\frac{\pi}{6}} = \frac{3 \pi}{4} + \frac{9 \sqrt{3}}{8}.\]
+\end{sol}
+
+\begin{exo}
+%Difficulté : 3/5
+%Chapitre : Nombres complexes
+Déterminer les nombres complexes $z$ tels que $z$, $\frac{1}{z}$ et $1-z$ aient le même module.
+\end{exo}
+
+\begin{sol}
+De $|z|= \left| \frac{1}{z} \right|$, on déduit que $|z|^2=1$ et donc que $|z|=1$. Ainsi, $z=e^{i\theta}$, où $\theta \in [0,2\pi [$. Calculons maintenant le module de $1-z$. On écrit 
+\[ 1-z= 1-e^{i\theta} = e^{\frac{i \theta}{2}}(e^{-\frac{i \theta}{2}}- e^{\frac{i \theta}{2}})= -2i\sin \left( \frac{\theta}{2} \right) ^{\frac{i \theta}{2}}.\]
+Ainsi, le module de $1-z$ vaut donc $1$ si et seulement si $\left| \sin \left( \frac{\theta}{2} \right) \right|=\frac{1}{2}$. Or, l'équation $\sin \left( \frac{\theta}{2} \right) = \frac{1}{2}$, avec $ \theta \in [0,2 \pi[$ donne $\theta = \frac{\pi}{3}$ ou $\theta = \frac{5 \pi}{3}$ alors que l'équation $\sin \left( \frac{\theta}{2} \right) = -\frac{1}{2}$ avec $\theta \in [0, 2 \pi[$ n'a pas de solutions. L'ensemble des solutions est donc $\left\{ e^{\frac{i \pi}{3}} , e^{\frac{5i \pi}{3}} \right\}$.
+\end{sol}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

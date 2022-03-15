@@ -1,0 +1,14 @@
+\begin{enumerate}
+\item Une intégration par parties donne, en posant $u(x)=(x^2+1)^{-n}$ et $v'(x)=1$, \[ I_n = \left[ \frac{x}{(x^2+1)^n} \right]_0^1 +2n \int_0^1 \frac{x^2}{(x^2+1)^{n+1}} \, dx
+= \frac{1}{2^n}+2n \int_0^1  \frac{x^2}{(x^2+1)^{n+1}} \,dx.\]
+Or, \[ \int_0^1  \frac{x^2}{(x^2+1)^{n+1}} \,dx = \int_0^1  \frac{x^2 +1}{(x^2+1)^{n+1}} \,dx  - 
+\int_0^1  \frac{1}{(x^2+1)^{n+1}} \,dx = I_n - I_{n+1}.\]
+Regroupant les termes, on trouve
+\[ 2n I_{n+1} =(2n - 1)I_n + \frac{1}{2^n}\]
+et donc
+\[ I_{n+1} = \frac{2n-1}{2n} I_n + \frac{1}{n2^{n+1}}.\]
+\item Sachant que
+\[ I_1= [\arctan(x)]_0^1 = \frac{\pi}{4},\]
+on trouve 
+\[ I_2=\frac{\pi}{8} + \frac{1}{4} \quad \text{et} \quad I_3= \frac{3 \pi}{32} + \frac{1}{4}.\]
+\end{enumerate}

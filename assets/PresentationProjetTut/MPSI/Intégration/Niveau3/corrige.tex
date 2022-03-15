@@ -1,0 +1,10 @@
+On pose, pour $(\alpha,\beta,n,m) \in \R^2 \times \N^2$, 
+\[ I_{m,n}= \int_{alpha}^{\beta} (t-\alpha)^m(t-\beta)^n \,dt.\]
+On intègre par parties pour obtenir une relation entre $I_{m,n}$ et $I_{m-1,n+1}$, et on trouve 
+\[ I_{m,n}= \left[ (t-\alpha)^m \frac{(t-\beta)^{n+1}}{n+1} \right]_{\alpha}^{\beta} - \frac{m}{n+1} \int_{alpha}^{\beta} (t-\alpha)^{m-1} (t-\beta)^{n+1} \,dt = -\frac{m}{n+1} I_{m-1,n+1}.\]
+D'autre part, pour tout $p \in \N$, on a \[ I_{0,p} = \int_{\alpha}^{\beta} (t-\beta)^p \, dt= -\frac{(\alpha- \beta)^{p+1}}{p+1}.\]
+Une récurrence immédiate donne alors \[ I_{m,n} = (-1)^{m+1} \frac{m(m-1)...1}{(n+1)(n+2)...(n+m)} \times \frac{(\alpha - \beta)^{m+n+1}}{m+n+1}.\]
+En particulier, l'intégrale recherché vaut $I_{n,n}$, c'est-à-dire 
+\[I_{n,n}=(-1)^{n+1}\frac{n!}{(n+1)...(2n)}\frac{(\alpha-\beta)^{2n+1}}{2n+1} = (-1)^{n+1}\frac{(\alpha-\beta)^{2n+1}}{(2n+1) \begin{pmatrix}
+2n \\ n
+\end{pmatrix}}.\]

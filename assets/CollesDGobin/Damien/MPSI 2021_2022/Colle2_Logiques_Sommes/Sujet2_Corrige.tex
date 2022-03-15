@@ -1,0 +1,483 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages de base   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Classe du document (book : chapitre inclus, pratique pour les gros cours (PASS, Tremplin), article (8pt) ou amsart (12pt) : pratique pour les cours sur une seule thématique)
+\documentclass[a4paper, 11pt,openany]{article}% openany évite de commencer les chapitres sur une page forcément impaire (évite les pages blanches)
+
+% Encodage, langue et font
+\usepackage[utf8]{inputenc} % Pour les accents (conversion entre ces caractères accentués et les commandes d’accentuation)
+\usepackage[french]{babel} % Français
+\usepackage[T1]{fontenc} % Permet d'afficher et de prendre correctement en charge ces caractères accentués du point de vue du fichier de sortie
+
+% Si on veut faire apparaître le texte avec des caractères plus larges
+%\usepackage[lf]{Baskervaldx} % Texte en plus "gras"
+%\usepackage[bigdelims,vvarbb]{newtxmath} % Lettre mathématiques en plus "gras"
+%\usepackage[cal=boondoxo]{mathalfa} % Style pour les \mathscal
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+% Mise en page
+% Version automatique mais problème d'écart entre l'en-tête et le texte.
+%\usepackage{fullpage} % Numérotation bas de page (et mise en page pleine).
+\usepackage{setspace} % Interligne
+\onehalfspacing % Interligne
+\usepackage[a4paper]{geometry}% Package pour mise en page
+\geometry{hscale=0.8,vscale=0.8,centering,headsep=0.5cm} % Marges, Headsep permet de ne pas coller le texte à l'en-tête
+
+\setlength{\parindent}{0pt} % Supprimer les identations par défaut
+
+\usepackage{fancyhdr} %Package permettant de mettre des en-têtes et des pieds de pages
+\pagestyle{fancy}
+\fancyhead{} % Enleve ce qui est présent par défaut
+\fancyfoot{}% Enleve ce qui est présent par défaut
+\usepackage{extramarks} % Pour écrire proprement le chapitre dans l'en-tête
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} % Redéfinition du chapitre pour écriture dans l'en-tête sous la forme "Chapitre n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}} % Forme "n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Forme "Nom du chapitre"
+\renewcommand{\headrulewidth}{0.6pt} % Epaisseur trait en haut
+\renewcommand{\footrulewidth}{0.6pt} % Epaisseur trait en bas
+\setlength{\headheight}{15pt}
+% Placer les informations où on veut (à noter : E: Even page ; O: Odd page ; L: Left field ; C: Center field ; R: Right field ; H: Header ; F: Footer) :
+\fancyhead[LO,LE]{\slshape  \textbf{MPSI2}}
+\fancyhead[RO,RE]{\slshape \textbf{Corrigé - Colle 2 (Sujet 2)}}
+%\fancyhead[CO,CE]{---Draft---}
+\fancyfoot[C]{\thepage}
+%\fancyfoot[LO, LE] {\slshape Damien GOBIN}
+%\fancyfoot[RO, RE] {\slshape Année 2021-2022}
+
+% Couleurs
+\usepackage{xcolor}
+\definecolor{BleuTresFonce}{rgb}{0.0,0.0,0.250}
+%\definecolor{bleu}{rgb}{0.36, 0.54, 0.66}
+\definecolor{bleu}{rgb}{0.47, 0.62, 0.8}
+%\definecolor{vert}{rgb}{0.33, 0.42, 0.18}
+%\definecolor{vert}{rgb}{0.52, 0.73, 0.4}
+\definecolor{vert}{rgb}{0.56, 0.74, 0.56}
+% Liens hypertextes
+\usepackage[colorlinks,final,hyperindex]{hyperref}
+\hypersetup{
+	pdftex,
+	linkcolor=BleuTresFonce,
+	citecolor=BleuTresFonce,
+	filecolor=BleuTresFonce,
+	urlcolor=BleuTresFonce,
+	pdftitle=TemplateCours,
+	pdfauthor=Damien Gobin,
+	pdfsubject=,
+	pdfkeywords=
+}
+
+
+% Inclure des figures
+\usepackage{graphicx} % Permet d'utiliser includegraphics
+\usepackage{pdfpages} % Permet d'insérer des fichiers pdf
+
+% Utiliser des commentaires
+\usepackage{comment}
+%\excludecomment{sol} %commenter cette ligne si on veut faire apparaitre les solutions d'exercices
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages mathématiques  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Packages mathématiques de base
+%\usepackage{amsfonts} % Permet de taper des ensembles 
+\usepackage{amsmath} % Permet de taper des maths (contient cleveref)
+\usepackage{amsthm} % Permet de définir une environnement pour les théorèmes
+\usepackage{amssymb} % Donne accès a plus de symboles mathématiques (charge de façon automatique amsfonts)
+% \usepackage{mathrsfs} % Ecriture ronde type mathcal
+%\usepackage{bbold} % Permet d'avoir l'indicatrice mais change les textbb
+\usepackage{stmaryrd} % Pour les intervalles entiers [[ ]]
+\usepackage{pifont} % Pour avoir accès à plus de caractères
+
+%Utiliser les symboles jeu de cartes
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+
+
+% Référence dans le document
+\usepackage[noabbrev,capitalize]{cleveref}
+
+% Tableau
+\usepackage{tabularx} % Tableau
+\usepackage{multirow} % Pour créer des tableaux en subdivisant les lignes
+\usepackage{diagbox} %Pour créer des crois dans les tableaux à double entrées
+\usepackage{enumitem} %Permet de scinder une énumération et de reprendre au numéro suivant
+\usepackage{multicol} % Création de document en colonne avec plusieurs colonnes
+\multicolsep=5pt % supprime l'espace vertical
+
+% Modification des itemizes
+\setitemize{label=$\bullet$} % Utilise le package enumitem et met des points au lieu des tirets
+
+% Ecrire des algorithmes en "français" (exemple issu du cours d'optimisation 2020/2021)
+\usepackage[linesnumbered, french, frenchkw,ruled]{algorithm2e}
+% Exemple :
+%\begin{center}
+%\begin{algorithm}
+%\Entree{Un graphe $G = (V,E)$, $|V| = n$, $|E| = m$ et pour chaque arête $e$ de $E$ son poids $c(e)$;}
+%\Sortie{Un arbre (ou une forêt) maximal $A = (V,F)$ et de poids minimum ;} 
+%Trier et renuméroter les arêtes de $G$ dans l'ordre croissant de leur poids : $c(e_1) \leqslant c(e_2) \leqslant ... \leqslant c(e_m)$ \;
+%Poser $F := \emptyset$ et $k = 0$\;
+%\Tq{$k<m$ et $|F| < n-1$}{Si $e_{k+1}$ ne forme pas de cycle avec $F$ alors $F := F \cup \{ e_k \}$\;
+%$k := k +1 $\;}
+%\caption{Algorithme de Kruskal théorique (1956)}
+%\end{algorithm}
+%\end{center}
+
+% Inclure du code Python avec coloration syntaxique et bloc gris (exemple issu du TP2 d'optimisation 2020/2021)
+%\usepackage{xcolor} % Déjà importé plus haut
+\usepackage{listings}
+\lstset{backgroundcolor=\color{darkWhite},literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1{€}{{\EUR}}1 {£}{{\pounds}}1}
+\lstdefinestyle{stylepython}{        language=Python,        basicstyle=\ttfamily,    commentstyle=\color{green},    keywordstyle=\color{blue},    stringstyle=\color{olive},    numberstyle=\tiny,        numbers=left,        stepnumber=1,         numbersep=5pt}
+% Exemple :
+%\begin{lstlisting}[style=stylepython]
+%import networkx as nx #Cette bibliothèque permettra de manipuler des graphes
+%import matplotlib.pyplot as plt #Cette bibliothèque permettra de les représenter
+%import numpy as np
+%\end{lstlisting}
+
+%Package permettant de tracer des graphes, des courbes, etc.. (exemple issu du cours d'optimisation 2020/2021)
+\usepackage{tikz}
+\usepackage{tikz-cd}
+%\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{
+	decorations.pathmorphing,
+	arrows,
+	arrows.meta,
+	calc,
+	shapes,
+	shapes.geometric,
+	decorations.pathreplacing,}
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+\tikzset{>=stealth'}
+\tikzstyle{rond}=[draw,circle,thick,fill=white]
+% Exemple courbe :
+%\begin{center}
+%\begin{tikzpicture}
+%	\def\shift{.5}
+%	\def\xmax{6}
+%	\def\ymax{7}
+%	\draw[->] (-\shift,0) -- (\xmax+\shift,0) node[below] {$x$}; 
+%	\foreach \x in {1,...,\xmax}{ \pgfmathtruncatemacro\xbis{100*\x}
+%		\draw (\x,0) -- (\x,-.3*\shift) node[below] {$\scriptstyle{\xbis}$};
+%	}
+%	% axe ordonnees
+%	\draw[->] (0,-\shift) -- (0,\ymax+\shift) node[left] {$y$};  
+%	\foreach \y in {1,...,\ymax}{ \pgfmathtruncatemacro\ybis{100*\y}
+%		\draw (0,\y) -- (-.3*\shift,\y) node[left] {$\scriptstyle{\ybis}$};
+%	}
+%	\draw[fill=yellow] (0,0) -- (3,0) -- (0,6) -- cycle;
+%	
+%	\draw[thick, purple] plot [domain=-.15:6.15, variable=\t] (\t,6-\t);
+%	\node[above, text=purple] (A) at (6.9,.1) {$x+y = 600$};
+%	%%
+%	\draw[thick, purple] plot [domain=-.1:3.1, variable=\t] (\t,6-2*\t);
+%	\node[right, text=purple] (B) at (1.1,5) {$2x+y = 600$};
+%	%%
+%	\draw[thick, blue] plot [domain=-.1:3.85, variable=\t] (\t,6-1.6*\t);
+%	%%
+%	\draw[fill=blue] (0,6) circle (3pt);
+%	\node[right, text=blue] (B) at (0.1,6.3) {Solution optimale};
+%\end{tikzpicture}
+%\end{center}
+% Exemple graphe :
+%\begin{center}
+%\begin{tikzpicture}[scale=0.9]
+%    \draw[thick] (-1.5,0) node[rond] {$1$} coordinate (A) --
+%        ++(3,0) node[rond] {$2$} coordinate (B) --
+%        ++(-1,-1) node[rond] {$4$}  coordinate (D) --
+%        ++(-1,0) node[rond] {$3$}  coordinate (C) --
+%        ++(0,-1) node[rond] {$5$}  coordinate (E) --
+%        ++(1,0) node[rond] {$6$}  coordinate (F) --
+%        ++(1,-1) node[rond] {$8$}  coordinate (H) --
+%        ++(-3,0) node[rond] {$7$}  coordinate (G) -- (A)
+%        (A) -- (C)
+%        (G) -- (E)
+%        (D) -- (F)
+%        (B) -- (H);
+%\end{tikzpicture}
+%\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Environnements  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Différents types à donner aux environnements théorèmes, définitions, etc...
+%[theorem] permet de numéroter par rapport à la section en cours
+%\renewcommand{\theexem}{\empty{}} permet de ne pas numéroterNe numérote pas les exemples
+
+%\usepackage{thmtools} % Permet de créer un environnement de théorème avec des cadres
+%\declaretheorem[thmbox=L]{boxtheorem L}
+%\declaretheorem[thmbox=M]{boxtheorem M}
+%\declaretheorem[thmbox=S]{boxtheorem S}
+%
+%%\usepackage[dvipsnames]{xcolor}
+%%\declaretheorem[shaded={bgcolor=Lavender,textwidth=12em}]{BoxI}
+%\declaretheorem[shaded={rulecolor=black,rulewidth=1pt}]{BoxII}
+%
+%
+%\usepackage[leftmargin=0.1865cm,rightmargin=0.6cm]{thmbox}
+% Voici ici pour les options https://ctan.mines-albi.fr/macros/latex/contrib/thmbox/thmbox.pdf
+
+%% Ecrit de cette façon tout le monde a le même style : Titre en droit et texte en italique très léger.
+%\newtheorem[L,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{thm}{Théorème}[subsection]
+%%\renewcommand{\thetheorem}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{propo}[thm]{Proposition}
+%%\renewcommand{\thepropo}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{prop}[thm]{Propriété}
+%%\renewcommand{\theprop}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{coro}[thm]{Corollaire}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{lem}[thm]{Lemme}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{defi}[theorem]{Définition}
+%%\renewcommand{\thedefinition}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exem}{Exemple}
+%\renewcommand{\theexem}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{sol}{Solution}
+%\renewcommand{\thesol}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{hypo}{Hypothesis}[section]
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{remark}[thm]{Remarque}%[section]
+%\newtheorem{dem}{Démonstration}
+%\renewcommand{\thedem}{\empty{}} 
+%\newtheorem[S]{nota}{Notation}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[subsection]
+%\renewcommand{\thetheorem}{\empty{}} 
+\newtheorem{propo}[theorem]{Proposition}
+%\renewcommand{\thepropo}{\empty{}} 
+\newtheorem{prop}[theorem]{Propriété}
+%\renewcommand{\theprop}{\empty{}} 
+\newtheorem{coro}[theorem]{Corollaire}
+\newtheorem{lemma}[theorem]{Lemme}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Définition}
+%\renewcommand{\thedefinition}{\empty{}}
+\newtheorem{exem}{Exemple}
+\renewcommand{\theexem}{\empty{}} 
+\newtheorem{cours}{Question de cours}
+\renewcommand{\thecours}{\empty{}} 
+\newtheorem{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}} 
+\newtheorem{sol}{Solution de l'exercice}
+%\renewcommand{\thesol}{\empty{}} 
+\newtheorem{hypo}{Hypothesis}[section]
+\newtheorem{remark}[theorem]{Remarque}%[section]
+
+
+\theoremstyle{remark}
+\newtheorem{dem}{Démonstration}
+\renewcommand{\thedem}{\empty{}} 
+\newtheorem{nota}{Notation}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Raccourcis   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% Ensembles
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+
+
+% Lettres calligraphiques
+\newcommand{\calP}{\mathcal{P}} 
+\newcommand{\calF}{\mathcal{F}} 
+\newcommand{\calD}{\mathcal{D}} 
+\newcommand{\calQ}{\mathcal{Q}} 
+\newcommand{\calT}{\mathcal{T}} 
+
+% Noyau et image
+\newcommand{\im}{\text{Im}} 
+\newcommand{\noy}{\text{Ker}} 
+\newcommand{\card}{\text{Card}} 
+
+%Epsilon
+\newcommand{\vare}{\varepsilon} 
+
+
+% Fonctions usuelles
+%\newcommand{\un}{\mathbb{1}} % Indicatrice en utilisant le package \usepackage{bbold} mais celui modifie les mathbb donc on définit l'indicatrice à la main
+\def\un{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}} % Indicatrice
+
+
+
+\title{Corrigé - Colle 2 (Sujet 2)}
+\author{MPSI2\\
+Année 2021-2022}
+%\author{Mathématiques P.A.S.S. 1}
+\date{28 septembre 2021}
+
+\begin{document}
+
+
+   \maketitle
+%      \rule{\linewidth}{0.5mm}
+      \rule{\linewidth}{0.5mm}
+%  \begin{center}
+%  %    \rule{\linewidth}{0.5mm}\\[0.4cm]
+%       { \huge \bfseries Mathématiques pour le P.A.S.S 1\\[0.4cm] }
+%    \rule{\linewidth}{0.5mm}\\[4cm]
+%     \end{center}
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Sommes et Produits ; Coefficients binomiaux
+	\begin{enumerate}
+		\item Démontrer que, pour tout entier $n$, on a $$\sum_{p=0}^n\binom{n}{p}2^p = 3^n.$$
+		\item Démontrer que, pour tout entier $n$, on a $$\sum_{k=1}^{2n} \binom{2n}{k}(-1)^k2^{k-1} = 0.$$
+	\end{enumerate}
+\end{exo}
+
+\begin{sol}
+	\begin{enumerate}
+		\item Pour tout entier $n$, on a $\sum_{p=0}^n\binom{n}{p}2^p = \sum_{p=0}^n\binom{n}{p}1^{n-p}2^p=(1+2)^n$.
+		\item On a 
+		\[
+			\sum_{k=0}^{2n}	\binom{2n}{k}(-1)^k2^{k-1} = \frac{1}{2} \sum_{k=0}^{2n} \binom{2n}{k}(-1)^{2n-k}2^{k}
+		\]
+		car pour tout entier $k$, $k$ et $2n-k$ ont même parité, ce qui nous donne 
+		\[
+			\sum_{k=0}^{2n}	\binom{2n}{k}(-1)^k2^{k-1} = \frac{1}{2} (-1+2)^{2n} = \frac{1}{2}.
+		\]
+		On en déduit alors que 
+		\[
+			\sum_{k=1}^{2n}	\binom{2n}{k}(-1)^k2^{k-1} = \sum_{k=0}^{2n}	\binom{2n}{k}(-1)^k2^{k-1} - \frac{1}{2} = 0 \ .
+		\]
+	\end{enumerate}
+\end{sol}
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Logique
+Démontrer que tout entier $n\geqslant 2$ est un produit de nombres premiers.
+\end{exo}
+
+
+\begin{sol}
+Montrons par récurrence forte que la propriété $(P_n)$ : "$n$ est un produit de nombre premier" est vraie pour tout $n \geqslant 2$.
+  \begin{itemize}
+ \item \textbf{Initialisation.} $2$ est un produit de nombre premier puisqu'il est lui-même un nombre premier.
+ \item \textbf{Hérédité.} Soit $n \geqslant 0$ un entier fixé. Supposons que la propriété est vraie pour tout $k \leqslant n$, i.e. que tout entier $k \leqslant n$ est un produit de nombre premier. Montrons que la propriété est vraie au rang $n+1$. Il y a alors deux possibilités (on procède ici à une disjonction de cas) :
+ \begin{itemize}
+ \item Si $n+1$ est un nombre premier alors la produit est satisfaite.
+ \item Si $n+1$ n'est pas un nombre premier alors il s'écrit comme un produit de deux nombres différents de $1$ et de lui-même $p$ et $q$. Autrement dit, on a $n+1 = pq$ avec $p \leqslant n$ et $q\leqslant n$. Or, d'après l'hypothèse de récurrence forte, on sait que $p$ et $q$ sont des produits de nombres premiers. Puisque, $n+1 = pq$, il est alors lui aussi un produit de nombres premiers.
+ \end{itemize}
+ Ceci achève de démontrer que la propriété est vraie au rang $n+1$.
+ \item \textbf{Conclusion.} On a donc bien démontré que pour tout nombre entier $n \geqslant 2$ est un produit de nombres premiers.
+ \end{itemize}
+\end{sol}
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Coefficients binomiaux
+Soit $n \in \N$.
+\begin{enumerate}
+\item Pour quels entiers $p \in \{0,...,n-1\}$ a-t-on $\binom{n}{p} < \binom{n}{p+1}$ ?
+\item Soit $p \in \{0,...,n\}$. Pour quelle(s) valeur(s) de $q \in \{0,...,n\}$ a-t-on $\binom{n}{p} = \binom{n}{q}$ ? 
+\end{enumerate}
+
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item On fait le quotient des deux nombres :
+\[ \frac{\binom{n}{p}}{\binom{n}{p+1}} = \frac{n(n-1) ... (n-p+1)}{p!} \times \frac{(p+1)!}{n(n-1) ... (n-p+1)(n-p)} = \frac{p+1}{n-p}.\]
+Ceci est inférieur strict à $1$ si et seulement si
+\[ \frac{p+1}{n-p} < 1 \quad \Leftrightarrow \quad p< \frac{n-1}{2}.\]
+\item La question précédente montre que la suite des coefficients binomiaux $\binom{n}{q}$
+croît strictement avec $q$ pour $q$ allant de $0$ à $\frac{n-1}{2}$ et on montrerait de la même façon qu'elle décroît strictement pour $q$ allant de $\frac{n+1}{2}$ à $n$. L'égalité $\binom{n}{p} = \binom{n}{q}$ peut donc avoir lieu au plus pour deux valeurs de $q$, l'une avec $q$ dans $0,...,\frac{n-1}{2}$, l'autre avec $q$ supérieur ou égal à $\frac{n+1}{2}$. Or, on a bien deux solutions, qui sont $q=p$ et $q=n-p$. Ces solutions sont distinctes sauf si $n=2p$. Et dans ce cas, il n'y a qu'une seule solution.
+\end{enumerate}
+\end{sol}
+
+\begin{exo}
+% Difficulté : 3/5
+%Chapitre : Logique
+Déterminer toutes les fonctions $f:\R \to \R$ telles que, pour tous $x,y \in \R$, 
+\[ f(x) \times f(y) -f(x \times y)=x+y.\]
+\end{exo}
+
+   
+\begin{sol}
+On va raisonner par analyse-synthèse en déterminant des conditions nécessaires sur $f$ pour vérifier cette équation, puis en vérifiant que ces conditions sont suffisantes.
+\begin{itemize}
+\item \textbf{Analyse.} Soit $f$ une fonction vérifiant cette équation. Alors, choisissant $x=y=0$, on obtient $f(0)^2-f(0)=0$, ce qui entraîne $f(0)=0$ ou $f(0)=1$. Choisissant ensuite $x=1$ et $y=0$, on a $f(1)f(0)-f(0)=1$, ce qui interdit $f(0)=0$. On a donc $f(0)=1$ (et aussi $f(1)=2$). Enfin, fixant $y=0$, on obtient que pour tout $x\in \R$, on a $f(x)=x+1$. On a donc prouvé que si $f$ est solution de l'équation, alors, pour tout $x \in \R$, $f(x)=x+1$.
+\item \textbf{Synthèse.} Réciproquement, considérons la fonction $f$ définie par $f(x)=x+1$. Alors, pour tous $x,y \in \R$, on a 
+\[ f(x) \times f(y)=(x+1)(y+1)=xy+x+y+1\]
+et
+\[ f(xy)=xy+1\]
+ ce qui prouve bien que $f$ est solution de l'équation. 
+\end{itemize}
+En conclusion, l'équation admet une solution unique : la fonction $f$ donnée par $f(x)=x+1$.
+\end{sol}
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Sommes et Produits
+	Soient $(a_n)_{n\in \N}$ et $(B_n)_{n\in \N}$ deux suites de nombres complexes. On définit deux suites $(A_n)_{n\in \N}$ et $(b_n)_{n\in\N}$ en posant, pour $n\in \N$, 
+	\[
+		A_n = \sum_{k=0}^n a_k 
+		\quad  \mbox{ et }\quad 
+		b_n = B_{n+1} - B_n 
+	\]
+	\begin{enumerate}[label=\arabic*.]
+		\item Démontrer que $$\sum_{k=0}^n a_kB_k = A_nB_n - \sum_{k=0}^{n-1}A_kb_k .$$
+		\item En déduire la valeur de $$\sum_{k=0}^n 2^k k. $$
+	\end{enumerate}
+\end{exo}
+
+\begin{sol}
+	\begin{enumerate}
+		\item on pose $A_{-1}=0$ et on a alors 
+		\[
+			\begin{aligned}
+				\sum_{k=0}^n a_kB_k &= \sum_{k=0}^n (A_k-A_{k-1})B_k \\
+				&= \sum_{k=0}^n A_kB_k - \sum_{k=0}^n A_{k-1}B_k \\
+				&= \sum_{k=0}^n A_kB_k - \sum_{k=0}^{n-1} A_{k}B_{k+1} \\
+				&= A_nB_n + \sum_{k=0}^{n-1} A_{k}(B_k - B_{k+1}) \\
+				&= A_nB_n + \sum_{k=0}^{n-1} A_{k}b_k \ .
+			\end{aligned}
+		\]
+		\item On pose $a_k = 2^k$ et $B_k = k$. Alors $A_n = 2^{n+1}-1$ et $b_k = 1$. On en déduit que 
+		\[
+			\begin{aligned}
+				\sum_{k=0}^n k2^k 
+				&= (2^{n+1}-1)n - \sum_{k=0}^{n-1}(Z^{k+1}-1) \\
+				&= (2^{n+1}-1)n - 2(2^{n}-1) + n \\
+				&= 2^{n+1}(n-1)+2 \ .
+			\end{aligned}
+		\]
+	\end{enumerate}
+\end{sol}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

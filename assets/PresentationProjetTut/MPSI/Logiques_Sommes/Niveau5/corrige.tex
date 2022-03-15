@@ -1,0 +1,26 @@
+\begin{enumerate}
+	\item On a
+	\[
+		\begin{aligned}
+			\sum_{1\leqslant i \leqslant i \leqslant n} ij 
+			&= \sum_{j=1}^n j\left(\sum_{i = 1}^n i\right) \\
+			&=  \sum_{j=1}^n ja_j \\
+			&=  \sum_{j=1}^n j\frac{j(j+1)}{2} \\
+			&= \frac 12 \sum_{j=1}^n j^3 +j^2 \\
+			&= \frac{b_n+c_n}{2}\\
+			&= \frac{n(n+1)(n+2)(3n+1)}{24}.
+		\end{aligned}
+	\]
+	 \item Posons, pour $i$ fixé, $S_i = \sum_{j=1}^n \min(i,j)$ et commençons par calculer la valeur de $S_i$. Alors, on a
+	 \[ S_i = \sum_{j=1}^n j + \sum_{j=i+1}^n i = \frac{i(i+1)}{2} + (n-i)i = \left( n + \frac{1}{2} \right)i - \frac{i^2}{2}.\]
+	 On en déduit
+	\[
+		\begin{aligned}
+			 \sum_{i=1}^n \sum_{j=1}^n \min(i,j)
+			&= \sum_{i=1}^n S_i \\
+			&=  \sum_{i=1}^n \left( n + \frac{1}{2} \right)i - \frac{i^2}{2} \\
+			&=  \left( n + \frac{1}{2} \right)\frac{n(n+1)}{2} - \frac{n(n+1)(2n+1)}{12} \\
+			&= \frac{n(n+1)(2n+1)}{6}.
+		\end{aligned}
+	\]
+\end{enumerate}

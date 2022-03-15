@@ -1,0 +1,490 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages de base   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Classe du document (book : chapitre inclus, pratique pour les gros cours (PASS, Tremplin), article (8pt) ou amsart (12pt) : pratique pour les cours sur une seule thématique)
+\documentclass[a4paper, 11pt,openany]{article}% openany évite de commencer les chapitres sur une page forcément impaire (évite les pages blanches)
+
+% Encodage, langue et font
+\usepackage[utf8]{inputenc} % Pour les accents (conversion entre ces caractères accentués et les commandes d’accentuation)
+\usepackage[french]{babel} % Français
+\usepackage[T1]{fontenc} % Permet d'afficher et de prendre correctement en charge ces caractères accentués du point de vue du fichier de sortie
+
+% Si on veut faire apparaître le texte avec des caractères plus larges
+%\usepackage[lf]{Baskervaldx} % Texte en plus "gras"
+%\usepackage[bigdelims,vvarbb]{newtxmath} % Lettre mathématiques en plus "gras"
+%\usepackage[cal=boondoxo]{mathalfa} % Style pour les \mathscal
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+% Mise en page
+% Version automatique mais problème d'écart entre l'en-tête et le texte.
+%\usepackage{fullpage} % Numérotation bas de page (et mise en page pleine).
+\usepackage{setspace} % Interligne
+\onehalfspacing % Interligne
+\usepackage[a4paper]{geometry}% Package pour mise en page
+\geometry{hscale=0.8,vscale=0.8,centering,headsep=0.5cm} % Marges, Headsep permet de ne pas coller le texte à l'en-tête
+
+\setlength{\parindent}{0pt} % Supprimer les identations par défaut
+
+\usepackage{fancyhdr} %Package permettant de mettre des en-têtes et des pieds de pages
+\pagestyle{fancy}
+\fancyhead{} % Enleve ce qui est présent par défaut
+\fancyfoot{}% Enleve ce qui est présent par défaut
+\usepackage{extramarks} % Pour écrire proprement le chapitre dans l'en-tête
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} % Redéfinition du chapitre pour écriture dans l'en-tête sous la forme "Chapitre n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}} % Forme "n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Forme "Nom du chapitre"
+\renewcommand{\headrulewidth}{0.6pt} % Epaisseur trait en haut
+\renewcommand{\footrulewidth}{0.6pt} % Epaisseur trait en bas
+\setlength{\headheight}{15pt}
+% Placer les informations où on veut (à noter : E: Even page ; O: Odd page ; L: Left field ; C: Center field ; R: Right field ; H: Header ; F: Footer) :
+\fancyhead[LO,LE]{\slshape  \textbf{MPSI2}}
+\fancyhead[RO,RE]{\slshape \textbf{Corrigé - Colle 9 (Sujet 2)}}
+%\fancyhead[CO,CE]{---Draft---}
+\fancyfoot[C]{\thepage}
+%\fancyfoot[LO, LE] {\slshape Damien GOBIN}
+%\fancyfoot[RO, RE] {\slshape Année 2021-2022}
+
+% Couleurs
+\usepackage{xcolor}
+\definecolor{BleuTresFonce}{rgb}{0.0,0.0,0.250}
+%\definecolor{bleu}{rgb}{0.36, 0.54, 0.66}
+\definecolor{bleu}{rgb}{0.47, 0.62, 0.8}
+%\definecolor{vert}{rgb}{0.33, 0.42, 0.18}
+%\definecolor{vert}{rgb}{0.52, 0.73, 0.4}
+\definecolor{vert}{rgb}{0.56, 0.74, 0.56}
+% Liens hypertextes
+\usepackage[colorlinks,final,hyperindex]{hyperref}
+\hypersetup{
+	pdftex,
+	linkcolor=BleuTresFonce,
+	citecolor=BleuTresFonce,
+	filecolor=BleuTresFonce,
+	urlcolor=BleuTresFonce,
+	pdftitle=TemplateCours,
+	pdfauthor=Damien Gobin,
+	pdfsubject=,
+	pdfkeywords=
+}
+
+
+% Inclure des figures
+\usepackage{graphicx} % Permet d'utiliser includegraphics
+\usepackage{pdfpages} % Permet d'insérer des fichiers pdf
+
+% Utiliser des commentaires
+\usepackage{comment}
+%\excludecomment{sol} %commenter cette ligne si on veut faire apparaitre les solutions d'exercices
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages mathématiques  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Packages mathématiques de base
+%\usepackage{amsfonts} % Permet de taper des ensembles 
+\usepackage{amsmath} % Permet de taper des maths (contient cleveref)
+\usepackage{amsthm} % Permet de définir une environnement pour les théorèmes
+\usepackage{amssymb} % Donne accès a plus de symboles mathématiques (charge de façon automatique amsfonts)
+% \usepackage{mathrsfs} % Ecriture ronde type mathcal
+%\usepackage{bbold} % Permet d'avoir l'indicatrice mais change les textbb
+\usepackage{stmaryrd} % Pour les intervalles entiers [[ ]]
+\usepackage{pifont} % Pour avoir accès à plus de caractères
+
+%Utiliser les symboles jeu de cartes
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+
+
+% Référence dans le document
+\usepackage[noabbrev,capitalize]{cleveref}
+
+% Tableau
+\usepackage{tabularx} % Tableau
+\usepackage{multirow} % Pour créer des tableaux en subdivisant les lignes
+\usepackage{diagbox} %Pour créer des crois dans les tableaux à double entrées
+\usepackage{enumitem} %Permet de scinder une énumération et de reprendre au numéro suivant
+\usepackage{multicol} % Création de document en colonne avec plusieurs colonnes
+\multicolsep=5pt % supprime l'espace vertical
+
+% Modification des itemizes
+\setitemize{label=$\bullet$} % Utilise le package enumitem et met des points au lieu des tirets
+
+% Ecrire des algorithmes en "français" (exemple issu du cours d'optimisation 2020/2021)
+\usepackage[linesnumbered, french, frenchkw,ruled]{algorithm2e}
+% Exemple :
+%\begin{center}
+%\begin{algorithm}
+%\Entree{Un graphe $G = (V,E)$, $|V| = n$, $|E| = m$ et pour chaque arête $e$ de $E$ son poids $c(e)$;}
+%\Sortie{Un arbre (ou une forêt) maximal $A = (V,F)$ et de poids minimum ;} 
+%Trier et renuméroter les arêtes de $G$ dans l'ordre croissant de leur poids : $c(e_1) \leqslant c(e_2) \leqslant ... \leqslant c(e_m)$ \;
+%Poser $F := \emptyset$ et $k = 0$\;
+%\Tq{$k<m$ et $|F| < n-1$}{Si $e_{k+1}$ ne forme pas de cycle avec $F$ alors $F := F \cup \{ e_k \}$\;
+%$k := k +1 $\;}
+%\caption{Algorithme de Kruskal théorique (1956)}
+%\end{algorithm}
+%\end{center}
+
+% Inclure du code Python avec coloration syntaxique et bloc gris (exemple issu du TP2 d'optimisation 2020/2021)
+%\usepackage{xcolor} % Déjà importé plus haut
+\usepackage{listings}
+\lstset{backgroundcolor=\color{darkWhite},literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1{€}{{\EUR}}1 {£}{{\pounds}}1}
+\lstdefinestyle{stylepython}{        language=Python,        basicstyle=\ttfamily,    commentstyle=\color{green},    keywordstyle=\color{blue},    stringstyle=\color{olive},    numberstyle=\tiny,        numbers=left,        stepnumber=1,         numbersep=5pt}
+% Exemple :
+%\begin{lstlisting}[style=stylepython]
+%import networkx as nx #Cette bibliothèque permettra de manipuler des graphes
+%import matplotlib.pyplot as plt #Cette bibliothèque permettra de les représenter
+%import numpy as np
+%\end{lstlisting}
+
+%Package permettant de tracer des graphes, des courbes, etc.. (exemple issu du cours d'optimisation 2020/2021)
+\usepackage{tikz}
+\usepackage{tikz-cd}
+%\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{
+	decorations.pathmorphing,
+	arrows,
+	arrows.meta,
+	calc,
+	shapes,
+	shapes.geometric,
+	decorations.pathreplacing,}
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+\tikzset{>=stealth'}
+\tikzstyle{rond}=[draw,circle,thick,fill=white]
+% Exemple courbe :
+%\begin{center}
+%\begin{tikzpicture}
+%	\def\shift{.5}
+%	\def\xmax{6}
+%	\def\ymax{7}
+%	\draw[->] (-\shift,0) -- (\xmax+\shift,0) node[below] {$x$}; 
+%	\foreach \x in {1,...,\xmax}{ \pgfmathtruncatemacro\xbis{100*\x}
+%		\draw (\x,0) -- (\x,-.3*\shift) node[below] {$\scriptstyle{\xbis}$};
+%	}
+%	% axe ordonnees
+%	\draw[->] (0,-\shift) -- (0,\ymax+\shift) node[left] {$y$};  
+%	\foreach \y in {1,...,\ymax}{ \pgfmathtruncatemacro\ybis{100*\y}
+%		\draw (0,\y) -- (-.3*\shift,\y) node[left] {$\scriptstyle{\ybis}$};
+%	}
+%	\draw[fill=yellow] (0,0) -- (3,0) -- (0,6) -- cycle;
+%	
+%	\draw[thick, purple] plot [domain=-.15:6.15, variable=\t] (\t,6-\t);
+%	\node[above, text=purple] (A) at (6.9,.1) {$x+y = 600$};
+%	%%
+%	\draw[thick, purple] plot [domain=-.1:3.1, variable=\t] (\t,6-2*\t);
+%	\node[right, text=purple] (B) at (1.1,5) {$2x+y = 600$};
+%	%%
+%	\draw[thick, blue] plot [domain=-.1:3.85, variable=\t] (\t,6-1.6*\t);
+%	%%
+%	\draw[fill=blue] (0,6) circle (3pt);
+%	\node[right, text=blue] (B) at (0.1,6.3) {Solution optimale};
+%\end{tikzpicture}
+%\end{center}
+% Exemple graphe :
+%\begin{center}
+%\begin{tikzpicture}[scale=0.9]
+%    \draw[thick] (-1.5,0) node[rond] {$1$} coordinate (A) --
+%        ++(3,0) node[rond] {$2$} coordinate (B) --
+%        ++(-1,-1) node[rond] {$4$}  coordinate (D) --
+%        ++(-1,0) node[rond] {$3$}  coordinate (C) --
+%        ++(0,-1) node[rond] {$5$}  coordinate (E) --
+%        ++(1,0) node[rond] {$6$}  coordinate (F) --
+%        ++(1,-1) node[rond] {$8$}  coordinate (H) --
+%        ++(-3,0) node[rond] {$7$}  coordinate (G) -- (A)
+%        (A) -- (C)
+%        (G) -- (E)
+%        (D) -- (F)
+%        (B) -- (H);
+%\end{tikzpicture}
+%\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Environnements  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Différents types à donner aux environnements théorèmes, définitions, etc...
+%[theorem] permet de numéroter par rapport à la section en cours
+%\renewcommand{\theexem}{\empty{}} permet de ne pas numéroterNe numérote pas les exemples
+
+%\usepackage{thmtools} % Permet de créer un environnement de théorème avec des cadres
+%\declaretheorem[thmbox=L]{boxtheorem L}
+%\declaretheorem[thmbox=M]{boxtheorem M}
+%\declaretheorem[thmbox=S]{boxtheorem S}
+%
+%%\usepackage[dvipsnames]{xcolor}
+%%\declaretheorem[shaded={bgcolor=Lavender,textwidth=12em}]{BoxI}
+%\declaretheorem[shaded={rulecolor=black,rulewidth=1pt}]{BoxII}
+%
+%
+%\usepackage[leftmargin=0.1865cm,rightmargin=0.6cm]{thmbox}
+% Voici ici pour les options https://ctan.mines-albi.fr/macros/latex/contrib/thmbox/thmbox.pdf
+
+%% Ecrit de cette façon tout le monde a le même style : Titre en droit et texte en italique très léger.
+%\newtheorem[L,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{thm}{Théorème}[subsection]
+%%\renewcommand{\thetheorem}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{propo}[thm]{Proposition}
+%%\renewcommand{\thepropo}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{prop}[thm]{Propriété}
+%%\renewcommand{\theprop}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{coro}[thm]{Corollaire}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{lem}[thm]{Lemme}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{defi}[theorem]{Définition}
+%%\renewcommand{\thedefinition}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exem}{Exemple}
+%\renewcommand{\theexem}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{sol}{Solution}
+%\renewcommand{\thesol}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{hypo}{Hypothesis}[section]
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{remark}[thm]{Remarque}%[section]
+%\newtheorem{dem}{Démonstration}
+%\renewcommand{\thedem}{\empty{}} 
+%\newtheorem[S]{nota}{Notation}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[subsection]
+%\renewcommand{\thetheorem}{\empty{}} 
+\newtheorem{propo}[theorem]{Proposition}
+%\renewcommand{\thepropo}{\empty{}} 
+\newtheorem{prop}[theorem]{Propriété}
+%\renewcommand{\theprop}{\empty{}} 
+\newtheorem{coro}[theorem]{Corollaire}
+\newtheorem{lemma}[theorem]{Lemme}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Définition}
+%\renewcommand{\thedefinition}{\empty{}}
+\newtheorem{exem}{Exemple}
+\renewcommand{\theexem}{\empty{}} 
+\newtheorem{cours}{Question de cours}
+\renewcommand{\thecours}{\empty{}} 
+\newtheorem{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}} 
+\newtheorem{sol}{Solution de l'exercice}
+%\renewcommand{\thesol}{\empty{}} 
+\newtheorem{hypo}{Hypothesis}[section]
+\newtheorem{remark}[theorem]{Remarque}%[section]
+
+
+\theoremstyle{remark}
+\newtheorem{dem}{Démonstration}
+\renewcommand{\thedem}{\empty{}} 
+\newtheorem{nota}{Notation}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Raccourcis   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% Ensembles
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+
+
+% Lettres calligraphiques
+\newcommand{\calP}{\mathcal{P}} 
+\newcommand{\calF}{\mathcal{F}} 
+\newcommand{\calD}{\mathcal{D}} 
+\newcommand{\calQ}{\mathcal{Q}} 
+\newcommand{\calT}{\mathcal{T}} 
+
+% Noyau et image
+\newcommand{\im}{\text{Im}} 
+\newcommand{\noy}{\text{Ker}} 
+\newcommand{\card}{\text{Card}} 
+
+%Epsilon
+\newcommand{\vare}{\varepsilon} 
+
+
+% Fonctions usuelles
+%\newcommand{\un}{\mathbb{1}} % Indicatrice en utilisant le package \usepackage{bbold} mais celui modifie les mathbb donc on définit l'indicatrice à la main
+\def\un{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}} % Indicatrice
+
+
+\title{Corrigé - Colle 9 (Sujet 2)}
+\author{MPSI2\\
+Année 2021-2022}
+%\author{Mathématiques P.A.S.S. 1}
+\date{30 novembre 2021}
+
+\begin{document}
+
+
+   \maketitle
+%      \rule{\linewidth}{0.5mm}
+      \rule{\linewidth}{0.5mm}
+%  \begin{center}
+%  %    \rule{\linewidth}{0.5mm}\\[0.4cm]
+%       { \huge \bfseries Mathématiques pour le P.A.S.S 1\\[0.4cm] }
+%    \rule{\linewidth}{0.5mm}\\[4cm]
+%     \end{center}
+
+
+\begin{cours}
+Montrer que $\Q$ et $\R \setminus \Q$ sont dense dans $\R$.
+\end{cours}
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Applications
+\begin{enumerate}
+\item Représenter graphiquement la fonction suivante sur son domaine de définition :
+\[ g : x \mapsto   \left\{
+    \begin{array}{ll}
+        1 + \frac{1}{x} & \mbox{si } x > 0 \\
+        \sqrt{-x} & \mbox{si } x \leqslant 0
+    \end{array}
+\right..\]
+\item Répondre aux questions suivantes en lisant sur les graphes concernées :
+\begin{enumerate}
+\item Donner $g(]0,2])$ et $g([1,+\infty[)$.
+\item $g : \R \to [0,+\infty[$ est-elle surjective ? injective ? Déterminer deux intervalles $I \subset \R$ et $J \subset [0,+\infty[$ tels que $g : I \to J$ soit bijective.
+\end{enumerate}
+\end{enumerate}
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item On a
+\begin{center}
+    \begin{tikzpicture}[scale=0.4]
+     \draw [very thick, ->] (-5,0)--(6,0);
+     \draw [very thick, ->] (0,-1)--(0,10);
+     \draw [help lines] (-5,-1) grid (6,10);
+     \draw [smooth,very thick,bleu!150, samples=100,domain=0.11:6]plot({\x},{1+1/(\x)});
+     \draw [smooth,very thick,bleu!150, samples=100,domain=-5:0]plot({\x},{sqrt(-\x)});
+               \draw (0.5,-1.5) node {\textbf{Graphe de $g$}};
+    \end{tikzpicture}
+\end{center}
+\item 
+\begin{enumerate}
+\item $g(]0,2]) = [2,+\infty[$ et $g([1,+\infty[)=]1,2]$.
+\item $g$ est surjective de $\R$ dans $[0,+\infty[$. En effet, si $y \in [0,+\infty[$ alors $g(-y^2) = \sqrt{-(-y^2)} = \sqrt{y^2} =y$ car $y \geqslant 0$. En revanche, $g$ n'est pas injective, par exemple car $g(-4) = 2 = g(1)$. $g$ est, par exemple, bijective de $]0,+\infty[$ dans $]1,+\infty[$.
+\end{enumerate}
+\end{enumerate}
+\end{sol}
+
+
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Applications
+Soient $E$ et $F$ deux ensembles et soit $f:E \to F$. Soient également $A$ et $B$ deux parties de $F$.
+\begin{enumerate}
+\item Démontrer que $A \subset B \Rightarrow f^{-1}(A) \subset f^{-1}(B)$. La réciproque est-elle vraie?
+\item Démontrer que $f^{-1}(A \cap B)=f^{-1}(A) \cap f^{-1}(B)$.
+\item Démontrer que $f^{-1}(A \cup B)=f^{-1}(A) \cup f^{-1}(B)$.
+\end{enumerate}
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item Prenons $x\in f^{-1}(A)$. Alors $f(x) \in A$ et donc $f(x) \in B$, et donc $x \in f^{-1}(B)$, ce qui prouve l'inclusion $f^{-1}(A) \subset f^{-1}(B)$. La réciproque n'est pas toujours vraie. Prenons $E=\{1\}$, $F=\{1,2\}$, $f:E \to F$ définie par $f(1)=1$, $A=\{2\}$ et $B=\{1\}$. Alors $f^{-1}(A)= \emptyset \subset f^{-1}(B)=\{1\}$. Et pourtant, $A$ n'est pas inclus dans $B$.
+\item On a $A \cap B\subset A$, et donc $f^{-1}(A \cap B) \subset f^{-1}(A)$. De même, $f^{-1}(A \cap B)\subset f^{-1}(B)$, et donc $f^{-1}(A\cap B) \subset f^{-1}(A) \cap f^{-1}(B)$.\\
+Réciproquement, soit $x\in f^{-1}(A) \cap f^{-1}(B)$. Alors on a à la fois $f(x) \in A$ et $f(x) \in B$, ce qui entraîne $f(x) \in A \cap B$. Ainsi, $x \in f^{-1}(A\cap B)$, et donc $f^{-1}(A) \cap f^{-1}(B) \subset f^{-1}(A\cap B)$.
+\item On a $A \subset A \cup B$ et donc $f^{-1}(A) \subset f^{-1}(A \cup B)$. De même, $f^{-1}(B) \subset f^{-1}(A \cup B)$ et donc $f^{-1}(A) \cup f^{-1}(B) \subset f^{-1}(A \cup B)$.\\
+Réciproquement, si $x \in f^{-1}(A \cup B)$, alors $f(x) \in A \cup B$. Ainsi, ou bien $f(x) \in A$, ou bien $f(x) \in B$. Mais si $f(x) \in A$, on a $x \in f^{-1}(A) \subset f^{-1}(A) \cup f^{-1}(B)$ et de même, si $f(x) \in B$, on a $x \in f^{-1}(B) \subset f^{-1}(A) \cup f^{-1}(B)$. Dans tous les cas, on a prouvé que $x\in f^{-1}(A) \cup f^{-1}(B)$ et donc l'inclusion $f^{-1}(A \cup B) \subset f^{-1}(A) \cup f^{-1}(B)$. 
+\end{enumerate}
+\end{sol}
+
+
+\begin{exo}
+%Difficulté : 3/5
+%Chapitre : Nombres réels
+On considère $\displaystyle{ A = \left\{ \frac{n}{mn +1}, \ (m,n) \in \N^{\star} \right\}}$. $A$ est-elle majorée, minorée ? Déterminer, s'il y a lieu, la borne inférieure et la borne supérieure et dire s'il s'agit d'un minimum ou d'un maximum.
+\end{exo}
+
+\begin{sol}
+On a, pour tout $n,m \in \N^{\star}$,
+\[0 \leqslant \frac{n}{nm+1} \leqslant \frac{n}{nm} \leqslant \frac{1}{m} \leqslant 1.\]
+$A$ est donc minorée par 0 et majorée par 1. Montrons que $\inf(A)=0$. Si $c>0$ est un minorant de $A$, alors pour tout couple $(m,n) \in (\N^{\star})2$, on a 
+\[ c \leqslant \frac{n}{nm+1}.\]
+Prenons $n=1$, on obtient 
+\[ c \leqslant \frac{1}{m+1} \quad \Leftrightarrow \quad m \leqslant \frac{1}{c} - 1.\]
+Comme ceci doit être vrai pour tout entier $m\geqslant 1$, c'est une contradiction car $\N$ n'est pas majoré. Ainsi, 0 est le plus grand des minorants de $A$, et $\inf(A)=0$. Démontrons de même que $1=\sup(A)$. Si $d<1$ est un majorant de $A$, alors pour tout couple $(m,n) \in (\N^{\star})^2$, on a \[ d \geqslant \frac{n}{nm+1}.\]
+Pour $m=1$, on obtient 
+\[ d \geqslant \frac{n}{n+1} \quad \Leftrightarrow \quad d \geqslant n(1-d)  \quad \Leftrightarrow \quad  n \leqslant \frac{d}{1-d}.\]
+Cette inégalité est impossible à réaliser pour tout entier $n$, et donc $\sup(A)=1$. De plus, 0 n'est pas un élément de $A$ (c'est trivial), et 1 non plus car on a toujours $nm+1>n$ pour $n,m\geqslant 1$.
+\end{sol}
+
+
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Applications
+On considère
+\[ \begin{array}{ccccc}
+f & : & \R & \to & \C \\
+ & & x & \mapsto & \frac{1+ix}{1-ix}
+\end{array} .\]
+\begin{enumerate}
+ \item Montrer que $f$ est bien définie. $f$ est-elle injective ? $f$ est-elle surjective ?
+ \item Déterminer $f^{-1}(\mathbb R)$.
+ \item Montrer que $f(\mathbb R)=\{z\in\mathbb C,\ |z|=1,\ z\neq-1\}$.
+\end{enumerate}
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+ \item $f$ est bien définie car le dénominateur ne s'annule pas. En effet, puisque $x \in \R$, $ix \in i \R$ et donc $1 - ix \neq 0$.\\
+ Etudions l'injectivité de $f$. Soit $(x,y) \in \R^2$ tels que $f(x) = f(y)$. Alors
+ \[ \frac{1+ix}{1-ix} = \frac{1+iy}{1-iy} \quad \Leftrightarrow \quad (1+ix)(1-iy) = (1-ix)(1+iy) \quad \Leftrightarrow \quad 1+ix - iy +xy = 1-ix + iy + xy.\]
+ On a donc $2i(x-y) = 0$ ce qui impose que $x=y$. $f$ est donc injective.\\
+ Etudions à présent la surjectivité de $f$. Supposons qu'il existe $x \in \R$ tel que $f(x) = 0$ alors $1+ix = 0$ ce qui impose que $x=i$ ce qui est absurde puisque $x$ est réel. $f$ n'est donc pas surjective.
+ \item On chercher l'ensemble des éléments $x \in \R$ tels que $f(x) \in \R$. Or,
+ \[ f(x) = a \in \R \quad \Leftrightarrow \quad 1+ix = a(1-ix) \quad \Leftrightarrow \quad 1+ ix = a - iax.\]
+ En identifiant les parties réelles et imaginaire on arrive à $a=1$ et $ax = -x$ ce qui peut être satisfait seulement si $x = 0$ (puisque $a = 1$). On peut alors vérifier que $f(0) = 1 \in \R$. Ainsi, $f^{-1}(\R) = \{0 \}$.
+ \item Procédons par double-inclusion.
+ \begin{itemize}
+ \item \textbf{Sens direct.} Soit $z \in f(\R)$ alors il existe $x \in\R$ tel que $z = f(x)$. Autrement dit, $z = \frac{1+ix}{1-ix}$. Montrons à présent que $|z| = 1$ et que $z \neq -1$. On a,
+ \[ |z| = \left| \frac{1+ix}{1-ix} \right| = \frac{\sqrt{1+x^2}}{\sqrt{1+x^2}} = 1.\]
+ De plus, supposons qu'il existe $x \in \R$ tel que $f(x) = -1$. Alors,
+ \[ f(x) = -1 \quad \Leftrightarrow \quad  \frac{1+ix}{1-ix} = -1 \quad \Leftrightarrow \quad  1+ix = -1 + ix \quad \Leftrightarrow \quad  2 =0\]
+ ce qui est bien entendu absurde. Donc, pour tout $x \in \R$, $f(x) \neq -1$. On a donc montré l'inclusion directe.
+ \item \textbf{Sens réciproque.} Soit $z \in \C$ tel que $|z| =1$ et $z \neq -1$. Pour montrer que $z \in f(\R)$ nous devons trouver $x \in \R$ tel que $f(x) = z$. Or,
+ \[ f(x) = z \quad \Leftrightarrow \quad  \frac{1+ix}{1-ix} = z \quad \Leftrightarrow \quad  1+ix = (1 - ix)z \quad \Leftrightarrow \quad  x(i +iz) = -1 + z.\]
+ Puisque $z \neq -1$, on obtient
+ \[ x = \frac{-1+z}{i(1+z)}.\]
+ Donc, $z \in f(\R)$.
+ \end{itemize}
+ On a donc bien montré que $f(\mathbb R)=\{z\in\mathbb C,\ |z|=1,\ z\neq-1\}$ par double-inclusion.
+\end{enumerate}
+\end{sol}
+
+
+\begin{exo}
+%Difficulté : 3/5
+%Chapitre : Nombres réels
+Soit $f:[0,1] \to [0,1]$ une application croissante. On note $E=\{x \in [0,1]; \ f(x)\geqslant x\}$.
+\begin{enumerate}
+\item Montrer que $E$ admet une borne supérieure $b$.
+\item Prouver que $f(b)=b$.
+\end{enumerate}
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item $E$ est une partie non-vide (car elle contient 0), et majorée (par 1) de $\R$. Elle admet donc une borne supérieure que l'on note $b$. 
+\item On va raisonner par l'absurde pour démontrer que $f(b)=b$.
+\begin{itemize}
+\item \textbf{Si $f(b)<b$.} Comme $b$ est le plus petit des majorants de $E$, $f(b)$ ne majore pas $E$. Il existe donc un élément $c$ de $E$ tel que $f(b) < c \leqslant b$. Mais alors $f(c)\geqslant c > f(b)$ alors que $c \leqslant b$. Ceci contredit que $f$ est croissante.
+\item \textbf{Si $f(b)>b$.} Comme $f$ est croissante, on a $f(f(b)) \leqslant f(b)$, et donc $f(b) \in E$, ce qui est impossible puisque $f(b)$ est strictement supérieur à la borne supérieure de $E$.
+\end{itemize}
+\end{enumerate}
+\end{sol}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,486 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages de base   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Classe du document (book : chapitre inclus, pratique pour les gros cours (PASS, Tremplin), article (8pt) ou amsart (12pt) : pratique pour les cours sur une seule thématique)
+\documentclass[a4paper, 11pt,openany]{article}% openany évite de commencer les chapitres sur une page forcément impaire (évite les pages blanches)
+
+% Encodage, langue et font
+\usepackage[utf8]{inputenc} % Pour les accents (conversion entre ces caractères accentués et les commandes d’accentuation)
+\usepackage[french]{babel} % Français
+\usepackage[T1]{fontenc} % Permet d'afficher et de prendre correctement en charge ces caractères accentués du point de vue du fichier de sortie
+
+% Si on veut faire apparaître le texte avec des caractères plus larges
+%\usepackage[lf]{Baskervaldx} % Texte en plus "gras"
+%\usepackage[bigdelims,vvarbb]{newtxmath} % Lettre mathématiques en plus "gras"
+%\usepackage[cal=boondoxo]{mathalfa} % Style pour les \mathscal
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+% Mise en page
+% Version automatique mais problème d'écart entre l'en-tête et le texte.
+%\usepackage{fullpage} % Numérotation bas de page (et mise en page pleine).
+\usepackage{setspace} % Interligne
+\onehalfspacing % Interligne
+\usepackage[a4paper]{geometry}% Package pour mise en page
+\geometry{hscale=0.8,vscale=0.8,centering,headsep=0.5cm} % Marges, Headsep permet de ne pas coller le texte à l'en-tête
+
+\setlength{\parindent}{0pt} % Supprimer les identations par défaut
+
+\usepackage{fancyhdr} %Package permettant de mettre des en-têtes et des pieds de pages
+\pagestyle{fancy}
+\fancyhead{} % Enleve ce qui est présent par défaut
+\fancyfoot{}% Enleve ce qui est présent par défaut
+\usepackage{extramarks} % Pour écrire proprement le chapitre dans l'en-tête
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} % Redéfinition du chapitre pour écriture dans l'en-tête sous la forme "Chapitre n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}} % Forme "n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Forme "Nom du chapitre"
+\renewcommand{\headrulewidth}{0.6pt} % Epaisseur trait en haut
+\renewcommand{\footrulewidth}{0.6pt} % Epaisseur trait en bas
+\setlength{\headheight}{15pt}
+% Placer les informations où on veut (à noter : E: Even page ; O: Odd page ; L: Left field ; C: Center field ; R: Right field ; H: Header ; F: Footer) :
+\fancyhead[LO,LE]{\slshape  \textbf{MPSI2}}
+\fancyhead[RO,RE]{\slshape \textbf{Colle 2}}
+%\fancyhead[CO,CE]{---Draft---}
+\fancyfoot[C]{\thepage}
+%\fancyfoot[LO, LE] {\slshape Damien GOBIN}
+%\fancyfoot[RO, RE] {\slshape Année 2021-2022}
+
+% Couleurs
+\usepackage{xcolor}
+\definecolor{BleuTresFonce}{rgb}{0.0,0.0,0.250}
+%\definecolor{bleu}{rgb}{0.36, 0.54, 0.66}
+\definecolor{bleu}{rgb}{0.47, 0.62, 0.8}
+%\definecolor{vert}{rgb}{0.33, 0.42, 0.18}
+%\definecolor{vert}{rgb}{0.52, 0.73, 0.4}
+\definecolor{vert}{rgb}{0.56, 0.74, 0.56}
+% Liens hypertextes
+\usepackage[colorlinks,final,hyperindex]{hyperref}
+\hypersetup{
+	pdftex,
+	linkcolor=BleuTresFonce,
+	citecolor=BleuTresFonce,
+	filecolor=BleuTresFonce,
+	urlcolor=BleuTresFonce,
+	pdftitle=TemplateCours,
+	pdfauthor=Damien Gobin,
+	pdfsubject=,
+	pdfkeywords=
+}
+
+
+% Inclure des figures
+\usepackage{graphicx} % Permet d'utiliser includegraphics
+\usepackage{pdfpages} % Permet d'insérer des fichiers pdf
+
+% Utiliser des commentaires
+\usepackage{comment}
+%\excludecomment{sol} %commenter cette ligne si on veut faire apparaitre les solutions d'exercices
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages mathématiques  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Packages mathématiques de base
+%\usepackage{amsfonts} % Permet de taper des ensembles 
+\usepackage{amsmath} % Permet de taper des maths (contient cleveref)
+\usepackage{amsthm} % Permet de définir une environnement pour les théorèmes
+\usepackage{amssymb} % Donne accès a plus de symboles mathématiques (charge de façon automatique amsfonts)
+% \usepackage{mathrsfs} % Ecriture ronde type mathcal
+%\usepackage{bbold} % Permet d'avoir l'indicatrice mais change les textbb
+\usepackage{stmaryrd} % Pour les intervalles entiers [[ ]]
+\usepackage{pifont} % Pour avoir accès à plus de caractères
+
+%Utiliser les symboles jeu de cartes
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+
+
+% Référence dans le document
+\usepackage[noabbrev,capitalize]{cleveref}
+
+% Tableau
+\usepackage{tabularx} % Tableau
+\usepackage{multirow} % Pour créer des tableaux en subdivisant les lignes
+\usepackage{diagbox} %Pour créer des crois dans les tableaux à double entrées
+\usepackage{enumitem} %Permet de scinder une énumération et de reprendre au numéro suivant
+\usepackage{multicol} % Création de document en colonne avec plusieurs colonnes
+\multicolsep=5pt % supprime l'espace vertical
+
+% Modification des itemizes
+\setitemize{label=$\bullet$} % Utilise le package enumitem et met des points au lieu des tirets
+
+% Ecrire des algorithmes en "français" (exemple issu du cours d'optimisation 2020/2021)
+\usepackage[linesnumbered, french, frenchkw,ruled]{algorithm2e}
+% Exemple :
+%\begin{center}
+%\begin{algorithm}
+%\Entree{Un graphe $G = (V,E)$, $|V| = n$, $|E| = m$ et pour chaque arête $e$ de $E$ son poids $c(e)$;}
+%\Sortie{Un arbre (ou une forêt) maximal $A = (V,F)$ et de poids minimum ;} 
+%Trier et renuméroter les arêtes de $G$ dans l'ordre croissant de leur poids : $c(e_1) \leqslant c(e_2) \leqslant ... \leqslant c(e_m)$ \;
+%Poser $F := \emptyset$ et $k = 0$\;
+%\Tq{$k<m$ et $|F| < n-1$}{Si $e_{k+1}$ ne forme pas de cycle avec $F$ alors $F := F \cup \{ e_k \}$\;
+%$k := k +1 $\;}
+%\caption{Algorithme de Kruskal théorique (1956)}
+%\end{algorithm}
+%\end{center}
+
+% Inclure du code Python avec coloration syntaxique et bloc gris (exemple issu du TP2 d'optimisation 2020/2021)
+%\usepackage{xcolor} % Déjà importé plus haut
+\usepackage{listings}
+\lstset{backgroundcolor=\color{darkWhite},literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1{€}{{\EUR}}1 {£}{{\pounds}}1}
+\lstdefinestyle{stylepython}{        language=Python,        basicstyle=\ttfamily,    commentstyle=\color{green},    keywordstyle=\color{blue},    stringstyle=\color{olive},    numberstyle=\tiny,        numbers=left,        stepnumber=1,         numbersep=5pt}
+% Exemple :
+%\begin{lstlisting}[style=stylepython]
+%import networkx as nx #Cette bibliothèque permettra de manipuler des graphes
+%import matplotlib.pyplot as plt #Cette bibliothèque permettra de les représenter
+%import numpy as np
+%\end{lstlisting}
+
+%Package permettant de tracer des graphes, des courbes, etc.. (exemple issu du cours d'optimisation 2020/2021)
+\usepackage{tikz}
+\usepackage{tikz-cd}
+%\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{
+	decorations.pathmorphing,
+	arrows,
+	arrows.meta,
+	calc,
+	shapes,
+	shapes.geometric,
+	decorations.pathreplacing,}
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+\tikzset{>=stealth'}
+\tikzstyle{rond}=[draw,circle,thick,fill=white]
+% Exemple courbe :
+%\begin{center}
+%\begin{tikzpicture}
+%	\def\shift{.5}
+%	\def\xmax{6}
+%	\def\ymax{7}
+%	\draw[->] (-\shift,0) -- (\xmax+\shift,0) node[below] {$x$}; 
+%	\foreach \x in {1,...,\xmax}{ \pgfmathtruncatemacro\xbis{100*\x}
+%		\draw (\x,0) -- (\x,-.3*\shift) node[below] {$\scriptstyle{\xbis}$};
+%	}
+%	% axe ordonnees
+%	\draw[->] (0,-\shift) -- (0,\ymax+\shift) node[left] {$y$};  
+%	\foreach \y in {1,...,\ymax}{ \pgfmathtruncatemacro\ybis{100*\y}
+%		\draw (0,\y) -- (-.3*\shift,\y) node[left] {$\scriptstyle{\ybis}$};
+%	}
+%	\draw[fill=yellow] (0,0) -- (3,0) -- (0,6) -- cycle;
+%	
+%	\draw[thick, purple] plot [domain=-.15:6.15, variable=\t] (\t,6-\t);
+%	\node[above, text=purple] (A) at (6.9,.1) {$x+y = 600$};
+%	%%
+%	\draw[thick, purple] plot [domain=-.1:3.1, variable=\t] (\t,6-2*\t);
+%	\node[right, text=purple] (B) at (1.1,5) {$2x+y = 600$};
+%	%%
+%	\draw[thick, blue] plot [domain=-.1:3.85, variable=\t] (\t,6-1.6*\t);
+%	%%
+%	\draw[fill=blue] (0,6) circle (3pt);
+%	\node[right, text=blue] (B) at (0.1,6.3) {Solution optimale};
+%\end{tikzpicture}
+%\end{center}
+% Exemple graphe :
+%\begin{center}
+%\begin{tikzpicture}[scale=0.9]
+%    \draw[thick] (-1.5,0) node[rond] {$1$} coordinate (A) --
+%        ++(3,0) node[rond] {$2$} coordinate (B) --
+%        ++(-1,-1) node[rond] {$4$}  coordinate (D) --
+%        ++(-1,0) node[rond] {$3$}  coordinate (C) --
+%        ++(0,-1) node[rond] {$5$}  coordinate (E) --
+%        ++(1,0) node[rond] {$6$}  coordinate (F) --
+%        ++(1,-1) node[rond] {$8$}  coordinate (H) --
+%        ++(-3,0) node[rond] {$7$}  coordinate (G) -- (A)
+%        (A) -- (C)
+%        (G) -- (E)
+%        (D) -- (F)
+%        (B) -- (H);
+%\end{tikzpicture}
+%\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Environnements  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Différents types à donner aux environnements théorèmes, définitions, etc...
+%[theorem] permet de numéroter par rapport à la section en cours
+%\renewcommand{\theexem}{\empty{}} permet de ne pas numéroterNe numérote pas les exemples
+
+%\usepackage{thmtools} % Permet de créer un environnement de théorème avec des cadres
+%\declaretheorem[thmbox=L]{boxtheorem L}
+%\declaretheorem[thmbox=M]{boxtheorem M}
+%\declaretheorem[thmbox=S]{boxtheorem S}
+%
+%%\usepackage[dvipsnames]{xcolor}
+%%\declaretheorem[shaded={bgcolor=Lavender,textwidth=12em}]{BoxI}
+%\declaretheorem[shaded={rulecolor=black,rulewidth=1pt}]{BoxII}
+%
+%
+%\usepackage[leftmargin=0.1865cm,rightmargin=0.6cm]{thmbox}
+% Voici ici pour les options https://ctan.mines-albi.fr/macros/latex/contrib/thmbox/thmbox.pdf
+
+%% Ecrit de cette façon tout le monde a le même style : Titre en droit et texte en italique très léger.
+%\newtheorem[L,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{thm}{Théorème}[subsection]
+%%\renewcommand{\thetheorem}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{propo}[thm]{Proposition}
+%%\renewcommand{\thepropo}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{prop}[thm]{Propriété}
+%%\renewcommand{\theprop}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{coro}[thm]{Corollaire}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{lem}[thm]{Lemme}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{defi}[theorem]{Définition}
+%%\renewcommand{\thedefinition}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exem}{Exemple}
+%\renewcommand{\theexem}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{sol}{Solution}
+%\renewcommand{\thesol}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{hypo}{Hypothesis}[section]
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{remark}[thm]{Remarque}%[section]
+%\newtheorem{dem}{Démonstration}
+%\renewcommand{\thedem}{\empty{}} 
+%\newtheorem[S]{nota}{Notation}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[subsection]
+%\renewcommand{\thetheorem}{\empty{}} 
+\newtheorem{propo}[theorem]{Proposition}
+%\renewcommand{\thepropo}{\empty{}} 
+\newtheorem{prop}[theorem]{Propriété}
+%\renewcommand{\theprop}{\empty{}} 
+\newtheorem{coro}[theorem]{Corollaire}
+\newtheorem{lemma}[theorem]{Lemme}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Définition}
+%\renewcommand{\thedefinition}{\empty{}}
+\newtheorem{exem}{Exemple}
+\renewcommand{\theexem}{\empty{}}
+\newtheorem{cours}{Question de cours}
+\renewcommand{\thecours}{\empty{}} 
+\newtheorem{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}} 
+\newtheorem{sol}{Solution de l'exercice}
+%\renewcommand{\thesol}{\empty{}} 
+\newtheorem{hypo}{Hypothesis}[section]
+\newtheorem{remark}[theorem]{Remarque}%[section]
+
+
+\theoremstyle{remark}
+\newtheorem{dem}{Démonstration}
+\renewcommand{\thedem}{\empty{}} 
+\newtheorem{nota}{Notation}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Raccourcis   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% Ensembles
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+
+
+% Lettres calligraphiques
+\newcommand{\calP}{\mathcal{P}} 
+\newcommand{\calF}{\mathcal{F}} 
+\newcommand{\calD}{\mathcal{D}} 
+\newcommand{\calQ}{\mathcal{Q}} 
+\newcommand{\calT}{\mathcal{T}} 
+
+% Noyau et image
+\newcommand{\im}{\text{Im}} 
+\newcommand{\noy}{\text{Ker}} 
+\newcommand{\card}{\text{Card}} 
+
+%Epsilon
+\newcommand{\vare}{\varepsilon} 
+
+
+% Fonctions usuelles
+%\newcommand{\un}{\mathbb{1}} % Indicatrice en utilisant le package \usepackage{bbold} mais celui modifie les mathbb donc on définit l'indicatrice à la main
+\def\un{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}} % Indicatrice
+
+
+
+
+
+
+\title{Colle 2 - Thomas AFTALION}
+\author{MPSI2\\
+Année 2021-2022}
+%\author{Mathématiques P.A.S.S. 1}
+\date{28 septembre 2021}
+
+\begin{document}
+
+
+   \maketitle
+%      \rule{\linewidth}{0.5mm}
+      \rule{\linewidth}{0.5mm}
+%  \begin{center}
+%  %    \rule{\linewidth}{0.5mm}\\[0.4cm]
+%       { \huge \bfseries Mathématiques pour le P.A.S.S 1\\[0.4cm] }
+%    \rule{\linewidth}{0.5mm}\\[4cm]
+%     \end{center}
+
+\begin{cours}
+Démontrer la formule de Pascal sur les coefficients binomiaux.
+\end{cours}
+
+\begin{exo}
+%Difficulté : 1/5
+Soit $a\geqslant 0$. Montrer que pour tout entier naturel $n$, $(1+a)^n\geqslant 1+an$.
+\end{exo}
+
+
+%\begin{sol}
+%Montrons par récurrence que la propriété $(P_n)$ : $(1+a)^n \geqslant 1 +an$ est vraie pour tout $n \in \N$.
+% \begin{itemize}
+% \item \textbf{Initialisation.} Pour $n = 0$, on a bien $(1+a)^0 = 1 \geqslant 1+0$ donc la propriété est vraie au rang $0$.
+% \item \textbf{Hérédité.} Soit $n \geqslant 0$ un entier fixé. Supposons que la propriété $(P_n)$ est vraie au rang $n$, i.e. que \[ (1+a)^n \geqslant 1 +an.\]
+% Montrons que la propriété est vraie au rang $n+1$. On a, grâce à l'hypothèse de récurrence,
+% \[(1+a)^{n+1} = (1+a)(1+a)^n \geqslant (1+a)(1 +an) = 1 + a + an + a^2n = 1 + a(n+1) + a^2 n.\]
+% Or, $a^2 n \geqslant 0$ et on a donc montré que 
+% \[(1+a)^{n+1} \geqslant 1 + a(n+1).\]
+% Ceci achève de démontrer que la propriété est vraie au rang $n+1$.
+% \item \textbf{Conclusion.} On a donc bien démontré que pour tout $n \in \N$, $(1+a)^n \geqslant 1 +an$.
+% \end{itemize}
+% \item Etant donné un entier $n$, on veut montrer que $n$ et $n^2$ ont la même parité. Commençons par procéder à une disjonction de cas.
+% \begin{itemize}
+%\end{sol}
+
+
+
+\begin{exo}
+%Difficulté : 2/5
+	Soient $x\in \R$ et $n\in \N^*$.
+	\begin{enumerate}
+		\item Calculer \[ S_n(x) = \sum_{k=0}^n x^k.\]
+		\item En déduire la valeur de $$T_n(x) = \sum_{k=0}^n kx^k.$$
+	\end{enumerate}
+\end{exo}
+%
+%\begin{sol}
+%	Soit $x\in \R$ et $n\in \N^*$.
+%	\begin{enumerate}
+%		\item Si $x=1$, alors $S_n = n$. Si $x\ne 1$, la somme $S_n$ est la somme des $n$ premier termes d'une suite géométrique d'où 
+%		\[
+%			S_n(x) = \frac{1-x^{n+1}}{1-x} \ .
+%		\]
+%		\item Pour tout $n$ et pour tout $x$, $S_n$ est une fonction dérivable (c'est un polynôme) donc, pour tout $n\geqslant 1$ et pour tout réel $x\ne 1$
+%		\[
+%			S'_n(x) = \sum_{k=1}^n kx^{k-1} = \sum_{k=1}^n (k-1)x^{k-1} + \sum_{k=1}^n x^{k-1}
+%		\]
+%	\end{enumerate}
+%\end{sol}
+
+\begin{exo}
+%Difficulté : 2/5
+Pour $n \in \N^{\star}$ et $x \in \R$, on note $$P_n(x)= \prod_{k=1}^n \left(1+ \frac{x}{k} \right).$$
+\begin{enumerate}
+\item Que valent $P_n(0)$, $P_n(1)$ et $P_n(-n)$ ?
+\item Démontrer que pour tout réel non-nul $x$, on a $$P_n(x)= \frac{x+n}{x} P_n(x-1).$$
+\item Pour $p \in \N^{\star}$, écrire $P_n(p)$ comme un coefficient binomial.
+\end{enumerate}
+\end{exo}
+
+%\begin{sol}
+%	\begin{enumerate}
+%		\item On a $P_n(0)=1$ (on ne fait que des produits de 1), $Pn(-n)=0$, car alors $1+\frac{-n}{n}=0$ et donc on a un terme nul dans le produit. Enfin, 
+%		\[ P_n(1)= \prod_{k=1}^n  \frac{k+1}{k} = \frac{2 \times 3 \times ... \times (n+1)}{1 \times 2 \times ... \times n} = n+1.\]
+%		\item On a 
+%		$$P_n(x)= \prod_{k=1}^n \frac{x+k}{k} = \frac{(x+1) (x+2) ... (x+n)}{1 \times 2 \times ... \times n } = \frac{x+n} P_n(x-1).$$
+%				\item On a 
+%		$$P_n(p)= \prod_{k=1}^n \frac{k+p}{k} = \frac{(p+1) ... (p+n)}{n!} = \frac{(n+p)!}{n! p!} \begin{pmatrix} n+p \\ p \end{pmatrix}.$$
+%	\end{enumerate}
+%\end{sol}
+
+
+
+\begin{exo}
+%Difficulté : 3/5
+Soient $n$ et $p$ deux entiers tels que $n\geqslant 2$ et $0\leqslant p \leqslant n$. 
+\begin{enumerate}
+      \item Démontrer que pour tout entier $k\geqslant p+1$, $$\begin{pmatrix} k \\ p \end{pmatrix} =\begin{pmatrix} k+1 \\ p+1 \end{pmatrix}-\begin{pmatrix} k \\ p+1 \end{pmatrix}.$$
+      \item En déduire la valeur de $$\sum_{k=p}^n \begin{pmatrix} k \\ p \end{pmatrix}.$$
+     \end{enumerate}
+\end{exo}
+
+%\begin{sol}
+%\begin{enumerate}
+%      \item On rappelle que
+%      \[ \begin{pmatrix} k \\ p \end{pmatrix}  =   \frac{k!}{p! (k-p)!}.\]
+%      Ainsi,
+%      \[ \begin{pmatrix} k+1 \\ p+1 \end{pmatrix} - \begin{pmatrix} k \\ p+1 \end{pmatrix} = \frac{(k+1)!}{(p+1)! (k+1-(p+1))!} - \frac{k!}{(p+1)! (k-(p+1))!}\]
+%      et donc
+%      \[ \begin{pmatrix} k+1 \\ p+1 \end{pmatrix} - \begin{pmatrix} k \\ p+1 \end{pmatrix}
+%      = \frac{(k+1)!}{(p+1)! (k-p)!} - \frac{k!}{(p+1)! (k-p-1)!}.\]
+%      On met donc sur le même dénominateur et on obtient
+%      \[ \begin{pmatrix} k+1 \\ p+1 \end{pmatrix} - \begin{pmatrix} k \\ p+1 \end{pmatrix}
+%      = \frac{(k+1)! - k! (k-p)}{(p+1)! (k-p)!}  = \frac{k! (k+1  - (k-p))}{(p+1)! (k-p)!}   = \frac{k! (p+1)}{(p+1)! (k-p)!}.\]
+%      On arrive donc bien à
+%      \[ \begin{pmatrix} k+1 \\ p+1 \end{pmatrix} - \begin{pmatrix} k \\ p+1 \end{pmatrix} = \begin{pmatrix} k \\ p \end{pmatrix}.\]
+%      \item On note que
+%      \[ \sum_{k=p}^n \begin{pmatrix} k \\ p \end{pmatrix} = \sum_{k=p}^n \left( \begin{pmatrix} k+1 \\ p+1 \end{pmatrix} - \begin{pmatrix} k \\ p+1 \end{pmatrix} \right)\]
+%      Autrement dit,
+%     
+%\begin{align*}
+%\underset{k=p}{\overset{n}{\sum}} \begin{pmatrix} k \\ p \end{pmatrix}  &= 1 + \underset{k=p+1}{\overset{n}{\sum}} \begin{pmatrix} k \\ p \end{pmatrix} \\
+%  & =  1+ \left( \begin{pmatrix} p+2 \\ p+1 \end{pmatrix} - \begin{pmatrix} p+1\\ p+1 \end{pmatrix} \right) + \left( \begin{pmatrix} p+3 \\ p+1 \end{pmatrix} - \begin{pmatrix} p+2\\ p+1 \end{pmatrix} \right)\\ 
+% &  \quad + \dots  \\ 
+% &\quad + \left( \begin{pmatrix} n \\ p+1 \end{pmatrix} - \begin{pmatrix} n-1 \\ p+1 \end{pmatrix} \right) + \left( \begin{pmatrix} n+1 \\ p+1 \end{pmatrix} - \begin{pmatrix} n\\ p+1 \end{pmatrix}\right) \\
+%&= 1 + \begin{pmatrix} n+1 \\ p+1 \end{pmatrix} - \begin{pmatrix} p+1\\ p+1 \end{pmatrix} \\
+%&= \begin{pmatrix} n+1 \\ p+1 \end{pmatrix}.
+%\end{align*}
+%
+%     \end{enumerate}
+%\end{sol}
+
+\begin{exo}
+%Difficulté : 4/5
+Déterminer toutes les fonctions $f\colon \mathbb R \to \mathbb R$ telles que $$\forall (x,y)\in\mathbb R^2, \quad f(y-f(x))=2-x-y.$$
+\end{exo}
+%
+%\begin{sol}
+%Procédons par analyse-synthèse.
+% \begin{itemize}
+% \item \textbf{Analyse.} Supposons que $f$ est une fonction telle que pour tout $(x,y) \in \R^2$n
+% \[f(y - f(x)) = 2 - x - y.\]
+% Appliquons cette relation au cas où $y =f(x)$. Alors,
+% \[f(f(x) - f(x)) = 2 - x - f(x) \quad \Leftrightarrow \quad f(0) = 2 - x - f(x) \quad \Leftrightarrow \quad f(x) = -x + 2 - f(0).\]
+% De plus, en appliquant la formule $f(x) = -x+2-f(0)$ en $x=0$ on arrive à 
+% \[f(0) = 2 - f(0) \quad \Leftrightarrow \quad 2 f(0) = 2 \quad \Leftrightarrow \quad  f(0) = 1.\]
+% On en déduit que si $f$ est une fonction vérifiant la propriété en question, alors nécessairement
+% \[ f(x) =  -x + 2 - 1 = -x+1, \quad \forall x\in \R.\]
+%  \item \textbf{Synthèse.} Supposons que $f$ et définie sur $\R$ par
+%  \[ f(x) =  -x + 2 - 1 = -x+1\]
+%  et montrons qu'elle vérifie bien $f(y-f(x))=2-x-y$ pour tout $(x,y)\in\mathbb R^2$. On a,
+%  \[ f(y-f(x))= -(y-f(x)) + 1 = -y+f(x)+1 = -y + (-x+1) + 1 = -y - x +2, \quad \forall (x,y)\in\mathbb R^2.\]
+% \end{itemize}
+% Nous avons donc démontré par analyse-synthèse que la seule fonction vérifiant 
+% $$\forall (x,y)\in\mathbb R^2, \quad  f(y-f(x))=2-x-y$$
+% est la fonction définie pour tout $x\in \R$ par
+%   \[ f(x)  = -x+1.\]
+%\end{sol}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

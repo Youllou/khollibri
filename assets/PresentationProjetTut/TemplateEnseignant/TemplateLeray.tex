@@ -1,0 +1,400 @@
+\documentclass[12pt,a4paper]{amsart}
+
+\newcommand{\classe}{MP2I }
+\newcommand{\annee}{2021/2022}
+\newcommand{\NbColle}{11}
+\newcommand{\jourColle}{14/12/21} 
+
+\usepackage{titlesec}
+% \usepackage{titletoc} % for the table of contents
+\titleformat{name=\section}{}{{
+	{\large \sc Lycée Clémenceau -- \classe -- Colle \NbColle}
+}}{0.4em}{\medskip\centering\scshape}
+
+\titleformat{name=\subsection}{}{{
+	\jourColle\ -- Feuille \thesection \ -- J. \textsc{Leray} -- \textsc{Étudiant$\cdot$e} : \hspace{4cm}
+}}{0.4em}{\bigskip\centering\scshape}
+
+\usepackage{geometry}
+\geometry{ 
+	hmargin=2cm, % left and right margin
+	vmargin=2cm % top and bottom margin
+}
+\usepackage{setspace}
+\onehalfspacing
+
+% Package 
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+% Font 
+\usepackage[T1]{fontenc}
+\usepackage[lf]{Baskervaldx} % lining figures
+\usepackage[bigdelims,vvarbb]{newtxmath} % math italic letters from Nimbus Roman
+\usepackage[cal=boondoxo]{mathalfa} % mathcal from STIX, unslanted a bit
+\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+\usepackage[normalem]{ ulem }
+\usepackage{soul}
+
+\usepackage{graphicx}
+
+%%% MATHS
+\usepackage{amsmath,amsfonts,amscd,amsthm,mathrsfs} %bug avec amssymb ???
+\usepackage{stmaryrd}
+\usepackage{latexsym}
+
+%%% SYMBOLES
+\usepackage{savesym}
+\savesymbol{checkmark}
+\usepackage{dingbat}
+\usepackage{manfnt}
+
+
+\usepackage{enumitem}
+\setlist[enumerate,1]{
+    label=\arabic*.,
+    leftmargin =2em
+}
+\setlist[enumerate,2]{
+    label=\alph*),
+    leftmargin =2em
+}
+
+
+% COLORS
+\usepackage{xcolor}
+\definecolor{Chocolat}{rgb}{0.36, 0.2, 0.09}
+\definecolor{BleuTresFonce}{rgb}{0.215, 0.215, 0.36}
+\definecolor{bleu}{rgb}{0.47, 0.62, 0.8}
+
+\usepackage[colorlinks,final,hyperindex]{hyperref}
+\hypersetup{
+	pdftex,
+	linkcolor=Chocolat,
+	citecolor=BleuTresFonce,
+	filecolor=BleuTresFonce,
+	urlcolor=BleuTresFonce,
+	pdftitle=\classe-\annee-\NbColle,
+	pdfauthor=Johan Leray,
+	pdfsubject=,
+	pdfkeywords=
+}
+
+\usepackage[noabbrev,capitalize]{cleveref}
+\setlength{\parindent}{0pt}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{tkz-tab} % Pour les tableaux de signes
+%\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{
+	decorations.pathmorphing,
+	arrows,
+	arrows.meta,
+	calc,
+	shapes,
+	shapes.geometric,
+	decorations.pathreplacing,}
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+\tikzset{>=stealth'}
+
+%%%%%%%%%% ENVIRONNEMENT %%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{question}{\sc Question de cours}
+\newtheorem{exercice}{\sc Exercice}[section]
+% \newtheorem*{solution}{\sc Solution} 
+
+\usepackage{thmtools}
+
+\declaretheoremstyle[
+	headfont=\scshape\scriptsize,
+	notefont=\rmfamily\scriptsize,
+	bodyfont=\rmfamily\scriptsize,
+]{stylesolution}
+\declaretheorem[style=stylesolution,numbered=no,name=Solution]{solution}
+
+%%%%%%%%%% MACROS %%%%%%%%%
+
+
+\usepackage{xparse}       	% Parseur
+\ExplSyntaxOn
+% #1 = command to use
+% #2 = optional prefix
+% #3 = list
+\NewDocumentCommand{\createbunch}{ m O{} m }
+ {
+  \clist_map_inline:nn { #3 } { \cs_new_protected:cpn { #2 ##1 } { #1 { ##1 } } }
+ }
+\ExplSyntaxOff
+% LETTERS
+\createbunch{\mathbb}   [bb]{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
+\createbunch{\mathbf}   [bf]{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
+\createbunch{\mathcal}  [cal]{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
+\createbunch{\mathscr}  [scr]{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
+\createbunch{\mathsf}   [sf]{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
+\createbunch{\mathrm}   [rm]{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,a,b,c,d,e,f,g,h,i,j,k,l,m,o,p,q,r,s,t,u,v,w,x,y,z}
+\createbunch{\mathfrak} [frak]{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
+
+\renewcommand{\Im}{\mathrm{Im}}
+\renewcommand{\deg}{\mathrm{deg}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\llbr}{\llbracket}
+\newcommand{\Rbr}{\Rbracket}
+\newcommand{\Aff}{\mathbb{A}^2_{\bbR}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\too}{\longrightarrow}
+\newcommand{\mapstoo}{\longmapsto}
+
+\DeclareMathOperator{\Arcsin}{Arcsin}
+\DeclareMathOperator{\Arccos}{Arccos}
+\DeclareMathOperator{\Arctan}{Arctan}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\sh}{sh}
+\renewcommand{\tanh}{\mathrm{th}} 
+
+%%%% PROBAS
+\newcommand{\pr}{\bbP}
+\newcommand{\Esp}{\bbE}
+\newcommand{\Var}{\bbV}
+\newcommand{\Cov}{\bbC\mathrm{ov}}
+
+\DeclareMathOperator{\Card}{Card}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Ker}{Ker}
+
+
+\newcommand{\Johan}[1]{\textcolor{purple}{ #1}}
+\newcommand{\johan}[1]{\textcolor{purple}{ #1}}
+
+
+%%%%%%%%%%%%%%   Title & Authors    %%%%%%%%%%%%
+
+\title{Lycée Clémenceau -- MP2I}
+\date{\today}
+
+\author{Johan Leray}
+% \email{johan.leray@univ-nantes.fr}
+% \address{Laboratoire de Mathématiques Jean Leray -- Université de Nantes}
+\thanks{}
+
+
+%%%%%%%%%% AVEC OU SANS CORRECTION %%%%%%%%%%
+\usepackage{comment}
+\excludecomment{solution}
+
+
+\pagestyle{empty}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%% FEUILLE 1 %%%%%%%%%%%%%%%%
+\section{}
+\subsection{}
+
+\begin{question}
+	Montrer que la loi définie par 
+	\[
+		a \star b = \frac{a+b}{1+ab} 
+	\]
+	est une loi de composition interne sur $]-1,1[$, associative, commutative. Préciser son neutre et exprimer le symétrique de $x$ en fonction de $x$ pour tout $x\in ]-1,1[$.
+\end{question}
+
+
+\begin{exercice}
+	On considère les applications ensembles suivantes 
+	\[
+		\begin{array}[]{rccc}
+			f \colon & \N & \too & \N \\
+			& n & \mapstoo & 2n
+		\end{array}
+		\quad 
+		\mbox{ et }
+		\quad 
+		\begin{array}[]{rccl}
+			g \colon & \N & \too & \N \\
+			& n & \mapstoo & 
+			\left\{ 
+				\begin{array}{cc}
+					\frac{n}{2} & \mbox{ si $n$ est pair,} \\
+					0 & \mbox{ sinon.}
+				\end{array}
+			\right.
+		\end{array}
+	\]
+	\begin{enumerate}
+		\item Déterminer $g\circ f$ et $f\circ g$.
+		\item L'application $f$ est-elle injective ? Surjective ? Bijective ?
+		\item L'application $g$ est-elle injective ? Surjective ? Bijective ?
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	On considère la fonction  
+	\[
+		\begin{array}{rccc}
+			f \colon & \R & \too & \R \\
+			& x & \mapstoo & \frac{x}{1 + |x|}
+		\end{array}
+	\]
+	\begin{enumerate}
+		\item Montrer que $f$ réalise une bijection de $\R$ vers un sous-ensemble de $\R$ à déterminer.
+		\item Déterminer la bijection réciproque.
+		\item Démontrer que pour tous réels $x$ et $y$, on a l'inégalité suivante
+		\[
+			\frac{|x+y|}{1 +|x+y|} \leqslant \frac{|x|}{1+|x|} + \frac{|y|}{1+|y|} \ .
+		\]
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}\leavevmode
+	\begin{enumerate}
+		\item Montrer que pour tout réel $x$, on a $\lfloor x+1 \rfloor = \lfloor x \lfloor +1$.
+		\item Montrer que pour tous réels $x$ et $y$, on a $\lfloor x \rfloor + \lfloor y \rfloor \leqslant \lfloor x +y\lfloor $.
+		\item Montrer que pour tous réels $x$ et $y$, on a $\lfloor x \rfloor + \lfloor y \rfloor + \lfloor x+y \rfloor \leqslant \lfloor 2x \rfloor + \lfloor 2y \rfloor$.
+	\end{enumerate}
+\end{exercice}
+
+
+%%%%%%%%%%%%%%%%% FEUILLE 2 %%%%%%%%%%%%%%%%
+~
+\newpage
+\section{}
+\subsection{}
+
+\begin{question}
+	Unicité de l'élément neutre sous réserve d'existence d'une loi interne. Unicité sous réserve d'existence du symétrique d'un élément pour une loi interne associative.
+\end{question}
+
+\begin{exercice}
+	%Difficulté : 1/5
+	%Chapitre : Applications
+	Soit $f\colon x \mapsto \dfrac{x}{x+1}$. Exprimer $f^n(x) = \underbrace{f\circ f \circ \ldots \circ f}_{n\text{ fois}}(x)$ pour tout entier naturel $n \geqslant 1$.
+	\end{exercice}
+	
+	\begin{solution}
+	Montrons par récurrence que la propriété $f^n(x) = \frac{x}{nx+1}$ est vraie pour tout $n \geqslant 1$.
+	\begin{itemize}
+	\item \textbf{Initialisation.} Pour $n=1$ le résultat provient immédiatement de la définition de $f$.
+	\item \textbf{Hérédité.} Soit $n \geqslant 1$ fixé. Supposons que le résultat est vrai au rang $n$, i.e. que $f^n(x) = \frac{x}{nx+1}$. Alors,
+	\[ f^{n+1}(x) = f(f^n(x)) = f \left( \frac{x}{nx+1} \right) = \frac{\frac{x}{nx+1}}{\frac{x}{nx+1} +1 } = \frac{x}{x+(nx+1)} = \frac{x}{(n+1)x+1}.\]
+	Le résultat est donc vrai au rang $n+1$.
+	\item \textbf{Conclusion.} On a donc démontré par récurrence que pour tout $n \geqslant 1$, $f^n(x) = \frac{x}{nx+1}$.
+	\end{itemize}
+	\end{solution}
+	
+	
+\begin{exercice}
+%Difficulté : 1/5
+%Chapitre : Ensembles
+On définit les ensembles
+\[ K = [2,5] \times [-1,4] \quad \text{et} \quad D = \{(x,y) \in \R^2, y \leqslant x \}.\]
+\begin{enumerate}
+\item Représenter dans le plan le domaine des points $M(x,y)$ appartenant à $K$ et le domaine des points $N(x,y)$ appartenant à $D$.
+\item L'implication suivante est-elle vraie ?
+\[ \forall (x,y) \in \R^2, \quad (x,y) \in K \quad \Rightarrow \quad (x + 1,y - 1)\in D.\]
+\item La réciproque est-elle vraie ?
+\item Montrer que $K \cap D \neq \emptyset$.
+\end{enumerate}
+\end{exercice}
+	
+	\begin{solution}
+	\begin{enumerate}
+	\item On a les représentations suivantes (où on a mis en gras les "bords" inclus dans le domaine) :
+	  \begin{center}
+	\begin{tikzpicture}[scale=0.8]
+		  \draw [very thick, ->] (-1,0)--(6,0);
+		 \draw [very thick, ->] (0,-2)--(0,5);
+		 \draw [help lines] (-1,-2) grid (6,5);
+	\fill[bleu!100,opacity=0.2] (2,-1) rectangle (5,4);
+		 \draw [very thick,bleu!150] (2,-1)--(5,-1);
+		 \draw [very thick,bleu!150] (2,4)--(5,4);
+		 \draw [very thick,bleu!150] (2,-1)--(2,4);
+		 \draw [very thick,bleu!150] (5,-1)--(5,4);
+		 \draw (1.2,-0.3) node {$1$};
+		 \draw (-0.2,1.2) node {$1$};
+		 \draw (2.5,-2.5) node {\textbf{Ensemble $K$}};
+		\end{tikzpicture}
+	\hspace{1.5cm} \text{et} \hspace{1.5cm}
+	\begin{tikzpicture}[scale=0.8]
+		  \draw [very thick, ->] (-1,0)--(6,0);
+		 \draw [very thick, ->] (0,-2)--(0,5);
+		 \draw [help lines] (-1,-2) grid (6,5);
+	\fill[bleu!100,opacity=0.2]  (-1,-1) -- (-1,-2) -- (6,-2)-- (6,5) -- (5,5) -- cycle;
+		 \draw [very thick,bleu!150] (-1,-1)--(5,5);
+		 \draw (1.2,-0.3) node {$1$};
+		 \draw (-0.2,1.2) node {$1$};
+		 \draw (2.5,-2.5) node {\textbf{Ensemble $D$}};
+		\end{tikzpicture}
+		\end{center}
+	\item Cette implication est vraie. En effet, si $(x,y) \in K$, alors $2 \leqslant x \leqslant 5$ et $-1 \leqslant y \leqslant 4$. Ainsi, $3 \leqslant x+1 \leqslant 6$ et $ -2 \leqslant y-1\leqslant 3$ et donc $y-1 \leqslant x+1$ ce qui signifie que $(x+1,y-1) \in D$.
+	\item La réciproque est fausse. En effet, par exemple $(10,9) \in D$ mais $(10 - 1,9 + 1) = (9,10) \notin K$.
+	\item $K \cap D \neq \emptyset$ car $(3,3) \in K \cap D$.
+	\end{enumerate}
+	\end{solution}
+
+\begin{exercice}
+	Soit $x$ un nombre réel. Déterminer
+	\[
+		\lim_{n\to +\infty} \frac{\lfloor x\rfloor+\lfloor 2x\rfloor+ \ldots = \lfloor nx\rfloor}{n^2} \ .
+	\]
+\end{exercice}
+\begin{solution}
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%% FEUILLE 3 %%%%%%%%%%%%%%%%
+~
+\newpage
+\section{}
+\subsection{}
+
+\begin{question}
+	Soit $D$ une partie de $\R$. Alors $D$ est convexe si et seulement si $D$ est un intervalle.
+\end{question}
+
+\begin{exercice}
+	%Difficulté : 2/5
+	%Chapitre : Applications
+	On considère
+	\[ \begin{array}{ccccc}
+	f & : & \R & \to & \C \\
+	 & & x & \mapsto & \frac{1+ix}{1-ix}
+	\end{array} .\]
+	\begin{enumerate}
+	 \item Montrer que $f$ est bien définie. $f$ est-elle injective ? $f$ est-elle surjective ?
+	 \item Déterminer $f^{-1}(\mathbb R)$.
+	 \item Montrer que $f(\mathbb R)=\{z\in\mathbb C,\ |z|=1,\ z\neq-1\}$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soient $E$ un ensemble, $\mathcal{P}(E)$ l'ensemble des parties de $E$ et $A,B \in \mathcal{P}(E)$ deux parties de $E$. On définit l'application  
+	\[
+		\begin{array}[]{rccc}
+			f \colon & \mathcal{P}(E) & \too & \mathcal{P}(A) \times \mathcal{P}(B) \\
+			& X & \mapstoo & (X\cap A, X\cap B)
+		\end{array}
+	\]
+	\begin{enumerate}
+		\item Montrer que $f$ est injective si et seulement si $A\cup B = E$.
+		\item Montrer que $f$ est surjective si et seulement si $A \cap B = \emptyset$.
+		\item Donner une condition nécessaire et suffisante sur $A$ et $B$ pour que $f$ soit bijective. Dans ce cas, donner sa bijection réciproque.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Montrer que pour tout entier $n\in\N$, et pour tout réel $x$, on a 
+	\[
+		\left\lfloor \frac{\lfloor nx \rfloor}{n}	\right\rfloor = \lfloor x \rfloor \ .
+	\]
+\end{exercice}
+
+
+\end{document}

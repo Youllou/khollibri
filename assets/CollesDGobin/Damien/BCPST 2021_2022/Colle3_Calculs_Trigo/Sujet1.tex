@@ -1,0 +1,23 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{fullpage, lmodern, minted}
+\usepackage[T1]{fontenc}
+\definecolor{lightgray}{gray}{.95}
+\begin{document}
+    \begin{minted}[linenos=true, bgcolor=lightgray, tabsize=4, gobble=8, fontfamily=courier, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt]{php}
+        getMethod()) {
+                    return parent::invalidate($request);
+                }
+
+                $response = new Response();
+                if (!$this->store->purge($request->getUri())) {
+                    $response->setStatusCode(404, 'Not purged');
+                } else {
+                    $response->setStatusCode(200, 'Purged');
+                }
+
+                return $response;
+            }
+        }
+        ?>
+    \end{minted}
+\end{document}

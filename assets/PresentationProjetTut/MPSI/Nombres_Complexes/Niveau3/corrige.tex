@@ -1,0 +1,10 @@
+Supposons d'abord que $|z|=1$. Alors $z$ s'écrit $z=e^{i\theta}$, avec $ \theta \in \R \setminus 2 \pi \Z$. On peut alors écrire :
+\[ \frac{1+z}{1-z}=\frac{1+e^{i \theta}}{1  - e^{i\theta}}=\frac{ e^{i \frac{\theta}{2}} \left( e^{-i \frac{\theta}{2}} + e^{i \frac{\theta}{2}} \right)}{e^{i \frac{\theta}{2}} \left( e^{-i \frac{\theta}{2}} - e^{i \frac{\theta}{2}} \right)} =
+\frac{2\cos \left( \frac{\theta}{2} \right)}{-2i\sin \left( \frac{\theta}{2} \right)}
+=i\frac{\cos \left( \frac{\theta}{2} \right)}{\sin \left( \frac{\theta}{2} \right)}\]
+qui est bien un élément de $i\R$ (on note que $\sin \left( \frac{\theta}{2} \right) \neq 0$).\\
+Réciproquement, supposons que $\frac{1+z}{1-z}=ia$, avec $a$ un réel alors,
+\[ \frac{1+z}{1-z}=ia \quad \Leftrightarrow \quad 1+ z = ia(1-z) \quad \Leftrightarrow \quad z = \frac{-1 + ia}{1+ia}.\]
+Ainsi,
+\[ | z| = \left| \frac{-1 + ia}{1+ia} \right| = \frac{\sqrt{1+a^2}}{\sqrt{1+a^2}} = 1\]
+ce qui prouve la réciproque.

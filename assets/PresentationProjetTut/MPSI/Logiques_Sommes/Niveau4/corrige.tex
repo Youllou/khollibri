@@ -1,0 +1,19 @@
+Procédons par analyse-synthèse.
+ \begin{itemize}
+ \item \textbf{Analyse.} Supposons que $f$ est une fonction telle que pour tout $(x,y) \in \R^2$n
+ \[f(y - f(x)) = 2 - x - y.\]
+ Appliquons cette relation au cas où $y =f(x)$. Alors,
+ \[f(f(x) - f(x)) = 2 - x - f(x) \quad \Leftrightarrow \quad f(0) = 2 - x - f(x) \quad \Leftrightarrow \quad f(x) = -x + 2 - f(0).\]
+ De plus, en appliquant la formule $f(x) = -x+2-f(0)$ en $x=0$ on arrive à 
+ \[f(0) = 2 - f(0) \quad \Leftrightarrow \quad 2 f(0) = 2 \quad \Leftrightarrow \quad  f(0) = 1.\]
+ On en déduit que si $f$ est une fonction vérifiant la propriété en question, alors nécessairement
+ \[ f(x) =  -x + 2 - 1 = -x+1, \quad \forall x\in \R.\]
+  \item \textbf{Synthèse.} Supposons que $f$ et définie sur $\R$ par
+  \[ f(x) =  -x + 2 - 1 = -x+1\]
+  et montrons qu'elle vérifie bien $f(y-f(x))=2-x-y$ pour tout $(x,y)\in\mathbb R^2$. On a,
+  \[ f(y-f(x))= -(y-f(x)) + 1 = -y+f(x)+1 = -y + (-x+1) + 1 = -y - x +2, \quad \forall (x,y)\in\mathbb R^2.\]
+ \end{itemize}
+ Nous avons donc démontré par analyse-synthèse que la seule fonction vérifiant 
+ $$\forall (x,y)\in\mathbb R^2, \quad  f(y-f(x))=2-x-y$$
+ est la fonction définie pour tout $x\in \R$ par
+   \[ f(x)  = -x+1.\]

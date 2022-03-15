@@ -1,0 +1,477 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages de base   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Classe du document (book : chapitre inclus, pratique pour les gros cours (PASS, Tremplin), article (8pt) ou amsart (12pt) : pratique pour les cours sur une seule thématique)
+\documentclass[a4paper, 11pt,openany]{article}% openany évite de commencer les chapitres sur une page forcément impaire (évite les pages blanches)
+
+% Encodage, langue et font
+\usepackage[utf8]{inputenc} % Pour les accents (conversion entre ces caractères accentués et les commandes d’accentuation)
+\usepackage[french]{babel} % Français
+\usepackage[T1]{fontenc} % Permet d'afficher et de prendre correctement en charge ces caractères accentués du point de vue du fichier de sortie
+
+% Si on veut faire apparaître le texte avec des caractères plus larges
+%\usepackage[lf]{Baskervaldx} % Texte en plus "gras"
+%\usepackage[bigdelims,vvarbb]{newtxmath} % Lettre mathématiques en plus "gras"
+%\usepackage[cal=boondoxo]{mathalfa} % Style pour les \mathscal
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+% Mise en page
+% Version automatique mais problème d'écart entre l'en-tête et le texte.
+%\usepackage{fullpage} % Numérotation bas de page (et mise en page pleine).
+\usepackage{setspace} % Interligne
+\onehalfspacing % Interligne
+\usepackage[a4paper]{geometry}% Package pour mise en page
+\geometry{hscale=0.8,vscale=0.8,centering,headsep=0.5cm} % Marges, Headsep permet de ne pas coller le texte à l'en-tête
+
+\setlength{\parindent}{0pt} % Supprimer les identations par défaut
+
+\usepackage{fancyhdr} %Package permettant de mettre des en-têtes et des pieds de pages
+\pagestyle{fancy}
+\fancyhead{} % Enleve ce qui est présent par défaut
+\fancyfoot{}% Enleve ce qui est présent par défaut
+\usepackage{extramarks} % Pour écrire proprement le chapitre dans l'en-tête
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} % Redéfinition du chapitre pour écriture dans l'en-tête sous la forme "Chapitre n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}} % Forme "n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Forme "Nom du chapitre"
+\renewcommand{\headrulewidth}{0.6pt} % Epaisseur trait en haut
+\renewcommand{\footrulewidth}{0.6pt} % Epaisseur trait en bas
+\setlength{\headheight}{15pt}
+% Placer les informations où on veut (à noter : E: Even page ; O: Odd page ; L: Left field ; C: Center field ; R: Right field ; H: Header ; F: Footer) :
+\fancyhead[LO,LE]{\slshape  \textbf{MPSI2}}
+\fancyhead[RO,RE]{\slshape \textbf{Corrigé - Colle 7 (Sujet 2)}}
+%\fancyhead[CO,CE]{---Draft---}
+\fancyfoot[C]{\thepage}
+%\fancyfoot[LO, LE] {\slshape Damien GOBIN}
+%\fancyfoot[RO, RE] {\slshape Année 2021-2022}
+
+% Couleurs
+\usepackage{xcolor}
+\definecolor{BleuTresFonce}{rgb}{0.0,0.0,0.250}
+%\definecolor{bleu}{rgb}{0.36, 0.54, 0.66}
+\definecolor{bleu}{rgb}{0.47, 0.62, 0.8}
+%\definecolor{vert}{rgb}{0.33, 0.42, 0.18}
+%\definecolor{vert}{rgb}{0.52, 0.73, 0.4}
+\definecolor{vert}{rgb}{0.56, 0.74, 0.56}
+% Liens hypertextes
+\usepackage[colorlinks,final,hyperindex]{hyperref}
+\hypersetup{
+	pdftex,
+	linkcolor=BleuTresFonce,
+	citecolor=BleuTresFonce,
+	filecolor=BleuTresFonce,
+	urlcolor=BleuTresFonce,
+	pdftitle=TemplateCours,
+	pdfauthor=Damien Gobin,
+	pdfsubject=,
+	pdfkeywords=
+}
+
+
+% Inclure des figures
+\usepackage{graphicx} % Permet d'utiliser includegraphics
+\usepackage{pdfpages} % Permet d'insérer des fichiers pdf
+
+% Utiliser des commentaires
+\usepackage{comment}
+%\excludecomment{sol} %commenter cette ligne si on veut faire apparaitre les solutions d'exercices
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages mathématiques  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Packages mathématiques de base
+%\usepackage{amsfonts} % Permet de taper des ensembles 
+\usepackage{amsmath} % Permet de taper des maths (contient cleveref)
+\usepackage{amsthm} % Permet de définir une environnement pour les théorèmes
+\usepackage{amssymb} % Donne accès a plus de symboles mathématiques (charge de façon automatique amsfonts)
+% \usepackage{mathrsfs} % Ecriture ronde type mathcal
+%\usepackage{bbold} % Permet d'avoir l'indicatrice mais change les textbb
+\usepackage{stmaryrd} % Pour les intervalles entiers [[ ]]
+\usepackage{pifont} % Pour avoir accès à plus de caractères
+
+%Utiliser les symboles jeu de cartes
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+
+
+% Référence dans le document
+\usepackage[noabbrev,capitalize]{cleveref}
+
+% Tableau
+\usepackage{tabularx} % Tableau
+\usepackage{multirow} % Pour créer des tableaux en subdivisant les lignes
+\usepackage{diagbox} %Pour créer des crois dans les tableaux à double entrées
+\usepackage{enumitem} %Permet de scinder une énumération et de reprendre au numéro suivant
+\usepackage{multicol} % Création de document en colonne avec plusieurs colonnes
+\multicolsep=5pt % supprime l'espace vertical
+
+% Modification des itemizes
+\setitemize{label=$\bullet$} % Utilise le package enumitem et met des points au lieu des tirets
+
+% Ecrire des algorithmes en "français" (exemple issu du cours d'optimisation 2020/2021)
+\usepackage[linesnumbered, french, frenchkw,ruled]{algorithm2e}
+% Exemple :
+%\begin{center}
+%\begin{algorithm}
+%\Entree{Un graphe $G = (V,E)$, $|V| = n$, $|E| = m$ et pour chaque arête $e$ de $E$ son poids $c(e)$;}
+%\Sortie{Un arbre (ou une forêt) maximal $A = (V,F)$ et de poids minimum ;} 
+%Trier et renuméroter les arêtes de $G$ dans l'ordre croissant de leur poids : $c(e_1) \leqslant c(e_2) \leqslant ... \leqslant c(e_m)$ \;
+%Poser $F := \emptyset$ et $k = 0$\;
+%\Tq{$k<m$ et $|F| < n-1$}{Si $e_{k+1}$ ne forme pas de cycle avec $F$ alors $F := F \cup \{ e_k \}$\;
+%$k := k +1 $\;}
+%\caption{Algorithme de Kruskal théorique (1956)}
+%\end{algorithm}
+%\end{center}
+
+% Inclure du code Python avec coloration syntaxique et bloc gris (exemple issu du TP2 d'optimisation 2020/2021)
+%\usepackage{xcolor} % Déjà importé plus haut
+\usepackage{listings}
+\lstset{backgroundcolor=\color{darkWhite},literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1{€}{{\EUR}}1 {£}{{\pounds}}1}
+\lstdefinestyle{stylepython}{        language=Python,        basicstyle=\ttfamily,    commentstyle=\color{green},    keywordstyle=\color{blue},    stringstyle=\color{olive},    numberstyle=\tiny,        numbers=left,        stepnumber=1,         numbersep=5pt}
+% Exemple :
+%\begin{lstlisting}[style=stylepython]
+%import networkx as nx #Cette bibliothèque permettra de manipuler des graphes
+%import matplotlib.pyplot as plt #Cette bibliothèque permettra de les représenter
+%import numpy as np
+%\end{lstlisting}
+
+%Package permettant de tracer des graphes, des courbes, etc.. (exemple issu du cours d'optimisation 2020/2021)
+\usepackage{tikz}
+\usepackage{tikz-cd}
+%\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{
+	decorations.pathmorphing,
+	arrows,
+	arrows.meta,
+	calc,
+	shapes,
+	shapes.geometric,
+	decorations.pathreplacing,}
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+\tikzset{>=stealth'}
+\tikzstyle{rond}=[draw,circle,thick,fill=white]
+% Exemple courbe :
+%\begin{center}
+%\begin{tikzpicture}
+%	\def\shift{.5}
+%	\def\xmax{6}
+%	\def\ymax{7}
+%	\draw[->] (-\shift,0) -- (\xmax+\shift,0) node[below] {$x$}; 
+%	\foreach \x in {1,...,\xmax}{ \pgfmathtruncatemacro\xbis{100*\x}
+%		\draw (\x,0) -- (\x,-.3*\shift) node[below] {$\scriptstyle{\xbis}$};
+%	}
+%	% axe ordonnees
+%	\draw[->] (0,-\shift) -- (0,\ymax+\shift) node[left] {$y$};  
+%	\foreach \y in {1,...,\ymax}{ \pgfmathtruncatemacro\ybis{100*\y}
+%		\draw (0,\y) -- (-.3*\shift,\y) node[left] {$\scriptstyle{\ybis}$};
+%	}
+%	\draw[fill=yellow] (0,0) -- (3,0) -- (0,6) -- cycle;
+%	
+%	\draw[thick, purple] plot [domain=-.15:6.15, variable=\t] (\t,6-\t);
+%	\node[above, text=purple] (A) at (6.9,.1) {$x+y = 600$};
+%	%%
+%	\draw[thick, purple] plot [domain=-.1:3.1, variable=\t] (\t,6-2*\t);
+%	\node[right, text=purple] (B) at (1.1,5) {$2x+y = 600$};
+%	%%
+%	\draw[thick, blue] plot [domain=-.1:3.85, variable=\t] (\t,6-1.6*\t);
+%	%%
+%	\draw[fill=blue] (0,6) circle (3pt);
+%	\node[right, text=blue] (B) at (0.1,6.3) {Solution optimale};
+%\end{tikzpicture}
+%\end{center}
+% Exemple graphe :
+%\begin{center}
+%\begin{tikzpicture}[scale=0.9]
+%    \draw[thick] (-1.5,0) node[rond] {$1$} coordinate (A) --
+%        ++(3,0) node[rond] {$2$} coordinate (B) --
+%        ++(-1,-1) node[rond] {$4$}  coordinate (D) --
+%        ++(-1,0) node[rond] {$3$}  coordinate (C) --
+%        ++(0,-1) node[rond] {$5$}  coordinate (E) --
+%        ++(1,0) node[rond] {$6$}  coordinate (F) --
+%        ++(1,-1) node[rond] {$8$}  coordinate (H) --
+%        ++(-3,0) node[rond] {$7$}  coordinate (G) -- (A)
+%        (A) -- (C)
+%        (G) -- (E)
+%        (D) -- (F)
+%        (B) -- (H);
+%\end{tikzpicture}
+%\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Environnements  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Différents types à donner aux environnements théorèmes, définitions, etc...
+%[theorem] permet de numéroter par rapport à la section en cours
+%\renewcommand{\theexem}{\empty{}} permet de ne pas numéroterNe numérote pas les exemples
+
+%\usepackage{thmtools} % Permet de créer un environnement de théorème avec des cadres
+%\declaretheorem[thmbox=L]{boxtheorem L}
+%\declaretheorem[thmbox=M]{boxtheorem M}
+%\declaretheorem[thmbox=S]{boxtheorem S}
+%
+%%\usepackage[dvipsnames]{xcolor}
+%%\declaretheorem[shaded={bgcolor=Lavender,textwidth=12em}]{BoxI}
+%\declaretheorem[shaded={rulecolor=black,rulewidth=1pt}]{BoxII}
+%
+%
+%\usepackage[leftmargin=0.1865cm,rightmargin=0.6cm]{thmbox}
+% Voici ici pour les options https://ctan.mines-albi.fr/macros/latex/contrib/thmbox/thmbox.pdf
+
+%% Ecrit de cette façon tout le monde a le même style : Titre en droit et texte en italique très léger.
+%\newtheorem[L,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{thm}{Théorème}[subsection]
+%%\renewcommand{\thetheorem}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{propo}[thm]{Proposition}
+%%\renewcommand{\thepropo}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{prop}[thm]{Propriété}
+%%\renewcommand{\theprop}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{coro}[thm]{Corollaire}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{lem}[thm]{Lemme}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{defi}[theorem]{Définition}
+%%\renewcommand{\thedefinition}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exem}{Exemple}
+%\renewcommand{\theexem}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{sol}{Solution}
+%\renewcommand{\thesol}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{hypo}{Hypothesis}[section]
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{remark}[thm]{Remarque}%[section]
+%\newtheorem{dem}{Démonstration}
+%\renewcommand{\thedem}{\empty{}} 
+%\newtheorem[S]{nota}{Notation}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[subsection]
+%\renewcommand{\thetheorem}{\empty{}} 
+\newtheorem{propo}[theorem]{Proposition}
+%\renewcommand{\thepropo}{\empty{}} 
+\newtheorem{prop}[theorem]{Propriété}
+%\renewcommand{\theprop}{\empty{}} 
+\newtheorem{coro}[theorem]{Corollaire}
+\newtheorem{lemma}[theorem]{Lemme}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Définition}
+%\renewcommand{\thedefinition}{\empty{}}
+\newtheorem{exem}{Exemple}
+\renewcommand{\theexem}{\empty{}} 
+\newtheorem{cours}{Question de cours}
+\renewcommand{\thecours}{\empty{}} 
+\newtheorem{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}} 
+\newtheorem{sol}{Solution de l'exercice}
+%\renewcommand{\thesol}{\empty{}} 
+\newtheorem{hypo}{Hypothesis}[section]
+\newtheorem{remark}[theorem]{Remarque}%[section]
+
+
+\theoremstyle{remark}
+\newtheorem{dem}{Démonstration}
+\renewcommand{\thedem}{\empty{}} 
+\newtheorem{nota}{Notation}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Raccourcis   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% Ensembles
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+
+
+% Lettres calligraphiques
+\newcommand{\calP}{\mathcal{P}} 
+\newcommand{\calF}{\mathcal{F}} 
+\newcommand{\calD}{\mathcal{D}} 
+\newcommand{\calQ}{\mathcal{Q}} 
+\newcommand{\calT}{\mathcal{T}} 
+
+% Noyau et image
+\newcommand{\im}{\text{Im}} 
+\newcommand{\noy}{\text{Ker}} 
+\newcommand{\card}{\text{Card}} 
+
+%Epsilon
+\newcommand{\vare}{\varepsilon} 
+
+
+% Fonctions usuelles
+%\newcommand{\un}{\mathbb{1}} % Indicatrice en utilisant le package \usepackage{bbold} mais celui modifie les mathbb donc on définit l'indicatrice à la main
+\def\un{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}} % Indicatrice
+
+
+\title{Corrigé - Colle 7 (Sujet 2)}
+\author{MPSI2\\
+Année 2021-2022}
+%\author{Mathématiques P.A.S.S. 1}
+\date{16 novembre 2021}
+
+\begin{document}
+
+
+   \maketitle
+%      \rule{\linewidth}{0.5mm}
+      \rule{\linewidth}{0.5mm}
+%  \begin{center}
+%  %    \rule{\linewidth}{0.5mm}\\[0.4cm]
+%       { \huge \bfseries Mathématiques pour le P.A.S.S 1\\[0.4cm] }
+%    \rule{\linewidth}{0.5mm}\\[4cm]
+%     \end{center}
+
+
+\begin{cours}
+Énoncer et démontrer le théorème donnant la forme générale des solutions d'une équations différentielle linéaire du premier ordre à l'aide d'une solution particulière.
+\end{cours}
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Equations différentielles
+Résoudre l'équation différentielle
+\[ y''-4y' + 3y = x^2e^x + xe^{2x}\cos(x).\]
+\end{exo}
+
+\begin{sol}
+On résout l'équation homogène $y''-4y'+3y=0$. On introduit l'équation caractéristique $r^2-4r+3=0$. Ses racines sont 1 et 3. On en déduit que la solution générale de l'équation sans second membre est 
+\[ x \mapsto \lambda e^x + \mu e^{3x} \quad \text{avec} \quad \lambda, \mu \in \R.\]
+On cherche une solution particulière en utilisant le principe de superposition des solutions. On cherche donc d'abord une solution de $y''-4y'+3y=x^2e^x$. Puisque 1 est solution de l'équation caractéristique, on cherche une solution sous la forme $y_1(x)=(ax^3+bx^2+cx)e^x$. En dérivant et en identifiant, on obtient le système
+$$\begin{cases}-6a&=1\\6a - 4b&=0\\ 2b - 2c &= 0
+\end{cases}.$$
+Une solution particulière est donc obtenue par \[y_1(x)=- \left( \frac{1}{6} x^3+\frac{1}{4} x^2+ \frac{1}{4} x \right) e^x.\]
+On cherche ensuite une solution particulière de $y''-4y'+3y=xe^{2x}\cos(x)$. On va en fait chercher une solution particulière de $y''-4y'+3y=xe^{(2+i)x}$ et on en prendra la partie réelle. $2+i$ n'étant pas solution de l'équation caractéristique, on cherche une solution sous la forme $y_2(x)=(ax+b)e^{(2+i)x}$. Après dérivation et identification, on trouve le système 
+$$\begin{cases}-2a&=1\\2ia - 2b&=0
+\end{cases}.$$
+On trouve $y_2(x)= \left(- \frac{1}{2}x - \frac{i}{2} \right)e^{(2+i)x}$. Prenant la partie réelle, une solution particulière de $y''-4y'+3y=xe^{2x} \cos(x)$ est obtenue par 
+\[ x \mapsto \left( -\frac{x}{2} \cos(x)+\frac{1}{2} \sin(x)\right)e^{2x}.\]
+Les solutions de l'équation différentielle initiale sont donc les fonctions de la forme
+\[ x \mapsto - \left( \frac{1}{6} x^3+\frac{1}{4} x^2+ \frac{1}{4} x \right) e^x + \left( -\frac{x}{2} \cos(x)+\frac{1}{2} \sin(x)\right)e^{2x}  \lambda e^x + \mu e^{3x} .\]
+\end{sol}
+
+
+
+
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Equations différentielles
+Résoudre l'équation différentielle
+\[ y'+y = xe^{-x}.\]
+\end{exo}
+
+
+\begin{sol}
+On résout d'abord l'équation sans second membre $y'+y=0$. La solution générale est de la forme $y(x)=Ke^{-x}$ avec $K \in \R$. On cherche ensuite une solution particulière sous la forme $y(x) = P(x) e^{-x}$ avec $P$ un polynôme. Puisque dans ce cas $y'(x) = P'(x) e^{-x} - P(x)e^{-x}$, on trouve que $y$ est une solution de l'équation si et seulement si 
+\[ P'(x) e^{-x} - P(x)e^{-x} + P(x)e^{-x} = xe^{-x}\]
+pour tout $x \in \R$ soit
+\[ P'(x) e^{-x} = xe^{-x} \quad \Leftrightarrow \quad P'(x) = x\]
+pour tout $x \in \R$. Le polynôme $P(x) = \frac{x^2}{2}$ convient et une solution particulière de l'équation est donc donnée par $P(x) = \frac{x^2}{2} e^{-x}$. Les solutions de l'équation sont donc les fonctions de la forme
+\[ x \mapsto \frac{x^2}{2} e^{-x} + Ke^{-x} \quad \text{avec} \quad K\in \R.\]
+\end{sol}
+
+
+\begin{exo}
+%Difficulté : 1/5
+%Chapitre : Equations différentielles
+Résoudre l'équation différentielle
+\[ (1+x)y'+y = 1 + \ln(1+x) \quad \text{sur} \quad ]-1, + \infty[.\]
+\end{exo}
+
+\begin{sol}
+On commence par résoudre l'équation homogène $(1+x)y'+y=0$, dont la solution générale est donnée par $y(x)=\frac{\lambda}{1+x}$, $\lambda \in \R$. On cherche une solution particulière par la méthode de variation de la constante, en posant $y(x)= \lambda(x)1+x$, de sorte que 
+\[ y'(x)=\frac{\lambda'(x)}{1+x} - \frac{
+\lambda (x)}{(1+x)^2}.\]
+En introduisant ceci dans l'équation différentielle, on trouve 
+\[ (1+x)\left(\frac{\lambda'(x)}{1+x} - \frac{\lambda(x)}{(1+x)^2} \right)+\frac{\lambda(x)}{1+x} = 1+ \ln(1+x)\]
+ce qui donne après simplifications 
+\[ \lambda'(x)=1+\ln(1+x).\]
+ Une primitive est donnée par $\lambda(x)=(1+x)\ln(1+x)$, et les solution de l'équation avec second membre sont donc les fonctions de la forme
+ \[ x \mapsto \frac{\lambda}{1+x} + \ln(1+x) \quad \lambda \in \R.\]
+\end{sol}
+
+
+\begin{exo}
+%Difficulté : 2/5
+%Chapitre : Equations différentielles
+\begin{enumerate}
+\item Soient $C,D \in \R$. On considère la fonction $f$ définie sur $R^{\star}$ par 
+$$f(x) = \begin{cases}C e^{-\frac{1}{x}}&\text{si } x > 0\\D e^{-\frac{1}{x}}&\text{si } x < 0
+\end{cases}.$$
+\begin{enumerate}
+\item Donner une condition nécessaire et suffisante portant sur $C$ et $D$ pour que $f$ se prolonge par continuité en $0$.
+\item Démontrer que si cette condition est remplie, ce prolongement, toujours noté $f$, est alors dérivable en 0 et que $f'
+$ est continue en 0. 
+\end{enumerate}
+\item On considère l'équation différentielle $x^2 y'-y=0$.
+Résoudre cette équation sur les intervalles $]0,+ \infty[$ et $]- \infty,0[$.
+\item Résoudre l'équation précédente sur $\R$. 
+\end{enumerate} 
+\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item 
+\begin{enumerate}
+\item Il est clair que $f(x) \to 0$ quand $x \to 0^+$, indépendamment de la valeur de $C$, et que $f(x) \to \pm \infty$ quand $x \to 0^-$ si $D \neq 0$, et $f(x) \to 0$ quand $x \to 0^-$ si $D=0$. Ainsi, on a un prolongement continu en 0 si et seulement si $D=0$. Dans ce cas, on a $f(0)=0$. 
+\item On suppose donc que $D=0$. La fonction $f$ étant identiquement nulle à gauche de 0, elle est dérivable à gauche en 0 et sa dérivée est nulle. Pour $x>0$, on a 
+\[ \frac{f(x)-f(0)}{x}=\frac{C}{x} e^{-\frac{1}{x}}.\]
+Posons $u= \frac{1}{x}$. Lorsque $x$ tend vers $0^+$, $u$ tend vers $+\infty$ et \[ \frac{1}{x} e^{- \frac{1}{x}} = u e^{-u}.\]
+Par comparaison des fonctions polynômes et exponentielle, on en déduit que $\frac{f(x)-f(0)}{x}$ tend vers 0 lorsque $x$ tend vers $0^+$, et donc $f'$ est dérivable à droite en 0, de dérivée nulle. Ainsi, on a bien que $f$ est dérivable en 0, avec $f'(0)=0$. La continuité à gauche de $f'$ en 0 ne pose alors pas de problèmes. En ce qui concerne la dérivée à droite, on remarque que, pour $x>0$, on a \[ f'(x)=\frac{C}{x^2} e^{-\frac{1}{x}} = Cu^2 e^{-u}\]
+toujours avec le même changement de variables. Comme précédemment, on en tire que $f'(x) \to 0$ lorsque $x \to 0^+$, et donc que $f$ est continue en 0. 
+\end{enumerate}
+\item Sur l'intervalle $]0,+\infty[$, la fonction $x^2$ ne s'annule pas et l'équation est équivalente à y
+\[ y'= \frac{1}{x^2} y.\]
+Les solutions de cette équation sont les fonctions $y(x)=C e^{-\frac{1}{x}}$, où $C \in \R$. La résolution sur l'intervalle $]-\infty,0[$ donne exactement le même ensemble de solutions. 
+\item Soit $y$ une solution sur $\R$. Sa restriction à $]0,+ \infty[$ est solution sur $]0,+\infty[$, et donc il existe une constante $C \in \R$ telle que, pour tout $x>0$, $y(x)=C e^{-\frac{1}{x}}$. La restriction de $y$ à $]-\infty,0[$ est aussi solution sur $]-\infty,0[$, et donc il existe une constante $D \in \R$ telle que, pour tout $x<0$, $y(x)=De^{-\frac{1}{x}}$. Remarquons ici que $C$ et $D$ n'ont aucune raison d'être égaux. En effet, les résolutions sur $]-\infty,0[$ et $]0,+\infty[$ se font totalement indépendamment.
+D'ailleurs, le résultat des premières questions entraîne que, pour que $y$ soit continue en 0, il est nécessaire que $D=0$. Dans ce cas, la fonction $y$ est de classe $C^1$, et elle vérifie bien l'équation différentielle : c'est clair pour $x \neq 0$, et c'est aussi vrai en 0 par continuité de $y$ et $y'$ en 0. 
+\end{enumerate} 
+\end{sol}
+   
+
+
+\begin{exo}
+%Difficulté : 3/5
+%Chapitre : Equations différentielles
+Soient $a,b:\R \to \R$ deux applications continues de $\R$ dans $\R$ périodiques de période 1. A quelle(s) condition(s) l'équation différentielle $y'=a(x)y+b(x)$ admet-elle des solutions 1-périodiques. Les déterminer.
+\end{exo}
+
+
+\begin{sol}
+La solution générale de l'équation s'écrit \[y(x)= \left(\alpha + \int_0^x b(t) e^{-A(t)} \,dt \right)e^{A(x)}\]
+où $A(x)= \int_0^x a(t) \, dt$.
+Notons que 
+\[ A(x+1)=A(x)+ \int_x^{x+1} a(t) \,dt = A(x)+ \int_0^1 a(t) \, dt,\]
+et posons $\lambda = \int_0^1 a(t) \, dt$. On a ainsi :
+\[y(x+1)= \left(\alpha + \int_0^1 b(t) e^{-A(t)} \,dt  + \int_1^{x+1} b(t) e^{-A(t)} \,dt \right)e^{A(x+1)}\]
+i.e.
+\[ y(x+1) = \left(\alpha + \int_0^1 b(t) e^{-A(t)} \,dt  + \int_0^{x} b(t) e^{-A(t)} \,dt \right)e^{A(x) + \lambda}\]
+et donc
+\[ y(x+1) = y(x) + (\alpha(e^{\lambda}-1) + \mu e^{\lambda})e^{A(x)}.\]
+où on a posé $ \mu = \int_0^1 b(t) e^{-A(t)} \, dt$. Autrement dit, $f$ est $1-$périodique si et seulement si 
+\[ \alpha(e^{\lambda} - 1) + \mu e^{\lambda} = 0.\]
+Si $\lambda \neq 0$, l'équation admet une unique solution $1-$périodique, donnée par \[  \alpha = \frac{\mu e^{\lambda}}{1 - e^{\lambda}}.\]
+Si $\lambda=0$ et $\mu=0$, alors toute solution est $1-$périodique.\\
+Si $\lambda = 0$ et $\mu \neq 0$, alors il n'y a aucune solution $1-$périodique.
+\end{sol}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

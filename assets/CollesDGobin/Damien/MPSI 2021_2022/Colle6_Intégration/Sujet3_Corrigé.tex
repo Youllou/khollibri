@@ -1,0 +1,516 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages de base   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Classe du document (book : chapitre inclus, pratique pour les gros cours (PASS, Tremplin), article (8pt) ou amsart (12pt) : pratique pour les cours sur une seule thématique)
+\documentclass[a4paper, 11pt,openany]{article}% openany évite de commencer les chapitres sur une page forcément impaire (évite les pages blanches)
+
+% Encodage, langue et font
+\usepackage[utf8]{inputenc} % Pour les accents (conversion entre ces caractères accentués et les commandes d’accentuation)
+\usepackage[french]{babel} % Français
+\usepackage[T1]{fontenc} % Permet d'afficher et de prendre correctement en charge ces caractères accentués du point de vue du fichier de sortie
+
+% Si on veut faire apparaître le texte avec des caractères plus larges
+%\usepackage[lf]{Baskervaldx} % Texte en plus "gras"
+%\usepackage[bigdelims,vvarbb]{newtxmath} % Lettre mathématiques en plus "gras"
+%\usepackage[cal=boondoxo]{mathalfa} % Style pour les \mathscal
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+% Mise en page
+% Version automatique mais problème d'écart entre l'en-tête et le texte.
+%\usepackage{fullpage} % Numérotation bas de page (et mise en page pleine).
+\usepackage{setspace} % Interligne
+\onehalfspacing % Interligne
+\usepackage[a4paper]{geometry}% Package pour mise en page
+\geometry{hscale=0.8,vscale=0.8,centering,headsep=0.5cm} % Marges, Headsep permet de ne pas coller le texte à l'en-tête
+
+\setlength{\parindent}{0pt} % Supprimer les identations par défaut
+
+\usepackage{fancyhdr} %Package permettant de mettre des en-têtes et des pieds de pages
+\pagestyle{fancy}
+\fancyhead{} % Enleve ce qui est présent par défaut
+\fancyfoot{}% Enleve ce qui est présent par défaut
+\usepackage{extramarks} % Pour écrire proprement le chapitre dans l'en-tête
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} % Redéfinition du chapitre pour écriture dans l'en-tête sous la forme "Chapitre n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}} % Forme "n. Nom du chapitre"
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Forme "Nom du chapitre"
+\renewcommand{\headrulewidth}{0.6pt} % Epaisseur trait en haut
+\renewcommand{\footrulewidth}{0.6pt} % Epaisseur trait en bas
+\setlength{\headheight}{15pt}
+% Placer les informations où on veut (à noter : E: Even page ; O: Odd page ; L: Left field ; C: Center field ; R: Right field ; H: Header ; F: Footer) :
+\fancyhead[LO,LE]{\slshape  \textbf{MPSI2}}
+\fancyhead[RO,RE]{\slshape \textbf{Corrigé - Colle 6 (Sujet 3)}}
+%\fancyhead[CO,CE]{---Draft---}
+\fancyfoot[C]{\thepage}
+%\fancyfoot[LO, LE] {\slshape Damien GOBIN}
+%\fancyfoot[RO, RE] {\slshape Année 2021-2022}
+
+% Couleurs
+\usepackage{xcolor}
+\definecolor{BleuTresFonce}{rgb}{0.0,0.0,0.250}
+%\definecolor{bleu}{rgb}{0.36, 0.54, 0.66}
+\definecolor{bleu}{rgb}{0.47, 0.62, 0.8}
+%\definecolor{vert}{rgb}{0.33, 0.42, 0.18}
+%\definecolor{vert}{rgb}{0.52, 0.73, 0.4}
+\definecolor{vert}{rgb}{0.56, 0.74, 0.56}
+% Liens hypertextes
+\usepackage[colorlinks,final,hyperindex]{hyperref}
+\hypersetup{
+	pdftex,
+	linkcolor=BleuTresFonce,
+	citecolor=BleuTresFonce,
+	filecolor=BleuTresFonce,
+	urlcolor=BleuTresFonce,
+	pdftitle=TemplateCours,
+	pdfauthor=Damien Gobin,
+	pdfsubject=,
+	pdfkeywords=
+}
+
+
+% Inclure des figures
+\usepackage{graphicx} % Permet d'utiliser includegraphics
+\usepackage{pdfpages} % Permet d'insérer des fichiers pdf
+
+% Utiliser des commentaires
+\usepackage{comment}
+%\excludecomment{sol} %commenter cette ligne si on veut faire apparaitre les solutions d'exercices
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Packages mathématiques  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Packages mathématiques de base
+%\usepackage{amsfonts} % Permet de taper des ensembles 
+\usepackage{amsmath} % Permet de taper des maths (contient cleveref)
+\usepackage{amsthm} % Permet de définir une environnement pour les théorèmes
+\usepackage{amssymb} % Donne accès a plus de symboles mathématiques (charge de façon automatique amsfonts)
+% \usepackage{mathrsfs} % Ecriture ronde type mathcal
+%\usepackage{bbold} % Permet d'avoir l'indicatrice mais change les textbb
+\usepackage{stmaryrd} % Pour les intervalles entiers [[ ]]
+\usepackage{pifont} % Pour avoir accès à plus de caractères
+
+%Utiliser les symboles jeu de cartes
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+
+
+% Référence dans le document
+\usepackage[noabbrev,capitalize]{cleveref}
+
+% Tableau
+\usepackage{tabularx} % Tableau
+\usepackage{multirow} % Pour créer des tableaux en subdivisant les lignes
+\usepackage{diagbox} %Pour créer des crois dans les tableaux à double entrées
+\usepackage{enumitem} %Permet de scinder une énumération et de reprendre au numéro suivant
+\usepackage{multicol} % Création de document en colonne avec plusieurs colonnes
+\multicolsep=5pt % supprime l'espace vertical
+
+% Modification des itemizes
+\setitemize{label=$\bullet$} % Utilise le package enumitem et met des points au lieu des tirets
+
+% Ecrire des algorithmes en "français" (exemple issu du cours d'optimisation 2020/2021)
+\usepackage[linesnumbered, french, frenchkw,ruled]{algorithm2e}
+% Exemple :
+%\begin{center}
+%\begin{algorithm}
+%\Entree{Un graphe $G = (V,E)$, $|V| = n$, $|E| = m$ et pour chaque arête $e$ de $E$ son poids $c(e)$;}
+%\Sortie{Un arbre (ou une forêt) maximal $A = (V,F)$ et de poids minimum ;} 
+%Trier et renuméroter les arêtes de $G$ dans l'ordre croissant de leur poids : $c(e_1) \leqslant c(e_2) \leqslant ... \leqslant c(e_m)$ \;
+%Poser $F := \emptyset$ et $k = 0$\;
+%\Tq{$k<m$ et $|F| < n-1$}{Si $e_{k+1}$ ne forme pas de cycle avec $F$ alors $F := F \cup \{ e_k \}$\;
+%$k := k +1 $\;}
+%\caption{Algorithme de Kruskal théorique (1956)}
+%\end{algorithm}
+%\end{center}
+
+% Inclure du code Python avec coloration syntaxique et bloc gris (exemple issu du TP2 d'optimisation 2020/2021)
+%\usepackage{xcolor} % Déjà importé plus haut
+\usepackage{listings}
+\lstset{backgroundcolor=\color{darkWhite},literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1{€}{{\EUR}}1 {£}{{\pounds}}1}
+\lstdefinestyle{stylepython}{        language=Python,        basicstyle=\ttfamily,    commentstyle=\color{green},    keywordstyle=\color{blue},    stringstyle=\color{olive},    numberstyle=\tiny,        numbers=left,        stepnumber=1,         numbersep=5pt}
+% Exemple :
+%\begin{lstlisting}[style=stylepython]
+%import networkx as nx #Cette bibliothèque permettra de manipuler des graphes
+%import matplotlib.pyplot as plt #Cette bibliothèque permettra de les représenter
+%import numpy as np
+%\end{lstlisting}
+
+%Package permettant de tracer des graphes, des courbes, etc.. (exemple issu du cours d'optimisation 2020/2021)
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{tkz-tab} % Pour les tableaux de signes
+%\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{
+	decorations.pathmorphing,
+	arrows,
+	arrows.meta,
+	calc,
+	shapes,
+	shapes.geometric,
+	decorations.pathreplacing,}
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+\tikzset{>=stealth'}
+\tikzstyle{rond}=[draw,circle,thick,fill=white]
+% Exemple courbe :
+%\begin{center}
+%\begin{tikzpicture}
+%	\def\shift{.5}
+%	\def\xmax{6}
+%	\def\ymax{7}
+%	\draw[->] (-\shift,0) -- (\xmax+\shift,0) node[below] {$x$}; 
+%	\foreach \x in {1,...,\xmax}{ \pgfmathtruncatemacro\xbis{100*\x}
+%		\draw (\x,0) -- (\x,-.3*\shift) node[below] {$\scriptstyle{\xbis}$};
+%	}
+%	% axe ordonnees
+%	\draw[->] (0,-\shift) -- (0,\ymax+\shift) node[left] {$y$};  
+%	\foreach \y in {1,...,\ymax}{ \pgfmathtruncatemacro\ybis{100*\y}
+%		\draw (0,\y) -- (-.3*\shift,\y) node[left] {$\scriptstyle{\ybis}$};
+%	}
+%	\draw[fill=yellow] (0,0) -- (3,0) -- (0,6) -- cycle;
+%	
+%	\draw[thick, purple] plot [domain=-.15:6.15, variable=\t] (\t,6-\t);
+%	\node[above, text=purple] (A) at (6.9,.1) {$x+y = 600$};
+%	%%
+%	\draw[thick, purple] plot [domain=-.1:3.1, variable=\t] (\t,6-2*\t);
+%	\node[right, text=purple] (B) at (1.1,5) {$2x+y = 600$};
+%	%%
+%	\draw[thick, blue] plot [domain=-.1:3.85, variable=\t] (\t,6-1.6*\t);
+%	%%
+%	\draw[fill=blue] (0,6) circle (3pt);
+%	\node[right, text=blue] (B) at (0.1,6.3) {Solution optimale};
+%\end{tikzpicture}
+%\end{center}
+% Exemple graphe :
+%\begin{center}
+%\begin{tikzpicture}[scale=0.9]
+%    \draw[thick] (-1.5,0) node[rond] {$1$} coordinate (A) --
+%        ++(3,0) node[rond] {$2$} coordinate (B) --
+%        ++(-1,-1) node[rond] {$4$}  coordinate (D) --
+%        ++(-1,0) node[rond] {$3$}  coordinate (C) --
+%        ++(0,-1) node[rond] {$5$}  coordinate (E) --
+%        ++(1,0) node[rond] {$6$}  coordinate (F) --
+%        ++(1,-1) node[rond] {$8$}  coordinate (H) --
+%        ++(-3,0) node[rond] {$7$}  coordinate (G) -- (A)
+%        (A) -- (C)
+%        (G) -- (E)
+%        (D) -- (F)
+%        (B) -- (H);
+%\end{tikzpicture}
+%\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Environnements  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Différents types à donner aux environnements théorèmes, définitions, etc...
+%[theorem] permet de numéroter par rapport à la section en cours
+%\renewcommand{\theexem}{\empty{}} permet de ne pas numéroterNe numérote pas les exemples
+
+%\usepackage{thmtools} % Permet de créer un environnement de théorème avec des cadres
+%\declaretheorem[thmbox=L]{boxtheorem L}
+%\declaretheorem[thmbox=M]{boxtheorem M}
+%\declaretheorem[thmbox=S]{boxtheorem S}
+%
+%%\usepackage[dvipsnames]{xcolor}
+%%\declaretheorem[shaded={bgcolor=Lavender,textwidth=12em}]{BoxI}
+%\declaretheorem[shaded={rulecolor=black,rulewidth=1pt}]{BoxII}
+%
+%
+%\usepackage[leftmargin=0.1865cm,rightmargin=0.6cm]{thmbox}
+% Voici ici pour les options https://ctan.mines-albi.fr/macros/latex/contrib/thmbox/thmbox.pdf
+
+%% Ecrit de cette façon tout le monde a le même style : Titre en droit et texte en italique très léger.
+%\newtheorem[L,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{thm}{Théorème}[subsection]
+%%\renewcommand{\thetheorem}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{propo}[thm]{Proposition}
+%%\renewcommand{\thepropo}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{prop}[thm]{Propriété}
+%%\renewcommand{\theprop}{\empty{}} 
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{coro}[thm]{Corollaire}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{lem}[thm]{Lemme}
+%\newtheorem[M,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{defi}[theorem]{Définition}
+%%\renewcommand{\thedefinition}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exem}{Exemple}
+%\renewcommand{\theexem}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}}
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{sol}{Solution}
+%\renewcommand{\thesol}{\empty{}} 
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{hypo}{Hypothesis}[section]
+%\newtheorem[S,leftmargin=0.1865cm,rightmargin=0.1865cm,cut=true]{remark}[thm]{Remarque}%[section]
+%\newtheorem{dem}{Démonstration}
+%\renewcommand{\thedem}{\empty{}} 
+%\newtheorem[S]{nota}{Notation}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[subsection]
+%\renewcommand{\thetheorem}{\empty{}} 
+\newtheorem{propo}[theorem]{Proposition}
+%\renewcommand{\thepropo}{\empty{}} 
+\newtheorem{prop}[theorem]{Propriété}
+%\renewcommand{\theprop}{\empty{}} 
+\newtheorem{coro}[theorem]{Corollaire}
+\newtheorem{lemma}[theorem]{Lemme}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Définition}
+%\renewcommand{\thedefinition}{\empty{}}
+\newtheorem{exem}{Exemple}
+\renewcommand{\theexem}{\empty{}} 
+\newtheorem{cours}{Question de cours}
+\renewcommand{\thecours}{\empty{}} 
+\newtheorem{exo}{Exercice}
+%\renewcommand{\theexo}{\empty{}} 
+\newtheorem{sol}{Solution de l'exercice}
+%\renewcommand{\thesol}{\empty{}} 
+\newtheorem{hypo}{Hypothesis}[section]
+\newtheorem{remark}[theorem]{Remarque}%[section]
+
+
+\theoremstyle{remark}
+\newtheorem{dem}{Démonstration}
+\renewcommand{\thedem}{\empty{}} 
+\newtheorem{nota}{Notation}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Raccourcis   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% Ensembles
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+
+
+% Lettres calligraphiques
+\newcommand{\calP}{\mathcal{P}} 
+\newcommand{\calF}{\mathcal{F}} 
+\newcommand{\calD}{\mathcal{D}} 
+\newcommand{\calQ}{\mathcal{Q}} 
+\newcommand{\calT}{\mathcal{T}} 
+
+% Noyau et image
+\newcommand{\im}{\text{Im}} 
+\newcommand{\noy}{\text{Ker}} 
+\newcommand{\card}{\text{Card}} 
+
+%Epsilon
+\newcommand{\vare}{\varepsilon} 
+
+
+% Fonctions usuelles
+%\newcommand{\un}{\mathbb{1}} % Indicatrice en utilisant le package \usepackage{bbold} mais celui modifie les mathbb donc on définit l'indicatrice à la main
+\def\un{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}} % Indicatrice
+
+
+\title{Corrigé - Colle 6 (Sujet 3)}
+\author{MPSI2\\
+Année 2021-2022}
+%\author{Mathématiques P.A.S.S. 1}
+\date{9 novembre 2021}
+
+
+\begin{document}
+
+
+   \maketitle
+%      \rule{\linewidth}{0.5mm}
+      \rule{\linewidth}{0.5mm}
+%  \begin{center}
+%  %    \rule{\linewidth}{0.5mm}\\[0.4cm]
+%       { \huge \bfseries Mathématiques pour le P.A.S.S 1\\[0.4cm] }
+%    \rule{\linewidth}{0.5mm}\\[4cm]
+%     \end{center}
+
+%\begin{cours}
+%Que peut-on dire de l'intégrale d'une fonction périodique. Démontrer.
+%\end{cours}
+
+%\begin{exo}
+%%Difficulté : 1/5
+%Chapitre : Intégration
+%Donner une primitive des fonctions suivantes :
+%\[ f(x) = \frac{1}{2x-3} \quad ; \quad  g(x) =  \frac{x+3}{\sqrt{x^2 + 6x}}\]
+%\[ h(x) = (e^x +1)^3 e^x \quad \text{et} \quad i(x) = \frac{1}{1+e^x}.\]
+%\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item On remarque qu'en
+posant $u(x)=2\,x-3$, on a $u'(x)= 2$, de sorte que $f(x)=\frac{1}{2}\,\frac{u'(x)}{u(x)}$. On a donc 
+\[
+f(x)= \frac{1}{2}\,\frac{u'(x)}{u(x)}=\frac{d}{dx} \left(\frac{1}{2}\, \ln
+(|u(x)|)\right)=\frac{d}{dx} \left(\frac{1}{2}\,\ln|2\,x-3|\right).
+\] 
+\item On remarque qu'en posant $u(x)=x^2+6\,x$, on a $u'(x)=2(x+3)$, de sorte que
+$g(x)=\frac{1}{2}\,\frac{u'(x)}{u^{\frac{1}{2}}(x)}$. On a alors 
+\[
+g(x)= \frac{1}{2}\,
+u'(x)\,u^{-\frac{1}{2}}(x)=\frac{d}{dx} \left( u^{\frac{1}{2}}(x)\right)
+=\frac{d}{dx} \left( (x^2+6\,x)^{\frac{1}{2}}\right).
+\]
+\item On remarque qu'en posant $h(x)=e^{x}+1$, on a $u'(x)=e^{x}$, de sorte que $h(x)=
+u'(x)\, u^3(x)$. On a donc
+\begin{align*}
+f_{25}(x)\, &= u'(x)\, u^3(x)\,  = \frac{d}{dx}\left(\frac{1}{4}\, u^{4}(x)\right)= 
+ \frac{d}{dx}\left(\frac{1}{4}\, (e^{x}+1)^{4}\right)\,.
+\end{align*}
+\item On a 
+\[
+i(x)\,  = \frac{1+e^{x}-e^{x}}{e^{x}+1}=1-\frac{e^{x}}{e^{x}+1}=\frac{d}{dx}\left(x-\ln (e^{x}+1)\right)\,.
+\]
+\end{enumerate}
+\end{sol}
+
+%\begin{exo}
+%%Difficulté : 1/5
+%Chapitre : Intégration
+%Donner une primitive des fonctions suivantes :
+%\[ f(x) = x^n \ln(x)\quad ; \quad
+%g(x) = x\sqrt{1+x} \quad \text{et} \quad h(x) = \sin(\ln(x))\]
+%\end{exo}
+
+
+\begin{sol}
+\begin{enumerate}
+\item  A priori, on ne connaît pas
+de primitive de la fonction $\ln$.
+\begin{align*}\int x^n\,\ln|x| dx &= \int u(x)\, v'(x)\, dx \quad \text{où}\quad \begin{cases}
+ u(x)=\ln|x|\,,\;\text{donc}\; u'(x)=\frac{1}{x}\\
+ v(x)=\frac{x^{n+1}}{n+1}\,,\;\text{donc}\;v'(x)=x^n\end{cases}\\
+&=u(x)\,v(x)-\int u'(x)\, v(x)\, dx\\
+&= \left(\frac{x^{n+1}}{n+1}\right)\,\ln|x|-\int\left(\frac{x^{n}}{n+1}\right)\,dx
+=\frac{x^{n+1}}{n+1}\,\left(\ln|x|-\frac{1}{n+1}\right)+C.
+\end{align*}
+Remarque : pour $n=0$, on obtient $\displaystyle{\int \ln|x|\,dx=x\,(\ln|x|-1)+C}$.
+\item On fait l'i.p.p. suivante, en remarquant que $\sqrt{1+x}=w'(x)\,\sqrt{w(x)}$, où $w(x)=1+x$ :
+\begin{align*}
+\int x\,\sqrt{1+x}\, dx &= \int u(x)\, v'(x)\, dx \quad \text{où}\quad \begin{cases}
+ u(x)=x\,,\;\text{donc}\; u'(x)=1\\
+ v(x)=\frac{2}{3}\,(1+x)^{\frac{3}{2}}\,,\;\text{donc}\;v'(x)=\sqrt{1+x}\end{cases}\\
+&=u(x)\,v(x)-\int u'(x)\, v(x)\, dx\\
+&= \frac{2}{3}\,x\, (1+x)^{\frac{3}{2}}-\frac{2}{3}\,\int(1+x)^{\frac{3}{2}}\,dx
+=\frac{2}{3}\,x\, (1+x)^{\frac{3}{2}}-\frac{4}{15}\, (1+x)^{\frac{5}{2}}+C.
+\end{align*}
+\item L'astuce consiste ici à faire deux i.p.p. successives afin de faire apparaître $-\int h(x)\,dx$ dans la
+deuxième i.p.p.
+\begin{align*}
+  \int \sin(\ln|x|)\, dx &= \int u(x) v'(x)\, dx\mbox{\hspace{1cm} avec } u(x)=\sin(\ln|x|), v(x)=x\\
+&= u(x) v(x) - \int  u'(x) v(x)\\
+  &= x \sin(\ln|x|) - \int x \cos(\ln|x|) \, \\frac{1}{x}\, dx = x
+  \sin(\ln|x|) -\int \cos(\ln|x|)\, dx
+\end{align*}
+\begin{align*}
+  \int \cos(\ln|x|)\, dx &= \int u(x) v'(x)\, dx 
+\mbox{\hspace{1cm} avec } u(x)=\cos(\ln|x|),v(x)=x\\
+&= u(x) v(x) 
+- \int u'(x) v(x)\, dx= 
+x \cos(\ln|x|) - \int x (-\sin(\ln|x|)) \, \frac{1}{x}\, dx\\
+&= x \cos(\ln|x|) +\int \sin(\ln|x|)\, dx
+\end{align*}
+et donc
+\[
+\int \sin(\ln|x|)\, dx = \frac{x}{2}(\sin(\ln|x|)-\cos(\ln|x|))+C.
+\]
+\end{enumerate}
+\end{sol}
+   
+%
+%\begin{exo}
+%%Difficulté : 1/5
+%Chapitre : Intégration
+%Calculer
+%\[ \int_0^1 \frac{1}{x^2 + x + \frac{5}{4}} \, dx.\]
+%\end{exo}
+
+\begin{sol}
+On commence par remarquer que
+\[ x^2 + x + \frac{5}{4} = \left( x + \frac{1}{2} \right)^2 +1.\]
+On utilise alors le changement de variable $t = x+\frac{1}{2}$ et on obtient
+\[ \int_0^1 \frac{1}{x^2 + x + \frac{5}{4}} \, dx= \int_0^1 \frac{1}{\left( x +\frac{1}{2} \right)^2 +1} \, dx = \int_{\frac{1}{2}}^{\frac{3}{2}} \frac{1}{t^2 +1} \, dt\]
+et finalement
+\[ \int_0^1 \frac{1}{x^2 + x + \frac{5}{4}} \, dx = \left[ \arctan(t) \right]_{\frac{1}{2}}^{\frac{3}{2}} = \arctan \left( \frac{3}{2} \right) - \arctan \left( \frac{1}{2} \right). \]
+\end{sol}
+
+
+%\begin{exo}
+%%Difficulté : 1/5
+%Chapitre : Intégration
+%Calculer 
+%\[ I = \int_1^{\frac{5}{2}} \sqrt{-x^2 + 2x + 8} \, dx.\]
+%\end{exo}
+
+\begin{sol}
+On a
+\[ - x^2 + 2x + 8 = -(x^2 - 2x - 8) = -((x-1)^2 - 9) = 9 - (x-1)^2.\]
+ On a 
+ \[ I= \int_1^{\frac{5}{2}} \sqrt{9- (x-1)^2} \, dx = 3 \int_{1}^{\frac{5}{2}} \sqrt{1 - \left( \frac{x-1}{3} \right)^2} \, dx.\]
+ On pose alors $u=\frac{x-1}{3}$ pour se ramener à une intégrale du type $\int \sqrt{1 - u^2}\, du$, que l'on sait calculer. On a $dx=3du$, et le changement de variables est affine, donc bijectif. On en déduit que 
+ \[ I=9 \frac{0}{\frac{1}{2}} \sqrt{1-u^2} \, du.\]
+ On pose ensuite $u=\sin(t)$. La fonction $\sin$ réalisant une bijection de l'intervalle $\left[0,\frac{\pi}{6} \right]$ sur l'intervalle $\left[0, \frac{1}{2} \right]$, on en déduit que 
+ \[ I=9 \int_0^{\frac{\pi}{6}} \sqrt{1-\sin(t)^2} \cos(t) \, dt = 9\int_0^{\frac{\pi}{6}} \cos(t)^2 \, dt = \frac{9}{2} \int_0^{\frac{\pi}{6}} 1+\cos(2t) \, dt.\]
+ et donc
+ \[ I = \frac{9}{2} \left[ t + \frac{1}{2} \sin(2t) \right]_0^{\frac{\pi}{6}} = \frac{3 \pi}{4} + \frac{9 \sqrt{3}}{8}.\]
+\end{sol}
+
+
+%\begin{exo}
+%%Difficulté : 3/5
+%Chapitre : Intégration
+%Pour $n \in \N$, on pose 
+%\[ I_n= \int_0^1 (1-t^2)^n \, dt.\]
+%\begin{enumerate}
+%\item Montrer que la suite $(I_n)$ est strictement décroissante.
+%\item Montrer que, pour tout $u \in [0,1]$, on a $0 \leqslant 1-u \leqslant e^{-u}$.
+%\item En déduire une majoration de $I_n$
+%à l'aide de 
+%$J_n = \int_0^{\sqrt{n}} e^{-x^2} \, dx$.
+%\item Montrer que la suite $(J_n)$
+%est majorée. En déduire que la suite $(I_n)$
+%converge vers une limite que l'on calculera.
+%\item Démontrer que, pour tout $n \geqslant 1$, $I_n= \frac{2n}{2n+1} I_{n-1}$.
+%\item En déduire, pour $n \geqslant 0$, une expression de $I_n$ à l'aide de factorielles.
+%\item En déduire une expression de $\int_0^{\frac{\pi}{2}} \cos(\theta)^{2n+1} \, d\theta$ pour tout $n\in \N$.
+%\end{enumerate}
+%\end{exo}
+
+\begin{sol}
+\begin{enumerate}
+\item On va d'abord démontrer que la suite est décroissante. Soit $n \in \N^{\star}$. Pour tout $t \in [0,1]$, on a $(1-t^2)\in [0,1]$ et donc $(1-t^2)^{n+1} \leqslant (1-t^2)^n$. On intègre cette inégalité entre $0$ et $1$ et on trouve que $I_{n+1} \leqslant I_n$. Supposons maintenant que $I_n=I_{n+1}$. Alors, on a \[ \int_0^1 ((1-t^2)^n - (1-t^2)^{n+1}) \, dt=0.\]
+Or, la fonction $t \mapsto (1-t^2)^n-(1-t^2)^{n+1}$ est continue et positive sur $[0,1]$ Son intégrale est nulle, donc cette fonction est identiquement nulle. Cela est faux si $t=\frac{1}{2}$. Donc $I_n \neq I_{n+1}$ et donc $I_n > I_{n+1}$.
+\item La première inégalité est évidente. Pour la seconde, on peut étudier la fonction $\phi$
+définie par $\phi(u)=e^{-u}-1+u$ sur l'intervalle $[0,1]$. Sa dérivée est $\phi'(u)=1-e^{-u}$ et elle est positive sur $[0,1]$, donc $\phi$ est croissante sur cet intervalle. Comme $\phi(0)=0$, on en déduit le résultat. Une autre façon de procéder, pour ceux qui connaissent les fonctions convexes, est de remarquer que la fonction $u \mapsto e^{-u}$ est convexe, et donc que sa courbe représentative est au-dessus de sa tangente à l'origine, dont l'équation est justement $y=1-x$.
+\item D'après l'inégalité précédente, on a \[ I_n \leqslant \int_0^1 e^{-nu^2} \, du = \int_0^{\sqrt{n}} e^{-nt^2} \, dt = \frac{1}{\sqrt{n}} J_n\]
+où on a effectué le changement de variables $t=u\sqrt{n}$.
+\item Si $x\geqslant 1$, alors $x^2\geqslant x$ et donc $e^{-x^2} \leqslant e^{-x}$. On en déduit que \[J_n \leqslant \int_0^1 e^{-x^2} \, dx +  \int_1^{\sqrt{n}} e^{-x} \, dx = \int_0^1 e^{-x^2} \, dx + [ e^{-x} ]_1^{\sqrt{n}} = \int_0^1 e^{-x^2} \, dx + e^{-1} - e^{-\sqrt{n}}\]
+et donc
+\[ J_n \leqslant \int_0^1 e^{-x^2} \, dx + e^{-1}.\]
+Ceci montre bien que $(J_n)$ est majorée. De l'inégalité $0 \leqslant I_n \leqslant \frac{J_n}{\sqrt{n}}$, on déduit par le théorème des gendarmes que $(I_n)$ converge vers $0$.
+\item On va intégrer par parties, en écrivant $(1-t^2)^n=(1-t^2)^n \times 1$, en dérivant $(1-t^2)^n$ et en intégrant $1$. On trouve \[ I_n=[(1-t^2)^n t]_0^1 +2n \int_0^1 t^2 (1-t^2)^{n-1} \, dt=0+2n \int_0^1 (t^2-1+1) (1-t^2)^{n-1} \, dt= 2nI_{n-1} - 2n I_n.\]
+On en déduit immédiatement le résultat demandé.
+\item On remarque que $I_0=1$. On en déduit que \[ I_n=\frac{(2n)(2n-2)...2}{(2n+1)(2n-1)...1}I_0=\frac{((2n)(2n-2)...2)^2}{(2n+1)(2n)(2n-1)... 1}=\frac{(2^n n!)^2}{(2n+1)!}.\]
+\item On va encore faire un changement de variables en écrivant $\cos(\theta)^{2n+1}=(1-\sin(\theta)^2)^n \cos(\theta)$ et en posant $t=\sin(\theta)$ et $dt=\cos(\theta) d \theta$. On en déduit que 
+\[ \int_0^{\frac{\pi}{2}} \cos(\theta)^{2n+1} \, d\theta = \int_0^1(1-t^2)^n \, dt = I_n = \frac{(2^n n!)^2}{(2n+1)!}.\]
+\end{enumerate}
+\end{sol}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

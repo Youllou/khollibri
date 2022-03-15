@@ -1,0 +1,12 @@
+Soit $k \in \{0,...,n-1\}$ et soit $\omega_k =e^{ \frac{2ik\pi}{n}}$. Alors 
+\[ |\omega_k-1|=|e^{\frac{2ik\pi}{n}} - e^{i0}|=2 \left| \sin \left( \frac{k \pi}{n} \right) \right| \]
+en factorisant par l'angle moitié. De plus, pour $k \in \{0,...,n-1\}$, $\frac{k \pi}{n} \in [0,\pi]$ et le sinus est positif. On en déduit
+\begin{align*}
+\sum_{z \in \mathbb{U}_n} |z-1| & =    2 \sum_{z \in \mathbb{U}_n} \sin \left( \frac{k \pi}{n} \right) \\ 
+ &= 2 \im \left(  \sum_{z \in \mathbb{U}_n} e^{\frac{ik \pi}{n}}  \right)\\ 
+ &= 2 \im \left( 1 \times \frac{1 - e^{i \pi}}{1 - e^{\frac{ i\pi}{n}}} \right)\\
+  &= 4 \im \left( \frac{1}{1 - e^{\frac{ i\pi}{n}}}\right)\\ 
+ &= 4 \im \left( \frac{1}{-2i \sin \left( \frac{\pi}{2n} \right) e^{\frac{ i\pi}{2n}}}\right)\\ 
+  &= 2 \im \left( \frac{ie^{\frac{ -i\pi}{2n}}}{\sin \left( \frac{\pi}{2n} \right)}\right)\\ 
+    &= 2 \frac{\cos \left( \frac{\pi}{2n} \right)}{\sin \left( \frac{\pi}{2n} \right)}.
+\end{align*}
